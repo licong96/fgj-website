@@ -1,0 +1,21 @@
+{{!-- 头部最热门的资讯 --}}
+<div class="left">
+  <a class="no-decoration" href="{{data.[0].link}}" target="_blank">
+    <img class="img" src="{{data.[0]._pagepic}}" alt="">
+    <p class="desc">{{data.[0]._shorttitle}}</p>
+  </a>
+</div>
+<div class="right">
+  <div class="img-top">
+    <a class="no-decoration" href="{{data.[1].link}}" target="_blank">
+      <img class="img" src="{{data.[1]._pagepic}}" alt="">
+      <p class="desc">{{data.[1]._shorttitle}}</p>
+    </a>
+  </div>
+  <div class="img-bottom">
+    <a class="no-decoration" href="{{data.[2].link}}" target="_blank">
+      <img class="img" src="{{data.[2]._pagepic}}" alt="">
+      <p class="desc">{{data.[2]._shorttitle}}</p>
+    </a>
+  </div>
+</div>

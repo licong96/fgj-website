@@ -1,0 +1,47 @@
+{{!-- 评论列表 --}}
+{{#each list}}
+<li class="list">
+  <img class="portrait" src="{{_user._headpic}}" alt="">
+  <div class="answer">
+    <div class="user">
+      <span>{{_user._username}}</span>
+      <span class="time">{{_regdate}}</span>
+    </div>
+    <div class="answer-text">
+      <p>{{_content}}</p>
+    </div>
+    <div class="band">
+      <div class="set js_comment_reply" data-group="{{_commentgroup}}" data-name="{{_user._username}}" data-id="{{_userid}}">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-pinglun"></use>
+        </svg>
+        {{!-- <span class="number">1111</span> --}}
+      </div>
+    </div>
+    {{#if child}}
+    <div class="child">
+      <ul>
+        {{#each child}}
+        <li class="child-list">
+          <img class="child-por" src="{{_user._headpic}}" alt="">
+          <div class="child-answer">
+            <span class="child-user">{{_user._username}}</span>
+            {{#if _touser._username}}
+            <span class="reply">回复</span>
+            <span class="child-he">{{_touser._username}}</span>
+            {{/if}}
+            ：{{_content}}
+            <span class="child-set js_comment_reply" data-group="{{_commentgroup}}" data-name="{{_user._username}}" data-id="{{_userid}}">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-pinglun"></use>
+              </svg>
+            </span>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+  </div>
+</li>
+{{/each}}

@@ -1,0 +1,49 @@
+<h2 class="title">聚仁国际-高新开发区 5-0123</h2>
+  <img class="img" src="{{_pagepic}}" alt="">
+  <div class="h-info">
+    <div class="row">
+      <div class="col-lg-3">
+        <span class="answer">类型：</span>
+        <span class="desc">公寓</span>
+      </div>
+      <div class="col-lg-3">
+        <span class="answer">户型：</span>
+        <span class="desc">{{_countf}}房{{_countt}}厅{{_countw}}卫</span>
+      </div>
+      <div class="col-lg-3">
+        <span class="answer">面积：</span>
+        <span class="desc">{{_realsquare}}㎡</span>
+      </div>
+      <div class="col-lg-3">
+        <span class="answer">在售：</span>
+        <span class="desc">30套<em class="light">在售房源</em></span>
+      </div>
+      <div class="col-lg-3">
+        <span class="answer">单价：</span>
+        <span class="desc">{{_estate._priceunit}}元/㎡</span>
+      </div>
+      <div class="col-lg-3">
+        <span class="answer">参考总价：</span>
+        <span class="desc">{{_estate._price}}万<em class="light">房贷计算器</em></span>
+      </div>
+      <div class="col-lg-3">
+        <span class="answer">得房率：</span>
+        <span class="desc">{{_getrate}}%</span>
+      </div>
+    </div>
+    <p class="read">户型解说：</p>
+    {{#if _remark}}
+    <div class="read-text">
+      {{_remark}}
+    </div>
+    {{/if}}
+    <div class="consult">
+      <button class="btn btn-primary btn-lg">立即咨询</button>
+      <div class="tel">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-dianhua"></use>
+        </svg>
+        13699531996
+      </div>
+    </div>
+  </div>

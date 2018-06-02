@@ -1,0 +1,24 @@
+<section class="nav-crumbs">
+  <div class="left">
+    {{#each list}}
+      {{#if link}}
+      <a href="{{link}}" class="tit">{{name}}</a>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-jiantou2"></use>
+      </svg>
+      {{else}}
+      <span></span>{{name}}</span>
+      {{/if}}
+    {{/each}}
+  </div>
+  {{#unless hideCode}}
+  <div class="right">
+    <img class="img-code" src="../../common/image/code.jpg" alt="">
+    <div class="text">
+      <p>扫一扫二维码</p>
+      <p>添加房管家公众</p>
+      <p>微信每天有惊喜</p>
+    </div>
+  </div>
+  {{/unless}}
+</section>

@@ -1,0 +1,69 @@
+@import "../../common/scss/mixin";
+
+
+.message-list {
+  display: flex;
+  padding: 30px 0;
+  border-bottom: 1px solid $color-border-1;
+  color: #333;
+  cursor: pointer;
+  .img-wrap{
+    overflow: hidden;
+    width: 300px;
+    // height: 230px;
+    .r-img {
+      width: 100%;
+      vertical-align: top;
+    }
+  }
+  .r-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    .r-titel {
+      font-size: 24px;
+      font-weight: bold;
+      color: #111;
+    }
+    .r-text {
+      flex: 1;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #787878;
+    }
+    .r-footer {
+      align-self: flex-end;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      .time {
+        font-size: 14px;
+        color: #999;
+      }
+      .bold {
+        padding-right: 6px;
+        font-size: 16px;
+        color: #666;
+      }
+      .band {
+        display: flex;
+      }
+      .answer {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+      }
+      .number {
+        font-size: 16px;
+        color: #666;
+      }
+      .icon {
+        padding-right: 4px;
+        font-size: 20px;
+        color: #999;
+      } 
+    }
+  } 
+}

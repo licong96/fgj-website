@@ -1,0 +1,394 @@
+@import "../../../common/scss/mixin.scss";
+
+body {
+  position: relative;
+}
+.container {
+  position: relative;
+}
+// 导航屑
+.nav-crumbs {
+  padding-top: 20px;
+  font-size: 16px;
+  color: #666;
+}
+// 二级导航
+.sub-nav-wrap {
+  margin-top: 20px;
+}
+.sub-nav {
+  z-index: 101;
+  width: 100%;
+  height: 56px;
+  background-color: $color-primary;
+  .nav-link {
+    padding: 0 20px;
+    height: 56px;
+    line-height: 56px;
+    color: #fff;
+    &.active {
+      border-radius  : 0;
+      background-color: $color-dark;
+    }
+    &.no-active {
+      background: $color-primary;
+    }
+  }
+}
+// 公用信息
+.com-info {
+  padding-top: 60px;
+  .title-info {
+    border-bottom: 1px solid $color-border-1;
+    .t-title {
+      display: inline-block;
+      margin: 0;
+      padding-bottom: 10px;
+      font-size: 24px;
+      color: #222;
+      border-bottom: 6px solid $color-primary;
+    }
+    .more {
+      float: right;
+      line-height: 44px;
+    }
+  }
+}
+// 楼盘信息
+.estate-info {
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+      margin: 0;
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .price {
+      font-size: 36px;
+      font-weight: bold;
+      color: $color-primary;
+    }
+  }
+  .site {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #333;
+  }
+  .img-info {
+    overflow: hidden;
+    display: flex;
+    margin-top: 40px;
+    margin-right: -10px;
+    margin-left: -10px;
+    height: 460px;
+    .img-left {
+      flex: 1;
+      padding: 10px;
+      height: 100%;
+    }
+    .img-right {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      .list {
+        position: relative;
+        padding: 10px;
+        width: 50%;
+        height: 50%;
+        &.active {
+          overflow: hidden;
+          .all {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+      .all {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        transform: scale(0);
+        transition: all .3s;
+        &:hover {
+          text-decoration: none;
+        }
+        .all-text {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          font-size: 24px;
+          color: #fff;
+          background-color: rgba(0, 0, 0, .4);
+        }
+      }
+    }
+    .img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  // 经纪人
+  .broker-wrap {
+    margin-top: 10px;
+  }
+  .broker {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 25px 0 rgba(255,152,0,.6);
+    background-color: $color-primary;
+    .portrait {
+      border: solid 4px #fff;
+      border-radius: 50%;
+      box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
+      width: 120px;
+      height: 120px;
+    }
+    .b-info {
+      padding-left: 20px;
+      color: #fff;
+      .b-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 22px;
+        .b-tag {
+          margin-left: 10px;
+          border-radius: 4px;
+          padding: 2px 4px;
+          background-color: #efece4;
+          font-size: 14px;
+          color: #f8952b;
+        }
+      }
+      .tel,
+      .good {
+        margin-bottom:4px;
+        font-size: 16px;
+      }
+      .b-btn {
+        margin-top: 4px;
+        color: $color-primary;
+        background-color: #ffffff;
+      }
+    }
+  }
+}
+
+// 基本信息
+.basic-info {
+  .basic-list {
+    .col-lg-4 {
+      border-bottom: 1px solid $color-border-1;
+      padding-bottom: 28px;
+      padding-left: 40px;
+    }
+    .list {
+      margin-top: 28px;
+      font-size: 16px;
+      .hd {
+        float: left;
+        display: inline-block;
+        color: #787878;
+      }
+      .desc {
+        display: block;
+        overflow: hidden;
+        color: #333;
+      }
+    }
+  }
+  // 项目简介
+  .intro {
+    .i-title {
+      padding-top: 28px;
+      font-size: 18px;
+      color: #222;
+    }
+    .i-content {
+      border-bottom: 1px solid $color-border-1;
+      padding: 28px 40px;
+      .text {
+        font-size: 16px;
+        color: #333;
+        line-height: 1.8;
+        letter-spacing: 1px;
+      }
+    }
+  .map {
+      position: relative;
+      margin-bottom: 10px;
+      input {
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+// 数据分析及统计
+.stat-info {
+  .s-hd {
+    padding-top: 28px;
+    font-size: 18px;
+    color: #111;
+  }
+  .sell-out {
+    font-size: 16px;
+    color: #333;
+  }
+  .s-list {
+    line-height: 30px;
+  }
+  .s-right {
+      border-bottom: 1px solid $color-border-1;
+      padding: 28px 40px;
+  }
+  .chart {
+    width: 100%;
+    height: 220px;
+    // background-color: #ddd;
+  }
+  .sell-house {
+    font-size: 16px;
+    color: #333;
+    .s-house {
+      margin: 0;
+    }
+  }
+}
+
+// 价值报告分析
+.report-info {
+  .r-content {
+    display: flex;
+    padding: 30px 0;
+  }
+  .list-wrap {
+    margin-top: 30px;
+    .r-list {
+      .r-text {
+        padding-top: 6px;
+        font-size: 16px;
+        color: #333;
+      }
+      .r-img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// 在售房源
+.house-info {
+  .h-list-wrap {
+    padding: 30px 0;
+  }
+  .h-list {
+    border-radius: 6px;
+    box-shadow: 2px 2px 25px 0 rgba(46,61,73,.2);
+    .h-img {
+      border-bottom: 1px solid $color-border-1;
+      width: 100%;
+    }
+    .h-title {
+      padding: 15px 10px 0 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .h-text {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px 20px 10px;
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+// 在售户型样板间
+.sample-info {
+}
+
+// 房贷计算器
+.counter-info {
+  padding-bottom: 50px;
+  .title {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #333;
+  }
+  .counter {
+    position: relative;
+  }
+  .form {
+    margin-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+  }
+  .btn-statrt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    border-radius: 50%;
+    box-shadow: 2px 2px 25px 0 rgba(46,61,73,.2);
+    margin-left: -40px;
+    margin-top: -40px;
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+    color: #fff;
+    background-color: $color-primary;
+    line-height: 80px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .chart-wrap {
+    width: 80%;
+  }
+  .calcu-result {
+    padding: 15px;
+    .r-li {
+      margin-top: 15px;
+      padding: 0 10px;
+      width: 100%;
+      height: 36px;
+      font-size: 14px;
+      color: #787878; 
+      line-height: 36px;
+      background-color: #f6fbeb;
+      letter-spacing: 1px;
+      .pay {
+        color: #333;
+      }
+      &:nth-child(2) {
+        background-color: #fef5f2;
+      }
+      &:nth-child(3) {
+        background-color: #eff8fb;
+      }
+      &:nth-child(4) {
+        background-color: #f6fbeb;
+      }
+      &:nth-child(4) {
+        background-color: #fef5f2;
+      }
+      &:nth-child(6) {
+        background-color: #eff8fb;
+      }
+    }
+  }
+}

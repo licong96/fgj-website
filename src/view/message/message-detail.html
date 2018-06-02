@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <div class="container js_nav_crumbs"></div>
+  <div class="container">
+    <div class="row">
+      <!-- 具体内容 -->
+      <section class="col-lg-9 content">
+        <div class="text-content js_text_content">
+          <%= require('html-loader!components/loader-default/index.html') %>
+        </div>
+        <!-- 点赞 -->
+        <div class="praise js_praise opacity-0">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shou"></use>
+          </svg>
+        </div>
+        <!-- 说点什么 -->
+        <div class="speak">
+          <div class="title-info">
+            <h3 class="t-title">说点什么</h3>
+          </div>
+          <div class="text-wrap">
+            <textarea class="form-control textarea js_comment_text" rows="3" placeholder=""></textarea>
+            <button class="btn btn-primary btn-lg js_comment_btn">确认发布</button>
+          </div>
+        </div>
+        <!-- 评论 -->
+        <div class="comment">
+          <div class="title-info">
+            <h3 class="t-title">评论</h3>
+          </div>
+          <ul class="list-wrap js_comment_list">
+            <%= require('html-loader!components/loader-default/index.html') %>
+          </ul>
+          <!-- 查看更多 -->
+          <div class="see-more js_comment_more">
+            <span>查看更多</span>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-xiangxiajiantou"></use>
+            </svg>
+          </div>
+        </div>
+      </section>
+      <!-- 相关阅读 -->
+      <section class="col-lg-3 read">
+        <h4 class="r-title">相关阅读</h4>
+        <ul class="list-wrap js_read_wrap">
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <%= require('html-loader!components/footer/index.html') %>
+</body>
+</html>

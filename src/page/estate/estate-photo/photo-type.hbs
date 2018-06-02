@@ -1,0 +1,11 @@
+<ul class="container nav nav-pills">
+  {{#each list}}
+    {{#if @first}}
+    <li class="nav-item active">
+    {{else}}
+    <li class="nav-item">
+    {{/if}}
+      <span href="#">{{this}}</span>
+    </li>|
+  {{/each}}
+</ul>

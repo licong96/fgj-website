@@ -1,0 +1,142 @@
+{{!-- 二手房租赁 --}}
+<div class="l-main">
+  <dl class="clearfix l-dl location-dl">
+    <dt class="l-dt">位置</dt>
+    <dd class="l-dd">
+      <ul class="clearfix flex js_location_select">
+        <li class="l-li active" data-index="0">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-fangyuanquyu"></use>
+          </svg>
+          区域找房
+          <i class="caret subway-arrow"></i>
+        </li>
+        <li class="l-li" data-index="1">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-ditie"></use>
+          </svg>
+          地铁找房
+          <i class="caret subway-arrow"></i>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 区域找房 -->
+  <div class="more-box">
+    <ul class="m-ul clearfix js_district_name" id="DistrictName">
+      {{!-- <%= require('html-loader!components/loader-default/index.html') %> --}}
+    </ul>
+    <ul class="m-ul clearfix hide" id="SubwayStation">
+      {{!-- <%= require('html-loader!components/loader-default/index.html') %> --}}
+    </ul>
+  </div>
+  <!-- 租金 | 二手房租赁 -->
+  <dl class="clearfix l-dl">
+    <dt class="l-dt">租金</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li active" data-value="">
+          <span class="m-a">不限</span>
+        </li>
+        <li class="l-li" data-value="0-500">
+          <span class="m-a">500元以下</span>
+        </li>
+        <li class="l-li" data-value="500-1000">
+          <span class="m-a">500元-1000元</span>
+        </li>
+        <li class="l-li" data-value="1000-1500">
+          <span class="m-a">1000元-1500元</span>
+        </li>
+        <li class="l-li" data-value="1500-2000">
+          <span class="m-a">1500元-2000元</span>
+        </li>
+        <li class="l-li" data-value="2000-3000">
+          <span class="m-a">2000元-3000元</span>
+        </li>
+        <li class="l-li" data-value="3000-999">
+          <span class="m-a">3000元以上</span>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 居室 -->
+  <dl class="clearfix l-dl">
+    <dt class="l-dt">居室</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li active">
+          <a class="m-a" href="#">不限</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">一居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">二居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">三居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">四居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">五居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">五居以上</a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 方式 | 二手房租赁 -->
+  <dl class="clearfix l-dl">
+    <dt class="l-dt">面积</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li active">
+          <a class="m-a" href="#">不限</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">整租</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">合租</a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 其他条件 | 二手房租赁 -->
+  <dl class="clearfix l-dl">
+    <dt class="l-dt check-dt">其他</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">装修</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">朝向</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">房源</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 当前选中的筛选条件 -->
+  <div class="clearfix l-dl pitch js_pitch">
+    <div class="l-dt">
+      选中的条件
+    </div>
+    <dl class="js_pitch_con">
+    </dl>
+  </div>
+</div>

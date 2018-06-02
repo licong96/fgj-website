@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <section class="container js_nav_crumbs"></section>
+  <!-- 楼盘信息 -->
+  <section class="container estate-info js_estate_info">
+    <%= require('html-loader!components/loader-default/index.html') %>
+  </section>
+  <!-- 二级导航 -->
+  <div class="sub-nav-wrap">
+    <nav class="navbar sub-nav js_sub_nav"></nav>
+  </div>
+  <!-- 户型图 -->
+  <section class="container house-log-img js_base_info">
+    <%= require('html-loader!components/loader-default/index.html') %>
+  </section>
+  <!-- 设计风格 -->
+  <section class="container design">
+    <div class="title-info">
+      <h3 class="t-title">设计风格</h3>
+    </div>
+    <div class="img-info js_design">
+      <!-- <div class="img-left">
+        <img class="img" src="http://img11.soufunimg.com/viewimage/house/2018_01/18/M07/19/70/ChCE4lpgMIqIQ9ZOAAFysuWacAcAA9W5gFymKEAAXLK630/880x578.jpg"
+          alt="">
+        <div class="desc-wrap">
+          <p class="desc">描述文字</p>
+        </div>
+      </div>
+      <div class="img-right">
+        <span class="list">
+          <img class="img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+          <div class="desc-wrap">
+            <p class="desc">描述文字</p>
+          </div>
+        </span>
+        <span class="list">
+          <img class="img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+          <div class="desc-wrap">
+            <p class="desc">描述文字</p>
+          </div>
+        </span>
+        <span class="list">
+          <img class="img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+          <div class="desc-wrap">
+            <p class="desc">描述文字</p>
+          </div>
+        </span>
+        <span class="list">
+          <img class="img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+          <a href="./estate-photo.html" class="all">
+            <span class="all-text">查看更多</span>
+          </a>
+        </span>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- 户型利用及价值报告分析 -->
+  <section class="container report-info">
+    <div class="title-info clearfix">
+      <h3 class="t-title">户型利用及价值报告分析</h3>
+    </div>
+    <div class="r-content">
+      <img class="r-img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+      <div class="r-info">
+        <h5 class="r-title">刚发现发的金隅翡丽·蓝爵堡楼盘价值最新消息重磅来袭</h5>
+        <p class="r-text">金隅翡丽·蓝爵堡也于8月1号举行盛大的精装样板间开放活动，这次所开放的样板间为153平方米的郎阔三居还有239平方米的叠拼别墅。金隅翡丽·蓝爵堡已经开设了两期，而都在开设后的几天都被“一抢而光”，而这些功劳不仅仅要归功于金隅翡丽·蓝爵堡的舒适度，更要归功于金隅翡丽·蓝爵堡的未来升值可能。</p>
+        <div class="r-footer">
+          <div class="answer">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-yanjing"></use>
+            </svg>
+            <span class="number">1111</span>
+          </div>
+          <div class="answer">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-shou"></use>
+            </svg>
+            <span class="number">1111</span>
+          </div>
+          <div class="answer">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-pinglun"></use>
+            </svg>
+            <span class="number">1111</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="row list-wrap">
+      <li class="col-lg-3 r-list">
+        <img class="r-img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+        <p class="r-text">刚发现发的金隅翡丽·蓝爵堡楼盘价值最 新消息重磅来袭</p>
+      </li>
+      <li class="col-lg-3 r-list">
+        <img class="r-img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+        <p class="r-text">刚发现发的金隅翡丽·蓝爵堡楼盘价值最 新消息重磅来袭</p>
+      </li>
+      <li class="col-lg-3 r-list">
+        <img class="r-img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+        <p class="r-text">刚发现发的金隅翡丽·蓝爵堡楼盘价值最 新消息重磅来袭</p>
+      </li>
+      <li class="col-lg-3 r-list">
+        <img class="r-img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+        <p class="r-text">刚发现发的金隅翡丽·蓝爵堡楼盘价值最 新消息重磅来袭</p>
+      </li>
+    </ul>
+  </section>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+</body>
+</html>

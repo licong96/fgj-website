@@ -1,0 +1,16 @@
+{{!-- 楼盘图片 --}} 
+{{#with left}}
+<div class="img-left">
+  <img class="img" src="{{_photopath}}" alt="">
+</div>
+{{/with}}
+<div class="img-right">
+  {{#each right}}
+  <span class="list js_photo_count">
+    <img class="img" src="{{_photopath}}" alt="">
+    <a href="./estate-photo.html?EstateID={{_estateid}}" target="_blank" class="all">
+      <span class="all-text">共有{{_count}}张</span>
+    </a>
+  </span>
+  {{/each}}
+</div>

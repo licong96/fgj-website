@@ -1,0 +1,15 @@
+{{!-- 在售房源列表 --}}
+{{#each list}}
+  <div class="col-lg-3">
+    <a class="no-decoration" target="_blank" href="./estate-housing.html?EstateID={{_estateid}}">
+      <div class="h-list">
+        <img class="h-img" src="http://app.vipfgj.com/upfile/20180524/D0DA290AE5D44DD3B93131047CF6B014.jpg" alt="">
+        <p class="h-title">{{_estate._districtname}}-{{_estate._estatename}}-{{_roomno}}</p>
+        <div class="h-text">
+          <span>面积：{{_square}}㎡</span>
+          <span>单价：{{_priceunit}}元/㎡</span>
+        </div>
+      </div>
+    </a>
+  </div>
+{{/each}}

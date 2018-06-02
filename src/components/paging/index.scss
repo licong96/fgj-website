@@ -1,0 +1,25 @@
+@import "../../common/scss/mixin";
+
+// 分页
+.paging {
+  margin-top: 100px;
+  .pagination {
+    justify-content: center;
+    .page-item.active .page-link {
+      border-color: $color-primary;
+      color: #fff;
+      background-color: $color-primary;
+    }
+    .page-link {
+      color: $color-primary;
+    }
+  }
+  .page-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #787878;
+  }
+}

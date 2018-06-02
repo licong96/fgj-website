@@ -1,0 +1,43 @@
+{{#each list}}
+<a class="no-decoration" href="./estate-detail.html?EstateID={{_estateid}}" target="_blank">
+  <li class="item">
+    <div class="img-wrap">
+      <img src="{{_picsrc}}" alt="" class="img">
+    </div>
+    <div class="info">
+      <!-- 左边信息 -->
+      <div class="info-left">
+        <h4 class="title">{{_estatename}}-{{_districtname}}</h4>
+        <p class="site">{{_address}}
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-weizhi"></use>
+          </svg>
+        </p>
+        <div class="intr">
+          <span class="hd">户型：</span>
+          <span class="desc">{{_primaryroom}}</span>
+        </div>
+        <div class="intr">
+          <span class="hd">类型：</span>
+          <span class="desc">{{_propertyusage}}</span>
+        </div>
+        <div class="intr">
+          <span class="hd">面积：</span>
+          <span class="desc">{{_square}}㎡</span>
+        </div>
+        <!-- 标签 -->
+        <div class="tag-wrap">
+          {{#each tag}}
+            <span class="tag tag-{{@index}}">{{@this}}</span>
+          {{/each}}
+        </div>
+      </div>
+      <!-- 右边信息 -->
+      <div class="info-right">
+        <p class="price">{{_price}}元/㎡</p>
+        <p class="tel">400-890-0000转839389</p>
+      </div>
+    </div>
+  </li>
+</a>
+{{/each}}

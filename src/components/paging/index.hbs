@@ -1,0 +1,10 @@
+<nav aria-label="page" class="paging">
+  <ul class="pagination">
+    {{#each list}}
+    <li class="page-item{{disabled}}{{active}}" data-value="{{value}}">
+      <span class="page-link">{{text}}</span>
+    </li>
+    {{/each}}
+    <span class="page-count">{{page}}/{{pageCount}}</span>
+  </ul>
+</nav>

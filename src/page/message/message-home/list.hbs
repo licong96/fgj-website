@@ -1,0 +1,58 @@
+{{!-- 类型资讯列表 --}}
+<div class="title-info clearfix">
+  <h3 class="t-title">{{_classname}}</h3>
+  <a href="./message-list.html?NewsClassID={{_newsclassid}}" class="more">查看更多
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-jiantou2"></use>
+    </svg>
+  </a>
+</div>
+<div class="list">
+  {{#if list}}
+  {{#each list}}
+  <a class="no-decoration" href="{{link}}" target="_blank">
+    <div class="message-list">
+      <div class="img-wrap">
+        <img class="r-img" src="{{_pagepic}}" alt="">
+      </div>
+      <div class="r-info">
+        <h5 class="r-title">{{_longtitle}}</h5>
+        <p class="r-text">{{_shortcontent}}</p>
+        <div class="r-footer">
+          <div class="time">
+            <span class="bold">{{_source}}</span>
+            <span>{{_newsdate}}</span>
+          </div>
+          <div class="band">
+            <div class="answer">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-yanjing"></use>
+              </svg>
+              <span class="number">{{_clicks}}</span>
+            </div>
+            <div class="answer js_message_like">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-shou"></use>
+              </svg>
+              <span class="number">{{_istop}}</span>
+            </div>
+            <div class="answer">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-pinglun"></use>
+              </svg>
+              <span class="number">{{_flag_deleted}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+  {{/each}}
+  {{else}}
+    <div class="empty-hint">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-meiyougengduo1"></use>
+      </svg>
+      <p class="empty-text">当前类型还没有相关资讯</p></div>
+  {{/if}}
+</div>

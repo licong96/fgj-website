@@ -1,0 +1,74 @@
+// 主颜色
+$color-primary: #ff9800;
+$color-light: #ffc947;
+$color-dark: #c66900;
+
+$color-red: #e51c23;
+
+// 灰色
+$color-gray-1: rgba(150, 150, 150, .1);
+$color-gray-2: rgba(150, 150, 150, .3);
+$color-gray-3: rgba(150, 150, 150, .5);
+$color-gray-4: rgba(150, 150, 150, .7);
+$color-gray-5: rgba(150, 150, 150, .9);
+
+// 边框颜色
+$color-border-1: #f0f0f0;
+$color-border-2: #cdcdcd;
+
+// 常用文字色
+$color-text-1: #787878;
+
+// 媒体查询
+// $SM: 320px;
+$xs: 320px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@mixin MQ($canvas) {
+  @if $canvas == xs {
+    @media only screen and (min-width: $xs) { @content; }
+  }
+  @if $canvas == sm {
+    @media only screen and (min-width: $sm) { @content; }
+  }
+  @if $canvas == md {
+    @media only screen and (min-width: $md) { @content; }
+  }
+  @if $canvas == lg {
+    @media only screen and (min-width: $lg) { @content; }
+  }
+  @if $canvas == xl {
+    @media only screen and (min-width: $xl) { @content; }
+  }
+}
+
+
+// 不换行，溢出隐藏
+@mixin text-over() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+// 文字溢出隐藏只显示两行
+@mixin text-over-2() {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+// 扩展点击区域
+@mixin extend-click(){
+  position: relative;
+  &:before{
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}

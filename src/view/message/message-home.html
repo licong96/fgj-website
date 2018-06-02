@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+
+  <div class="position-relative">
+    <!-- 二级导航 -->
+    <nav id="navbar-example" class="navbar sub-nav">
+      <ul class="container nav nav-pills js_nav_pills">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#targetHome">资讯首页</a>
+        </li> -->
+      </ul>
+    </nav>
+    <!-- 内容 -->
+    <div class="container">
+      <!-- 资讯首页 -->
+      <section class="top-img js_hot_list">
+        <!-- <div class="left">
+          <img class="img" src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="">
+          <p class="desc">70城最新房价来了！一线城市这类房价格首现下降</p>
+        </div>
+        <div class="right">
+          <div class="img-top">
+            <img class="img" src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="">
+            <p class="desc">买房买高层要注意，这几点不可大意</p>
+          </div>
+          <div class="img-bottom">
+            <img class="img" src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="">
+            <p class="desc">北京写字楼一季度需求活跃 联合办公成新趋势</p>
+          </div>
+        </div> -->
+      </section>
+
+      <div class="mes-con">
+        <article class="left-con" id="newsClass">
+          <!-- 最新政策 -->
+          <section id="targetPolicy" class="com-info">
+            <div class="title-info clearfix">
+              <h3 class="t-title">最新政策</h3>
+              <a href="./message-list.html" class="more">查看更多
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-jiantou2"></use>
+                </svg>
+              </a>
+            </div>
+            <div class="list">
+              <div class="loader-timer-wrap">
+                <div class="loader-timer-bg">
+                  <div class="loader-timer"></div>
+                </div>
+                <p class="loader-text">正在拼命加载中...</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 业界动态 -->
+          <section id="targetState" class="com-info">
+            <div class="title-info clearfix">
+              <h3 class="t-title">业界动态</h3>
+              <a href="./message-list.html" class="more">查看更多
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-jiantou2"></use>
+                </svg>
+              </a>
+            </div>
+            <div class="list">
+              <div class="loader-timer-wrap">
+                <div class="loader-timer-bg">
+                  <div class="loader-timer"></div>
+                </div>
+                <p class="loader-text">正在拼命加载中...</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 投资资讯 -->
+          <section id="targetMesg" class="com-info">
+            <div class="title-info clearfix">
+              <h3 class="t-title">投资资讯</h3>
+              <a href="./message-list.html" class="more">查看更多
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-jiantou2"></use>
+                </svg>
+              </a>
+            </div>
+            <div class="list">
+              <div class="loader-timer-wrap">
+                <div class="loader-timer-bg">
+                  <div class="loader-timer"></div>
+                </div>
+                <p class="loader-text">正在拼命加载中...</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 市场评估 -->
+          <section id="targetAssess" class="com-info">
+            <div class="title-info clearfix">
+              <h3 class="t-title">市场评估</h3>
+              <a href="./message-list.html" class="more">查看更多
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-jiantou2"></use>
+                </svg>
+              </a>
+            </div>
+            <div class="list">
+              <div class="loader-timer-wrap">
+                <div class="loader-timer-bg">
+                  <div class="loader-timer"></div>
+                </div>
+                <p class="loader-text">正在拼命加载中...</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 周边游乐 -->
+          <section id="targetPlay" class="com-info">
+            <div class="title-info clearfix">
+              <h3 class="t-title">周边游乐</h3>
+              <a href="./message-list.html" class="more">查看更多
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-jiantou2"></use>
+                </svg>
+              </a>
+            </div>
+            <div class="list">
+              <div class="loader-timer-wrap">
+                <div class="loader-timer-bg">
+                  <div class="loader-timer"></div>
+                </div>
+                <p class="loader-text">正在拼命加载中...</p>
+              </div>
+            </div>
+          </section>
+        </article>
+        <!-- 右侧推荐 -->
+        <article class="right-recom">
+          <ul class="list-wrap" id="recom">
+            <li class="list">
+              <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+              <div class="l-border">一周热文</div>
+            </li>
+            <li class="list">
+              <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+              <div class="l-border">热门户型</div>
+            </li>
+            <li class="list">
+              <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+              <div class="l-border">热门文章</div>
+            </li>
+            <li class="list">
+              <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+              <div class="l-border">热门投资</div>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <%= require('html-loader!components/footer/index.html') %>
+</body>
+</html>

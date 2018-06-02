@@ -1,0 +1,115 @@
+@import "../../../common/scss/mixin.scss";
+
+.top {
+  width: 100%;
+  height: 628px;
+  background: url('../../../common/image/home/home-bg.png') no-repeat;
+  background-position: center 0;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.introduce,
+.culture {
+  .hot {
+    font-size: 40px;
+    font-weight: bold;
+    color: $color-primary;
+  }
+  .small {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #dcdbdb;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 4px;
+      background-color: #dcdbdb;
+    }
+  }
+}
+
+// 公司介绍
+.introduce {
+  position: relative;
+  height: 335px;
+  .con {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 2;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    border-top: 20px solid $color-primary;
+    padding: 46px 42px 60px;
+    background: #fff url('../../../common/image/about/bg2.png') no-repeat;
+    background-size: cover;
+    .text {
+      margin-top: 26px;
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+    }
+  }
+}
+
+// 企业文化
+.culture {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background: url('../../../common/image/about/bg1.png') no-repeat;
+  background-size: cover;
+  .wrap {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    .list {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 33.33%;
+      height: 280px;
+      background-color: $color-primary;
+      .title,
+      .desc {
+        padding: 0 30px;
+        font-size: 24px;
+        color: #fff;
+      }
+    }
+    .img {
+      width: 100%;
+    }
+  }
+}
+
+// 加入我们
+.join {
+  width: 100%;
+  height: 628px;
+  background: url('../../../common/image/about/bg3.png') no-repeat;
+  background-position: center 0;
+  background-size: cover;
+  background-attachment: fixed;
+  .con {
+    text-align: center;
+    .title {
+      padding-top: 220px;
+      font-size: 48px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .btn {
+      margin-top: 40px;
+      border-radius: 50px;
+      padding: 20px 120px;
+      font-size: 26px;
+    }
+  }
+}

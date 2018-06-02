@@ -1,0 +1,16 @@
+{{!-- 经纪人 --}}
+{{#each list}}
+  <div class="col-lg-4">
+    <div class="broker">
+      <img class="portrait" src="{{pic}}" alt="">
+      <div class="b-info">
+        <div class="b-title">{{name}}
+          <span class="b-tag">{{tag}}</span>
+        </div>
+        <p class="tel">{{tel}}</p>
+        <p class="good">好评率：{{good}}%</p>
+        <button class="btn b-btn">立即联系</button>
+      </div>
+    </div>
+  </div>
+{{/each}}

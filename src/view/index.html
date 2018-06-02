@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+
+<body>
+  <section class="top">
+    <!-- 头部导航 -->
+    <%= require('html-loader!components/header-nav/index.html') %>
+    <!-- 搜索 -->
+    <div class="search container">
+      <!-- 搜索选项 -->
+      <nav class="s-nav js_search_opt">
+        <span class="s-opt active" data-value="0">买新房</span>
+        <span class="s-opt" data-value="1">买二手房</span>
+        <span class="s-opt" data-value="2">查房价</span>
+        <span class="s-opt" data-value="3">找装修</span>
+        <span class="s-opt" data-value="4">找资讯</span>
+        <span class="s-opt" data-value="5">更多</span>
+      </nav>
+      <!-- 搜索框 -->
+      <div class="s-box">
+        <input class="input js_search_val" type="text" placeholder="请输入关键词">
+        <button class="btn js_search_sub">搜索</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 快速导航 -->
+  <section class="quick-nav container">
+    <ul class="item-wrap">
+      <li class="item">
+        <i class="icon-i">
+          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-house"></use></svg>
+        </i>
+        <div class="text">
+          <h4 class="title">优质房源</h4>
+          <p class="desc">真实信息准确同步</p>
+          <p class="desc">楼盘动态一手掌握</p>
+        </div>
+      </li>
+      <li class="item">
+        <i class="icon-i">
+          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-message"></use></svg>
+        </i>
+        <div class="text">
+          <h4 class="title">海量资讯</h4>
+          <p class="desc">真实信息准确同步</p>
+          <p class="desc">楼盘动态一手掌握</p>
+        </div>
+      </li>
+      <li class="item">
+        <i class="icon-i">
+          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-assess"></use></svg>
+        </i>
+        <div class="text">
+          <h4 class="title">专业评估</h4>
+          <p class="desc">真实信息准确同步</p>
+          <p class="desc">楼盘动态一手掌握</p>
+        </div>
+      </li>
+      <li class="item">
+        <i class="icon-i">
+          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-analyze"></use></svg>
+        </i>
+        <div class="text">
+          <h4 class="title">数据分析</h4>
+          <p class="desc">真实信息准确同步</p>
+          <p class="desc">楼盘动态一手掌握</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 热门楼盘 -->
+  <section class="hot-estate" id="hotEstate">
+  </section>
+
+  <!-- 热门资讯 -->
+  <section class="hot-message container" id="hotMessage">
+  </section>
+
+  <!-- 市场分析报告 -->
+  <section class="analyze container" id="analyze">
+    <h3 class="hot">市场分析</h3>
+    <small class="small">Market Analysis Report</small>
+    <div class="con">
+      <div class="item">
+        <div class="chart-wrap">
+          <canvas class="chart"></canvas>
+        </div>
+        <div class="text">
+          <h5 class="title">总结：</h5>
+          <p class="desc">最美人间四月天，走进进贤县，处处可以感受到春天一样的勃勃生机。在工业园区，“老”企业正加足马力生产，新落户的企业正快速建设；在县城，交通畅通，环境整洁，秩序井然；在农村，村庄干净漂亮，景色优美，油菜花开得正旺……眼之所见，耳之所闻，无不感受到一股新风扑面而来。</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="chart-wrap">
+          <canvas class="chart"></canvas>
+        </div>
+        <div class="text">
+          <h5 class="title">总结：</h5>
+          <p class="desc">最美人间四月天，走进进贤县，处处可以感受到春天一样的勃勃生机。在工业园区，“老”企业正加足马力生产，新落户的企业正快速建设；在县城，交通畅通，环境整洁，秩序井然；在农村，村庄干净漂亮，景色优美，油菜花开得正旺……眼之所见，耳之所闻，无不感受到一股新风扑面而来。</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="chart-wrap">
+          <canvas class="chart"></canvas>
+        </div>
+        <div class="text">
+          <h5 class="title">总结：</h5>
+          <p class="desc">最美人间四月天，走进进贤县，处处可以感受到春天一样的勃勃生机。在工业园区，“老”企业正加足马力生产，新落户的企业正快速建设；在县城，交通畅通，环境整洁，秩序井然；在农村，村庄干净漂亮，景色优美，油菜花开得正旺……眼之所见，耳之所闻，无不感受到一股新风扑面而来。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</body>
+
+</html>

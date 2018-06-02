@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body data-spy="scroll">
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <section class="container js_nav_crumbs"></section>
+  <!-- 二级导航 -->
+  <div class="sub-nav-wrap">
+    <nav id="navbar-example" class="navbar sub-nav">
+      <ul class="container nav nav-pills js_nav_pills">
+        <li class="nav-item">
+          <a class="nav-link scroll" href="#targetEstate">楼盘信息</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll" href="#targetInfo">基本信息</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll" href="#targetStat">数据分析及统计</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll" href="#targetReport">价值分析报告</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll" href="#targetHouse">在售房源</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll" href="#targetSample">在售户型样板房</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link scroll" href="#targetCounter">房贷计算器</a>
+        </li>
+      </ul>
+    </nav>
+    <section class="container">
+      <div class="js_loader"></div>
+      <div data-spy="scroll" data-target="#navbar-example" data-offset="0">
+        <!-- 楼盘信息 -->
+        <section id="targetEstate" class="com-info estate-info">
+          <!-- 楼盘信息 -->
+          <div class="min-h-100 js_estate_info">
+              <%= require('html-loader!components/loader-default/index.html') %>
+          </div>
+          <!-- 经纪人 -->
+          <div class="broker-wrap row js_broker_wrap hide">
+              <%= require('html-loader!components/loader-default/index.html') %>
+          </div>
+        </section>
+
+        <!-- 基本信息 -->
+        <section id="targetInfo" class="com-info basic-info">
+        </section>
+        
+        <!-- 数据分析及统计 -->
+        <section id="targetStat" class="com-info stat-info">
+          <div class="title-info">
+            <h3 class="t-title">数据分析及统计</h3>
+          </div>
+          <div class="empty-hint">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-meiyougengduo1"></use>
+            </svg>
+            <p class="empty-text">没有找到相关数据</p>
+          </div>
+          <!-- 楼层销售情况 -->
+          <div class="row hide">
+            <div class="col-lg-4">
+              <h5 class="s-hd">楼层销售情况</h5>
+              <div class="sell-out">
+                1层、2层、3层已经售罄
+              </div>
+              <div class="row sell-start">
+                <div class="col-lg-4 s-list"> 4层：20套 </div>
+                <div class="col-lg-4 s-list"> 5层：10套 </div>
+                <div class="col-lg-4 s-list"> 6层：12套 </div>
+                <div class="col-lg-4 s-list"> 6层：12套 </div>
+                <div class="col-lg-4 s-list"> 6层：12套 </div>
+                <div class="col-lg-4 s-list"> 6层：12套 </div>
+              </div>
+            </div>
+            <div class="col-lg-8 s-right">
+              <div style="width: 720px;">
+                <canvas id="statChart"></canvas>
+              </div>
+            </div>
+          </div>
+           <!-- 户型销售情况 -->
+          <div class="row hide">
+            <div class="col-lg-4">
+              <h5 class="s-hd">户型销售情况</h5>
+              <div class="sell-house">
+                <p class="s-house">98户型A2</p>
+                <p class="s-desc">一室 37㎡ 在售户型：50套</p>
+              </div>
+              <div class="sell-house">
+                <p class="s-house">98户型A2</p>
+                <p class="s-desc">一室 37㎡ 在售户型：50套</p>
+              </div>
+            </div>
+            <div class="col-lg-8 s-right">
+              <canvas id="sellChart"></canvas>
+            </div>
+          </div>
+           <!-- 周边项目均价 -->
+          <div class="row hide">
+            <div class="col-lg-4">
+              <h5 class="s-hd">周边项目均价</h5>
+            </div>
+            <div class="col-lg-8 s-right">
+              <canvas id="priceChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- 价值报告分析 -->
+        <section id="targetReport" class="com-info report-info">
+          <div class="title-info clearfix">
+            <h3 class="t-title">价值报告分析</h3>
+            <a href="#" target="_blank" class="more">查看更多
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-jiantou2"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="r-content js_report_mainly">
+            <div class="empty-hint">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-meiyougengduo1"></use>
+                </svg>
+                <p class="empty-text">没有找到相关数据</p>
+              </div>
+            <!-- <%= require('html-loader!components/loader-default/index.html') %> -->
+            <!-- <img class="r-img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+            <div class="r-info">
+              <h5 class="r-title">刚发现发的金隅翡丽·蓝爵堡楼盘价值最新消息重磅来袭</h5>
+              <p class="r-text">金隅翡丽·蓝爵堡也于8月1号举行盛大的精装样板间开放活动，这次所开放的样板间为153平方米的郎阔三居还有239平方米的叠拼别墅。金隅翡丽·蓝爵堡已经开设了两期，而都在开设后的几天都被“一抢而光”，而这些功劳不仅仅要归功于金隅翡丽·蓝爵堡的舒适度，更要归功于金隅翡丽·蓝爵堡的未来升值可能。</p>
+              <div class="r-footer">
+                <div class="answer">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-yanjing"></use>
+                  </svg>
+                  <span class="number">1111</span>
+                </div>
+                <div class="answer">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-shou"></use>
+                  </svg>
+                  <span class="number">1111</span>
+                </div>
+                <div class="answer">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-pinglun"></use>
+                  </svg>
+                  <span class="number">1111</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <ul class="row list-wrap js_report_list hide">
+            <%= require('html-loader!components/loader-default/index.html') %>
+            <!-- <li class="col-lg-3 r-list">
+              <img class="r-img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+              <p class="r-text">刚发现发的金隅翡丽·蓝爵堡楼盘价值最 新消息重磅来袭</p>
+            </li> -->
+          </ul>
+        </section> 
+
+        <!-- 在售房源 -->
+        <section id="targetHouse" class="com-info house-info">
+          <div class="title-info clearfix">
+            <h3 class="t-title">在售房源</h3>
+            <a href="./estate-housing.html" target="_blank" class="more js_house_more">查看更多
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-jiantou2"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="row h-list-wrap js_house_list">
+            <%= require('html-loader!components/loader-default/index.html') %>
+            <!-- <div class="col-lg-3">
+              <a class="no-decoration" href="#">
+                <div class="h-list">
+                  <img class="h-img" src="https://qhyxpicoss.kujiale.com/fpimgnew/2018/04/LLGCDKIKAIB4ARYUAAAAABY8_800x800.jpg@!480w" alt="">
+                  <p class="h-title">聚仁国际-高新开发区 5-01234</p>
+                  <div class="h-text">
+                    <span>面积：36㎡</span>
+                    <span>单价：12200元/㎡</span>
+                  </div>
+                </div>
+              </a>
+            </div> -->
+          </div>
+        </section>
+        
+        <!-- 在售户型样板间 -->
+        <section id="targetSample" class="com-info sample-info">
+          <div class="title-info clearfix">
+            <h3 class="t-title">在售户型样板间</h3>
+            <a href="./estate-house-list.html" target="_blank" class="more js_sample_more">查看更多
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-jiantou2"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="empty-hint js_sample_empty hide">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-meiyougengduo1"></use>
+            </svg>
+            <p class="empty-text">暂时没有在售户型样板间</p>
+          </div>
+          <!-- 列表 -->
+          <div class="house-wrap js_house_wrap">
+            <%= require('html-loader!components/loader-default/index.html') %>
+            <!-- <div class="house-list">
+              <img src="http://img11.soufunimg.com/viewimage/house/2018_01/18/M07/19/70/ChCE4lpgMIqIQ9ZOAAFysuWacAcAA9W5gFymKEAAXLK630/880x578.jpg" alt="" class="img">
+              <div class="text-cont">
+                <h5 class="title">98户型A1 4室1厅1卫37㎡</h5>
+                <div>
+                  <div class="star-wrap">
+                    <span class="star">户型评分：<em class="bold">4.8分</em></span>
+                    <span class="star">方正：<em class="bold">5分</em></span>
+                    <span class="star">采光：<em class="bold">5分</em></span>
+                    <span class="star">布局：<em class="bold">5分</em></span>
+                    <span class="star">尺寸：<em class="bold">5分</em></span>
+                    <span class="star">得房率：<em class="bold">4分</em></span>
+                  </div>
+                  <p class="read">户型解读：各个空间户型方正，后期空间利用率高；全明户型，各部分空间均有窗，可保证整体空间采光和通风</p>
+                  <p class="sale">在售户型：20套</p>
+                </div>
+                <div class="js_house_tag">
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </section>
+
+        <!-- 房贷计算器 -->
+        <section id="targetCounter" class="com-info counter-info">
+          <div class="title-info clearfix">
+            <h3 class="t-title">房贷计算器</h3>
+            <a href="#" target="_blank" class="more">查看更多
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-jiantou2"></use>
+              </svg>
+            </a>
+          </div>
+          <div class="row">
+            <div class="col-lg-6" id="calculator"></div>
+            <div class="col-lg-6">
+              <div class="title">您的账单</div>
+              <div class="calcu-result">
+                <ul class="js_result_pay">
+                  <li class="r-li">
+                    贷款总额：<span class="pay">0</span>元
+                  </li>
+                  <li class="r-li">
+                    还款月数：<span class="pay">0</span>月
+                  </li>
+                  <li class="r-li">
+                    每月还款：<span class="pay">0</span>元
+                  </li>
+                  <li class="r-li">
+                    总支付利息：<span class="pay">0</span>元
+                  </li>
+                  <li class="r-li">
+                    本息合计：<span class="pay">0</span>元
+                  </li>
+                </ul>
+              </div>
+            </div> 
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <!-- <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=F23BZ-5US66-P6RSC-MYPYF-WL2X2-ZYBZC"></script> -->
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=NxlUGKjED1ua1mUGLc1xRCLQ"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</body>
+</html>

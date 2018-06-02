@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <section class="container js_nav_crumbs"></section>
+  <!-- 楼盘信息 -->
+  <section class="container estate-info js_estate_info">
+    <%= require('html-loader!components/loader-default/index.html') %>
+  </section>
+  <!-- 二级导航 -->
+  <div class="sub-nav-wrap">
+    <nav class="navbar sub-nav js_sub_nav"></nav>
+  </div>
+  <!-- 销控  -->
+  <section class="container ping-wrap hide">
+    <img class="img" src="<%= require('common/image/ping.jpg') %>" alt="">
+  </section>
+  <!-- 房源列表 -->
+  <section class="container housing-wrap">
+    <ul class="js_list_wrap">
+      <!-- <li class="housing-list">
+        <div class="img-wrap">
+          <img src="<%= require('common/image/house.jpg')%>" alt="" class="img">
+        </div>
+        <div class="info">
+          <div class="info-left">
+            <h4 class="title">聚仁国际-高新开发区</h4>
+            <div class="intr">
+              <span class="hd">类型：</span>
+              <span class="desc">公寓</span>
+            </div>
+            <div class="intr">
+              <span class="hd">状态：</span>
+              <span class="desc">待售</span>
+            </div>
+            <div class="intr">
+              <span class="hd">朝向：</span>
+              <span class="desc">坐北朝南</span>
+            </div>
+            <div class="intr answer">
+              <span class="hd">点评：</span>
+              <p class="desc">现在燕郊、香河的楼盘，此类话语极多。其目的，是为了表现自己从而刺 激消费者的购买冲动</p>
+            </div>
+          </div>
+          <div class="info-right">
+            <p class="price">12000元/㎡</p>
+            <p class="tel">120万</p>
+            <button class="btn btn-primary btn-lg">立即订购</button>
+          </div>
+        </div>
+      </li> -->
+    </ul>
+  </section>
+  <!-- 分页 -->
+  <section class="container js_paging"></section>
+  <!-- 楼层销售情况 -->
+  <section class="container stat-info hide">
+    <div class="row">
+      <div class="col-lg-4">
+        <h5 class="s-hd">楼层销售情况</h5>
+        <div class="sell-out">
+          1层、2层、3层已经售罄
+        </div>
+        <div class="row sell-start">
+          <div class="col-lg-4 s-list"> 4层：20套 </div>
+          <div class="col-lg-4 s-list"> 5层：10套 </div>
+          <div class="col-lg-4 s-list"> 6层：12套 </div>
+          <div class="col-lg-4 s-list"> 6层：12套 </div>
+          <div class="col-lg-4 s-list"> 6层：12套 </div>
+          <div class="col-lg-4 s-list"> 6层：12套 </div>
+        </div>
+      </div>
+      <div class="col-lg-8 s-right">
+        <div class="chart">
+          <canvas id="chartHousing"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</body>
+</html>

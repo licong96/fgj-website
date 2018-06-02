@@ -1,0 +1,14 @@
+{{#each list}}
+  {{#if @first}}
+    <section class="picture-list picture_{{@index}} active">
+  {{else}}
+    <section class="picture-list picture_{{@index}}">
+  {{/if}}
+  <div class="loader-timer-wrap">
+    <div class="loader-timer-bg">
+      <div class="loader-timer"></div>
+    </div>
+    <p class="loader-text">正在拼命加载中...</p>
+  </div>
+</section>
+{{/each}}

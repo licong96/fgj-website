@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <link rel="stylesheet" href="https://licong96.github.io/css/swiper-4.2.2.min.css">
+</head>
+
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+
+    <!-- 楼盘介绍 -->
+    <section class="container">
+      <div class="swiper-container js_swiper_estate">
+        <%= require('html-loader!components/loader-default/index.html') %>
+      </div>
+      <!-- 切换按钮 -->
+      <div class="swiper-btns text-center">
+        <div class="btn-group btn-group-toggle js_swiper_btn" data-toggle="buttons">
+          <!-- <label class="btn btn-primary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
+          </label> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 列表筛选 -->
+    <section class="container screen-list-con" id="estateListScreen">
+      <!-- 位置找房 -->
+      <div class="location">
+        <div class="l-main">
+          <dl class="clearfix l-dl location-dl">
+            <dt class="l-dt">位置</dt>
+            <dd class="l-dd">
+              <ul class="clearfix flex js_location_select">
+                <li class="l-li active" data-index="0">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-fangyuanquyu"></use>
+                  </svg>
+                  区域找房
+                  <i class="caret subway-arrow"></i>
+                </li>
+                <li class="l-li" data-index="1">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-ditie"></use>
+                  </svg>
+                  地铁找房
+                  <i class="caret subway-arrow"></i>
+                </li>
+                <!-- 搜索 -->
+                <li class="search">
+                  <input type="text" class="form-control js_search_val" placeholder="搜索">
+                  <span class="btn-search js_search_btn">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-sousuo"></use>
+                    </svg>
+                  </span>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <!-- 区域找房 -->
+          <div class="more-box">
+            <ul class="m-ul clearfix js_district_name" id="DistrictName">
+              <%= require('html-loader!components/loader-default/index.html') %>
+            </ul>
+            <ul class="m-ul clearfix hide" id="SubwayStation">
+              <%= require('html-loader!components/loader-default/index.html') %>
+            </ul>
+          </div>
+          <!-- 单价 -->
+          <dl class="clearfix l-dl price js_price" id="PriceRang">
+            <dt class="l-dt">单价</dt>
+            <dd class="l-dd">
+              <ul class="clearfix">
+                <li class="l-li active" data-value="">
+                  <span class="m-a">不限</span>
+                </li>
+                <li class="l-li" data-value="0-10000">
+                  <span class="m-a">10000以下</span>
+                </li>
+                <li class="l-li" data-value="10000-15000">
+                  <span class="m-a">10000-15000</span>
+                </li>
+                <li class="l-li" data-value="15000-20000">
+                  <span class="m-a">15000-20000</span>
+                </li>
+                <li class="l-li" data-value="20000-3000">
+                  <span class="m-a">20000-3000</span>
+                </li>
+                <li class="l-li" data-value="30000-5000">
+                  <span class="m-a">30000-5000</span>
+                </li>
+                <li class="l-li" data-value="50000-99999">
+                  <span class="m-a">50000以上</span>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <!-- 户型 -->
+          <dl class="clearfix l-dl hide">
+            <dt class="l-dt">户型</dt>
+            <dd class="l-dd">
+              <ul class="clearfix">
+                <li class="l-li active">
+                  <a class="m-a" href="#">不限</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">一居</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">二居</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">三居</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">四居</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">五居</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">五居以上</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <!-- 面积 -->
+          <dl class="clearfix l-dl hide">
+            <dt class="l-dt">面积</dt>
+            <dd class="l-dd">
+              <ul class="clearfix">
+                <li class="l-li active">
+                  <a class="m-a" href="#">不限</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">50m²以下</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">50-70m²</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">70-90m²</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">90-110m²</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">110-150m²</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">150-200m²</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">200-300m²</a>
+                </li>
+                <li class="l-li">
+                  <a class="m-a" href="#">300m²以上</a>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <!-- 类型 -->
+          <dl class="clearfix l-dl">
+            <dt class="l-dt">类型</dt>
+            <dd class="l-dd">
+              <ul class="clearfix" id="PropertyUsage">
+                <%= require('html-loader!components/loader-default/index.html') %>
+              </ul>
+            </dd>
+          </dl>
+          <!-- 标签 -->
+          <dl class="clearfix l-dl">
+            <dt class="l-dt">标签</dt>
+            <dd class="l-dd">
+              <ul class="clearfix" id="Tag">
+                  <%= require('html-loader!components/loader-default/index.html') %>
+              </ul>
+            </dd>
+          </dl>
+          <!-- 其他条件 -->
+          <dl class="clearfix l-dl screen hide">
+            <dt class="l-dt check-dt">筛选</dt>
+            <dd class="l-dd">
+              <ul class="clearfix">
+                <li class="l-li">
+                  <select class="custom-select">
+                    <option value="">开盘时间</option>
+                    <option value="0">不限</option>
+                    <option value="2">本月开盘</option>
+                    <option value="3">下月开盘</option>
+                    <option value="4">三月内开盘</option>
+                    <option value="5">半年内开盘</option>
+                    <option value="6">一年内开盘</option>
+                    <option value="7">已开盘</option>
+                  </select>
+                </li>
+                <li class="l-li">
+                  <select class="custom-select">
+                    <option value="">楼盘特色</option>
+                    <option value="0">不限</option>
+                    <option value="1">名企盘</option>
+                    <option value="2">投资地产</option>
+                    <option value="3">江景地产</option>
+                  </select>
+                </li>
+                <li class="l-li">
+                  <select class="custom-select">
+                    <option value="">入住时间</option>
+                    <option value="0">不限</option>
+                    <option value="1">现房</option>
+                    <option value="2">三月内入住</option>
+                    <option value="3">半年内入住</option>
+                    <option value="4">一年内入住</option>
+                  </select>
+                </li>
+                <li class="l-li-check">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="checkZs">
+                    <label class="custom-control-label" for="checkZs">在售</label>
+                  </div>
+                </li>
+                <li class="l-li-check">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="checkDs">
+                    <label class="custom-control-label" for="checkDs">待售</label>
+                  </div>
+                </li>
+                <li class="l-li-check">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="checkSw">
+                    <label class="custom-control-label" for="checkSw">售完</label>
+                  </div>
+                </li>
+              </ul>
+            </dd>
+          </dl>
+          <!-- 当前选中的筛选条件 -->
+          <div class="clearfix l-dl pitch js_pitch">
+            <div class="l-dt">
+              选中的条件
+            </div>
+            <dl class="js_pitch_con">
+            </dl>
+          </div>
+        </div>
+    </section>
+    <!-- 楼盘列表数据 -->
+    <section class="container estate-list">
+      <div class="js_loader hide"></div>
+      <ul class="item-wrap js_estate_list">
+        <!-- <li class="item">
+        <div class="img-wrap">
+          <img src="https://image2.5i5j.com/group2/M00/00/EA/CgqJM1pTp_KAdm88AAGR_92PnBE009.jpg_P1.jpg" alt="" class="img">
+        </div>
+        <div class="info">
+          <div class="info-left">
+            <h4 class="title">聚仁国际</h4>
+            <p class="site">高新大道</p>
+            <div class="intr">
+              <span class="hd">户型：</span>
+              <span class="desc">三室一厅</span>
+            </div>
+            <div class="intr">
+              <span class="hd">类型：</span>
+              <span class="desc">商铺/写字楼/住房</span>
+            </div>
+            <div class="tag-wrap">
+              <span class="tag">标签1</span>
+              <span class="tag">标签2</span>
+              <span class="tag">标签3</span>
+            </div>
+          </div>
+          <div class="info-right">
+            <p class="price">12300元/㎡</p>
+            <p class="tel">400-890-0000转839389</p>
+          </div>
+        </div>
+      </li> -->
+      </ul>
+    </section>
+    <!-- 分页 -->
+    <section class="container js_paging">
+      <nav aria-label="page" class="paging">
+        <ul class="pagination">
+          <li class="page-item">
+            <span class="page-link js_prve">上一页</span>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <span class="page-link js_next" href="#">下一页</span>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <%= require('html-loader!components/footer/index.html') %>
+    <script src="https://licong96.github.io/js/swiper-4.2.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://licong96.github.io/js/URI.js"></script>
+</body>
+
+</html>

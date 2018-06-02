@@ -1,0 +1,235 @@
+@import "../../../common/scss/mixin.scss";
+
+
+.content {
+  .loader-timer-wrap {
+    margin-top: 100px;
+  }
+  .title {
+    padding-top: 20px;
+    font-size: 36px;
+    font-weight: 600;
+    color: #222;
+  }
+  .short-title {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #444;
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    font-size: 16px;
+    color: #666;
+    .timer {
+      padding-left: 40px;
+    }
+    .type {
+      margin-left: auto;
+    }
+  }
+  .text-con {
+    margin-top: 40px;
+  }
+}
+.text-content {
+  padding: 30px;
+  min-height: 200px;
+}
+.read {
+  margin-top: 30px;
+  .r-title {
+    border-left: 4px solid $color-primary;
+    padding-left: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+  .list-wrap {
+    border-top: 1px solid $color-border-1;
+    .list {
+      border-bottom: 1px solid $color-border-1;
+      padding: 12px 15px;
+      .desc {
+        margin-bottom: 0;
+        font-size: 16px;
+        color: #333;
+        line-height: 30px;
+      }
+    }
+  }
+}
+.praise {
+  margin: 80px auto;
+  box-shadow: 0 2px 6px 1px rgba(150, 150, 150, 0.5);
+  border-radius: 8px;
+  padding: 8px 0;
+  width: 120px;
+  background-color: $color-gray-5;
+  text-align: center;
+  cursor: pointer;
+  &.active {
+    box-shadow: 0 2px 6px 1px rgba(255, 152, 0, 0.5);
+    background-color: $color-primary;
+  }
+  .icon {
+    font-size: 40px;
+    color: #fff;
+  }
+}
+// 标题
+.title-info {
+  border-bottom: 1px solid $color-border-1;
+  .t-title {
+    display: inline-block;
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #222;
+    border-bottom: 6px solid $color-primary;
+  }
+}
+// 说点什么
+.speak {
+  .text-wrap {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: 0;
+      z-index: 2;
+      border-radius: 4px;
+      width: 100%;
+      height: 6px;
+      background-color: white;
+    }
+  }
+  .textarea {
+    margin-top: 10px;
+    width: 100%;
+    height: 200px;
+  }
+  .btn {
+    margin-top: 30px;
+  }
+}
+.comment {
+  margin-top: 50px;
+  .list-wrap {
+    min-height: 100px;
+  }
+  .list {
+    display: flex;
+    padding: 30px 0;
+    border-bottom: 1px solid $color-border-1;
+    .portrait {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+    .answer {
+      flex: 1;
+      padding-left: 16px;
+    }
+    .user {
+      font-size: 16px;
+      color: #333;
+      .time {
+        padding-left: 10px;
+        font-size: 14px;
+        color: #666;
+      }
+    }
+    .answer-text{
+      padding-top: 12px;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .band {
+      display: flex;
+      justify-content: flex-end;
+      .set {
+        display: flex;
+        align-items: center;
+      }
+      .number {
+        font-size: 16px;
+        color: #666;
+      }
+      .icon {
+        padding: 4px;
+        font-size: 30px;
+        color: #999;
+        cursor: pointer;
+        transition: all .3s;
+        &:hover {
+          color: $color-primary;
+          transform: scale(1.2);
+        }
+      } 
+    }
+  }
+  .child {
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    .child-list {
+      padding: 10px;
+      border-bottom: 1px solid $color-border-1;
+      font-size: 16px;
+      color: #666;
+      .child-por {
+        float: left;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+      .child-answer {
+        overflow: hidden;
+        padding-left: 15px;
+      }
+      .child-user {
+        color: $color-primary;
+        cursor: pointer;
+      }
+      .reply {
+        color: #999;
+      }
+      .child-he {
+        color: $color-primary;
+        cursor: pointer;
+      }
+      .child-set {
+        padding-left: 10px;
+        .icon {
+          font-size: 20px;
+          color: #999;
+          cursor: pointer;
+          transition: all .3s;
+          &:hover {
+            color: $color-primary;
+            transform: scale(1.2);
+          }
+        } 
+      }
+    }
+  }
+  .see-more {
+    margin: 30px auto;
+    border: 1px solid $color-primary;
+    border-radius: 6px;
+    padding: 14px;
+    width: 300px;
+    font-size: 16px;
+    color: $color-primary;
+    text-align: center;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      color: #fff;
+      background-color: $color-primary;
+    }
+  }
+}

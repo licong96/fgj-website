@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <section class="container js_nav_crumbs"></section>
+  <!-- 楼盘信息 -->
+  <section class="container estate-info js_estate_info">
+    <%= require('html-loader!components/loader-default/index.html') %>
+  </section>
+  <!-- 二级导航 -->
+  <div class="sub-nav-wrap">
+    <nav class="navbar sub-nav js_sub_nav"></nav>
+  </div>
+  <!-- 户型列表 -->
+  <section class="container house-wrap js_house_wrap">
+    <%= require('html-loader!components/loader-default/index.html') %>
+  </section>
+  <!-- 没有数据 -->
+  <div class="empty-hint js_sample_empty hide">
+    <svg class="icon" aria-hidden="true">
+      <use xlink:href="#icon-meiyougengduo1"></use>
+    </svg>
+    <p class="empty-text">暂时没有在售户型样板间</p>
+  </div>
+  <!-- 分页 -->
+  <section class="container js_paging"></section>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+</body>
+</html>

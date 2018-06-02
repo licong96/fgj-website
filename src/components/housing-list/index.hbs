@@ -1,0 +1,39 @@
+{{#each list}}
+<li class="housing-list">
+  <div class="img-wrap">
+    <img src="http://app.vipfgj.com/upfile/20180524/D0DA290AE5D44DD3B93131047CF6B014.jpg" alt="" class="img">
+  </div>
+  <div class="info">
+    <!-- 左边信息 -->
+    <div class="info-left">
+      <h4 class="title">{{_estate._districtname}}-{{_estate._estatename}}-{{_roomno}}</h4>
+      <div class="intr">
+        <span class="hd">户型名：</span>
+        <span class="desc">{{_type._typename}}</span>
+      </div>
+      <div class="intr">
+        <span class="hd">状态：</span>
+        <span class="desc">{{Status}}</span>
+      </div>
+      <div class="intr">
+        <span class="hd">面积：</span>
+        <span class="desc">{{_square}}㎡</span>
+      </div>
+      <div class="intr">
+        <span class="hd">得房率：</span>
+        <span class="desc">{{_type._getrate}}%</span>
+      </div>
+      {{!-- <div class="intr answer">
+        <span class="hd">点评：</span>
+        <p class="desc">现在燕郊、香河的楼盘，此类话语极多。其目的，是为了表现自己从而刺 激消费者的购买冲动</p>
+      </div> --}}
+    </div>
+    <!-- 右边信息 -->
+    <div class="info-right">
+      <p class="price">{{_priceunit}}元/㎡</p>
+      <p class="tel">{{_price}}万</p> 
+      <button class="btn btn-primary btn-lg">立即订购</button>
+    </div>
+  </div>
+</li>
+{{/each}}

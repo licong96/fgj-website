@@ -1,0 +1,184 @@
+{{!-- 二手房买卖 --}}
+<div class="l-main">
+  <dl class="clearfix l-dl location-dl">
+    <dt class="l-dt">位置</dt>
+    <dd class="l-dd">
+      <ul class="clearfix flex js_location_select">
+        <li class="l-li active" data-index="0">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-fangyuanquyu"></use>
+          </svg>
+          区域找房
+          <i class="caret subway-arrow"></i>
+        </li>
+        <li class="l-li" data-index="1">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-ditie"></use>
+          </svg>
+          地铁找房
+          <i class="caret subway-arrow"></i>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 区域找房 -->
+  <div class="more-box">
+    <ul class="m-ul clearfix js_district_name" id="DistrictName">
+      {{!-- <%= require('html-loader!components/loader-default/index.html') %> --}}
+    </ul>
+    <ul class="m-ul clearfix hide" id="SubwayStation">
+      {{!-- <%= require('html-loader!components/loader-default/index.html') %> --}}
+    </ul>
+  </div>
+  <!-- 总价 | 二手房买卖 -->
+  <dl class="clearfix l-dl price js_price" id="PriceRang">
+    <dt class="l-dt">总价</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li active" data-value="">
+          <span class="m-a">不限</span>
+        </li>
+        <li class="l-li" data-value="0-30">
+          <span class="m-a">30万以下</span>
+        </li>
+        <li class="l-li" data-value="30-60">
+          <span class="m-a">30万-60万</span>
+        </li>
+        <li class="l-li" data-value="80-100">
+          <span class="m-a">80万-100万</span>
+        </li>
+        <li class="l-li" data-value="100-150">
+          <span class="m-a">100万-150万</span>
+        </li>
+        <li class="l-li" data-value="150-200">
+          <span class="m-a">150万-200万</span>
+        </li>
+        <li class="l-li" data-value="200-999">
+          <span class="m-a">200万</span>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 居室 -->
+  <dl class="clearfix l-dl">
+    <dt class="l-dt">居室</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li active">
+          <a class="m-a" href="#">不限</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">一居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">二居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">三居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">四居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">五居</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">五居以上</a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 面积 | 二手房买卖 -->
+  <dl class="clearfix l-dl">
+    <dt class="l-dt">面积</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li active">
+          <a class="m-a" href="#">不限</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">50m²以下</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">50-70m²</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">70-90m²</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">90-110m²</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">110-150m²</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">150-200m²</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">200-300m²</a>
+        </li>
+        <li class="l-li">
+          <a class="m-a" href="#">300m²以上</a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 其他条件 | 二手房买卖 -->
+  <dl class="clearfix l-dl">
+    <dt class="l-dt check-dt">其他</dt>
+    <dd class="l-dd">
+      <ul class="clearfix">
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">特色标签</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">房龄</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">装修</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">楼层</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">电梯</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">产权年限</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+        <li class="l-li">
+          <select class="custom-select">
+            <option value="">类型</option>
+            <option value="0">不限</option>
+          </select>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+  <!-- 当前选中的筛选条件 -->
+  <div class="clearfix l-dl pitch js_pitch">
+    <div class="l-dt">
+      选中的条件
+    </div>
+    <dl class="js_pitch_con">
+    </dl>
+  </div>
+</div>

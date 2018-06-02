@@ -1,0 +1,81 @@
+@import "../../../../common/scss/mixin.scss";
+
+// 列表
+.list-wrap {
+  margin-top: 10px;
+  .list {
+    display: flex;
+    padding: 30px 0;
+    border-bottom: 1px solid $color-border-1;
+  }
+  .img-wrap {
+    overflow-y: hidden;
+    width: 294px;
+    max-height: 200px;
+    .img {
+      width: 100%;
+    }
+  }
+  .con-wrap {
+    flex: 1;
+    padding-left: 22px;
+    .title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #222;
+    }
+    .location {
+      display: flex;
+      align-items: center;
+      margin-top: 22px;
+      font-size: 16px;
+      color: $color-text-1;
+      .desc {
+        padding-left: 10px;
+      }
+    }
+    .icon {
+      font-size: 20px;
+      color: $color-text-1;
+    }
+    .house-info {
+      display: flex;
+      align-items: center;
+      margin-top: 16px;
+      color: $color-text-1;
+      .desc {
+        font-size: 16px;
+        padding: 0 10px;
+      }
+    }
+    .user {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: $color-text-1;
+      .desc {
+        padding-right: 30px;
+        &:first-child {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  .price-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .price {
+      margin-bottom: 0;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .area {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}

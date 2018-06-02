@@ -1,0 +1,6 @@
+{{!-- 楼盘信息轮播切换按钮 --}}
+{{#each list}}
+  <label class="btn btn-primary {{active}}" data-index="{{index}}">
+    <input type="radio" name="options" id="option1" autocomplete="off">{{name}}
+  </label>
+{{/each}}

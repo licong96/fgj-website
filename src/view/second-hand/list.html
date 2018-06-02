@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+
+  <!-- 搜索和发布按钮 -->
+  <section class="container sea-end">
+    <div class="js_search"></div>
+    <div class="end-btn">
+      <button type="button" class="btn btn-primary btn-lg">免费发布</button>
+    </div>
+  </section>
+  <!-- 筛选 -->
+  <section class="container screen-wrap">
+    <!-- 类型切换 -->
+    <div class="switch">
+      <span class="tab active">二手房买卖</span>
+      <span class="tab ">二手房租赁</span>
+    </div>
+    <!-- 筛选条件 -->
+    <div class="location js_screen"></div>
+  </section>
+  <!-- 排序 -->
+  <div class="container sort">
+    <span class="rank">默认排序</span>
+    <span class="rank active rotate">
+      价格
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-up"></use></svg>
+    </span>
+    <span class="rank">
+      面积
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-up"></use></svg>
+    </span>
+    <span class="rank">
+      发布时间
+      <svg class="icon" aria-hidden="true"><use xlink:href="#icon-up"></use></svg>
+    </span>
+  </div>
+  <!-- 列表 -->
+  <section class="container list-wrap js_list"></section>
+  <!-- 分页 -->
+  <section class="container js_paging"></section>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://licong96.github.io/js/URI.js"></script>
+</body>
+
+</html>

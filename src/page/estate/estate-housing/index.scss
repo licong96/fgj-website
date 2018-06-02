@@ -1,0 +1,96 @@
+@import "../../../common/scss/mixin.scss";
+
+body {
+  position: relative;
+}
+// 二级导航
+.sub-nav-wrap {
+  margin-top: 30px;
+  .nav-pills {
+    justify-content: flex-start;
+  }
+}
+.sub-nav {
+  z-index: 6;
+  width: 100%;
+  height: 56px;
+  background-color: $color-primary;
+  .nav-link {
+    padding: 0 40px;
+    height: 56px;
+    line-height: 56px;
+    color: #fff;
+    &.active {
+      border-radius: 0;
+      background-color: $color-dark;
+    }
+  }
+}
+.estate-info {
+  margin-top: 20px;
+  min-height: 150px;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+      margin: 0;
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .price {
+      font-size: 36px;
+      font-weight: bold;
+      color: $color-primary;
+    }
+  } 
+  .site {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #333;
+  }
+}
+
+// 销控
+.ping-wrap {
+  margin-top: 20px;
+  .img {
+    max-width: 100%;
+  }
+}
+
+
+// 楼盘列表
+.housing-wrap {
+  margin-top: 20px;
+}
+
+// 楼层销售情况
+.stat-info {
+  margin-top: 100px;
+  .s-hd {
+    padding-top: 28px;
+    font-size: 18px;
+    color: #111;
+  }
+  .sell-out {
+    font-size: 16px;
+    color: #333;
+  }
+  .s-list {
+    line-height: 30px;
+  }
+  .s-right {
+    padding: 28px 60px;
+  }
+  .chart {
+    width: 100%;
+  }
+  .sell-house {
+    font-size: 16px;
+    color: #333;
+    .s-house {
+      margin: 0;
+    }
+  }
+}

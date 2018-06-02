@@ -1,0 +1,53 @@
+
+<div class="swiper-wrapper">
+  {{#each list}}
+    <div class="swiper-slide">
+      <div class="introduce">
+        <section class="desc-info">
+          <h2 class="title">{{_estatename}}</h2>
+          <p class="dist">{{_districtname}}</p>
+          <ul class="list-wrap">
+            <li class="list">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-weizhi"></use>
+              </svg>
+              <span class="desc">{{_address}}</span>
+            </li>
+            <li class="list">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-jiuyuanjiage"></use>
+              </svg>
+              <span class="desc">{{_price}}元/㎡</span>
+            </li>
+            <li class="list">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-ai62"></use>
+              </svg>
+              <span class="desc">占地{{_square}}㎡</span>
+            </li>
+            <li class="list">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-loufang"></use>
+              </svg>
+              <span class="desc">{{_propertyusage}}</span>
+            </li>
+          </ul>
+          <div class="tag-wrap">
+            {{#each tag}}
+              {{#if @this}}
+              <span class="tag tag-{{@index}}">{{@this}}</span>
+              {{/if}}
+            {{/each}}
+          </div>
+        </section>
+        {{!-- 图片信息 --}}
+        <section class="img-info">
+          <img class="img" src="{{_picsrc}}" alt="">
+        </section>
+      </div>
+    </div>
+  {{/each}}
+</div>
+{{!-- 如果需要导航按钮 --}}
+<div class="swiper-button-prev swiper-button-white swiper-btn-arrow"></div>
+<div class="swiper-button-next swiper-button-white swiper-btn-arrow"></div>

@@ -1,0 +1,22 @@
+<h3 class="hot">热门资讯</h3>
+<small class="small">Hot Information</small>
+<div class="con">
+  {{#with left}}
+    <div class="img-wrap">
+      <a href="./message/message-detail.html?NewsID={{_newsid}}&NewsClassID={{_newsclassid}}" target="_blank">
+        <img class="img" src="{{_pagepic}}" alt="">
+        <p class="img-desc">{{_longtitle}}</p>
+      </a>
+    </div>
+  {{/with}}
+  <div class="text-wrap">
+    {{#each list}}
+      <div class="list"> 
+        <h5 class="title"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoti"></use></svg>{{_longtitle}}</h5>
+        <p class="desc">
+          {{_shortcontent}}
+          <a href="./message/message-detail.html?NewsID={{_newsid}}&NewsClassID={{_newsclassid}}" target="_blank" class="more">查看更多</a></p>
+      </div>
+    {{/each}}
+  </div>
+</div>

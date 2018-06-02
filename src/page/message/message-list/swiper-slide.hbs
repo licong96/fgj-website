@@ -1,0 +1,9 @@
+{{!-- 轮播 --}}
+{{#each list}}
+<div class="swiper-slide">
+  <a class="no-decoration" href="{{link}}" target="_blank">
+    <img class="img" style="background-image:url({{_pagepic}})" alt="">
+    <p class="desc">{{_shorttitle}}</p>
+  </a>
+</div>
+{{/each}}

@@ -1,0 +1,35 @@
+{{#each list}}
+<a class="link-house" target="_blank" href="./estate-house-detail.html?EstateID={{_estateid}}&TypeID={{_typeid}}">
+  <div class="house-list">
+    <div class="img-wrap">
+      <img src="http://app.vipfgj.com/upfile/20180524/C0417EDB9D7B49958F0EF45CE93EFFEE.jpg" alt="" class="img">
+    </div>
+    <div class="text-cont">
+      <h5 class="title">{{_type._typename}}-{{_type._countf}}房{{_type._countt}}厅{{_type._countw}}卫</h5>
+      <div>
+        <div class="star-wrap">
+          <span class="star">建筑面积：
+            <em class="bold">{{_type._buildsquare}}平方米</em>
+          </span>
+          <span class="star">使用面积：
+            <em class="bold">{{_type._realsquare}}平方米</em>
+          </span>
+          <span class="star">赠送面积：
+            <em class="bold">{{_type._giftsquare}}平方米</em>
+          </span>
+          <span class="star">得房率：
+            <em class="bold">{{_type._getrate}}%</em>
+          </span>
+        </div>
+        <p class="read">具体位置：{{_estate._address}}</p>
+        <p class="sale">{{_content}}{{_remark}}</p>
+      </div>
+      <div class="tag-wrap">
+        {{#each tag}}
+          <span class="tag tag-{{@index}}">{{@this}}</span>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</a>
+{{/each}}

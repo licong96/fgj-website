@@ -1,0 +1,53 @@
+@import "../../common/scss/mixin";
+
+.tag {
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 14px;
+  color: #0c83b4;
+  background-color: rgba(63, 188, 239, 0.5);
+  &.tag-0 {
+    color: #0c83b4;
+    background-color: rgba(63, 188, 239, 0.5);
+  }
+  &.tag-1 {
+    color: #00bb30;
+    background-color: rgba(120, 212, 144, 0.5);
+  }
+  &.tag-2 {
+    color: #b95701;
+    background-color: rgba(250, 199, 77, 0.5);
+  }
+  &.tag-3 {
+    color: #bc2500;
+    background-color: rgba(244, 107, 75, 0.5);
+  }
+}
+
+
+  // &.tag-0 {
+  //   color: rgb(242,161,47);
+  //   background-color: rgba(242,161,47,0.15);
+  // }
+  // &.tag-1 {
+  //   color: rgb(51,190,133);
+  //   background-color: rgba(51,190,133,0.15);
+  // }
+  // &.tag-2 {
+  //   color: rgb(103,206,103);
+  //   background-color: rgba(103,206,103,0.15);
+  // }
+  // &.tag-3 {
+  //   color: rgb(123,189,255);
+  //   background-color: rgba(123,189,255,0.15);
+  // }
+  // &.tag-4 {
+  //   color: rgb(255,34,85);
+  //   background-color: rgba(255,34,85,0.15);
+  // }
+  // &.tag-5 {
+  //   color: rgb(66,185,203);
+  //   background-color: rgba(66,185,203,0.15);
+  // }

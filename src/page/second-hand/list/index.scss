@@ -1,0 +1,84 @@
+@import "../../../common/scss/mixin.scss";
+
+// 搜索和发布按钮
+.sea-end {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  width: 100%;
+  .btn {
+    padding: 0.5rem 2rem;
+  }
+}
+
+// 筛选
+.screen-wrap {
+  margin-top: 35px;
+  background-color: #fff;
+  .switch {
+    position: relative;
+    top: 1px;
+    z-index: 2;
+    display: inline-block;
+    border-right: 1px dashed $color-border-2;
+    font-size: 0;
+    background-color: #fff;
+    .tab {
+      display: inline-block;
+      border-left: 1px dashed $color-border-2;
+      border-top: 1px dashed $color-border-2;
+      width: 160px;
+      font-size: 16px;
+      height: 46px;
+      line-height: 46px;
+      text-align: center;
+      cursor: pointer;
+      &.active {
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: #fff;
+      }
+    }
+  }
+  .location {
+    border: 1px dashed #cdcdcd;
+  }
+}
+
+// 排序
+.sort {
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
+  .rank {
+    position: relative;
+    margin-right: 20px;
+    padding: 0 12px;
+    line-height: 20px;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
+    &.active {
+      color: $color-primary;
+      .icon {
+        opacity: 1;
+      }
+    }
+    &.rotate {
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .icon {
+    position: absolute;
+    top: 0;
+    right: -8px;
+    opacity: 0;
+    font-size: 20px;
+    color: $color-primary;
+    transition: all .3s;
+  }
+}
+

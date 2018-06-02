@@ -1,0 +1,50 @@
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    {{#each list}}
+      <div class="swiper-slide">
+        <div class="img-wrap">
+          <a href="./estate/estate-detail.html?EstateID={{_estateid}}" target="_blank">
+            <img class="img" src="{{_picsrc}}" alt="">
+          </a>
+        </div>
+        <div class="text">
+          <a class="no-decoration" href="./estate/estate-detail.html?EstateID={{_estateid}}" target="_blank">
+            <h3 class="hot">热门楼盘</h3>
+            <small class="small">Hot Estate</small>
+            <div class="detail">
+              <div class="estate-name">
+                <h4 class="estate">{{_estatename}}</h4>    
+                <p class="site">
+                  <svg class="icon" aria-hidden="true"><use xlink:href="#icon-weizhi"></use></svg>
+                  {{_address}}
+                </p>
+              </div>
+              <div class="price">
+                均价：<span class="money">{{_price}}元/㎡</span>
+              </div>
+              <div class="tag-wrap">
+                {{#each tag}}
+                  {{#if @this}}
+                  <span class="tag tag-{{@index}}">{{@this}}</span>
+                  {{/if}}
+                {{/each}}
+              </div>
+              <div class="explain">
+                <p>{{estateintro}}</p>
+              </div>
+              <div class="sell">
+                <p class="today">目前在售：<em>100</em> 套</p>
+                <p class="today">已售：<em>400</em>套</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <div class="pagination">
+    <div class="right offset-md-8">
+      <div class="swiper-pagination swiper-pagination-white"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://licong96.github.io/css/swiper-4.2.2.min.css">
+</head>
+<body>
+  <div class="full-screen">
+    <!-- 头部导航 -->
+    <%= require('html-loader!components/header-nav/index.html') %>
+    <div class="container-full full-con">
+      <!-- 头部信息 -->
+      <div class="container top-info">
+        <h2 class="title">装修类型</h2>
+        <p class="desc">文字介绍文字介绍文字介绍文字介绍文字介绍</p>
+      </div>
+      <div class="center row">
+        <!-- 左侧小图 -->
+        <section class="col-sm-2 swiper-left">
+          <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-1.jpg!/format/webp)"></div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-2.jpg!/format/webp)"></div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-3.jpg!/format/webp)"></div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-1.jpg!/format/webp)"></div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-2.jpg!/format/webp)"></div>
+            </div>
+          </div>
+          <div class="swiper-button-next swiper-button-white next-small"></div>
+          <div class="swiper-button-prev swiper-button-white prev-small"></div>
+        </section>
+        <!-- 中间预览 -->
+        <section class="container-full col-sm-8">
+          <div class="swiper-container gallery-center">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-1.jpg!/format/webp)">
+                <p class="desc">这套110平米北欧风格的新家业主是一对80后夫妇，在选择装修风格的时候非常明确选择喜欢的北欧风格，整体灰白色调，合理利用绿植，还有装饰品，让空间青春时尚，充满活动。其中儿童房的设计，利用榻榻米，实现了漂亮好看，还满足了收纳，最重要的是非常适合两个孩子住。这对于正在考虑生育的二胎的80后们，是一款不错的装修参考样式。</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-2.jpg!/format/webp)">
+                <p class="desc">这套110平米北欧风格的新家业主是一对80后夫妇，在选择装修风格的时候非常明确选择喜欢的北欧风格，整体灰白色调，合理利用绿植，还有装饰品，让空间青春时尚，充满活动。其中儿童房的设计，利用榻榻米，实现了漂亮好看，还满足了收纳，最重要的是非常适合两个孩子住。这对于正在考虑生育的二胎的80后们，是一款不错的装修参考样式。</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-3.jpg!/format/webp)">
+                <p class="desc">这套110平米北欧风格的新家业主是一对80后夫妇，在选择装修风格的时候非常明确选择喜欢的北欧风格，整体灰白色调，合理利用绿植，还有装饰品，让空间青春时尚，充满活动。其中儿童房的设计，利用榻榻米，实现了漂亮好看，还满足了收纳，最重要的是非常适合两个孩子住。这对于正在考虑生育的二胎的80后们，是一款不错的装修参考样式。</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-1.jpg!/format/webp)">
+                <p class="desc">这套110平米北欧风格的新家业主是一对80后夫妇，在选择装修风格的时候非常明确选择喜欢的北欧风格，整体灰白色调，合理利用绿植，还有装饰品，让空间青春时尚，充满活动。其中儿童房的设计，利用榻榻米，实现了漂亮好看，还满足了收纳，最重要的是非常适合两个孩子住。这对于正在考虑生育的二胎的80后们，是一款不错的装修参考样式。</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-2.jpg!/format/webp)">
+                <p class="desc">这套110平米北欧风格的新家业主是一对80后夫妇，在选择装修风格的时候非常明确选择喜欢的北欧风格，整体灰白色调，合理利用绿植，还有装饰品，让空间青春时尚，充满活动。其中儿童房的设计，利用榻榻米，实现了漂亮好看，还满足了收纳，最重要的是非常适合两个孩子住。这对于正在考虑生育的二胎的80后们，是一款不错的装修参考样式。</p>
+              </div>
+            </div>
+            <div class="swiper-button-next swiper-button-white swiper-btn-arrow"></div>
+            <div class="swiper-button-prev swiper-button-white swiper-btn-arrow"></div>
+          </div>
+        </section>
+        <!-- 右侧推荐 -->
+        <section class="col-sm-2 swiper-right">
+          <div class="swiper-container gallery-right">
+            <p class="s-title">相关推荐</p>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-1.jpg!/format/webp)">
+                <p class="desc">简约温馨两居室家装</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-2.jpg!/format/webp)">
+                <p class="desc">简约温馨两居室家装</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-3.jpg!/format/webp)">
+                <p class="desc">简约温馨两居室家装</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-1.jpg!/format/webp)">
+                <p class="desc">简约温馨两居室家装</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-2.jpg!/format/webp)">
+                <p class="desc">简约温馨两居室家装</p>
+              </div>
+              <div class="swiper-slide" style="background-image:url(http://bpic.wotucdn.com/27/15/28/27152895-b8c7c3aa9a89fa6f9d2b88d6ecc1673c-3.jpg!/format/webp)">
+                <p class="desc">简约温馨两居室家装</p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next swiper-button-white next-small-right"></div>
+          <div class="swiper-button-prev swiper-button-white prev-small-right"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://licong96.github.io/js/jquery.2.1.4.js"></script>
+  <script src="https://licong96.github.io/js/swiper-4.2.2.min.js"></script>
+</body>
+</html>

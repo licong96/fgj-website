@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://licong96.github.io/css/swiper-4.2.2.min.css">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <section class="container js_nav_crumbs">
+  </section>
+  <!-- 筛选 -->
+  <section class="container screen">
+    <ul class="item-wrap">
+      <li class="item">
+        <h4 class="title">面积：</h4>
+        <div class="list">
+          <span class="desc">不限</span>
+          <span class="desc">60㎡以下</span>
+          <span class="desc">60㎡-80㎡</span>
+          <span class="desc">80㎡-120㎡</span>
+          <span class="desc">120㎡以上</span>
+        </div>
+      </li>
+      <li class="item">
+        <h4 class="title">风格：</h4>
+        <div class="list">
+          <span class="desc">不限</span>
+          <span class="desc">简约</span>
+          <span class="desc">工业</span>
+          <span class="desc">北欧</span>
+          <span class="desc">地中海</span>
+          <span class="desc">中式</span>
+          <span class="desc">美式</span>
+          <span class="desc">现代</span>
+          <span class="desc">田园</span>
+        </div>
+      </li>
+      <li class="item">
+        <h4 class="title">居室：</h4>
+        <div class="list">
+          <span class="desc">不限</span>
+          <span class="desc">一室</span>
+          <span class="desc">两室</span>
+          <span class="desc">三室</span>
+          <span class="desc">四室</span>
+          <span class="desc">五室以上</span>
+        </div>
+      </li>
+      <li class="item">
+        <h4 class="title last">公装：</h4>
+        <div class="list">
+          <span class="desc">不限</span>
+          <span class="desc">商铺</span>
+          <span class="desc">写字楼</span>
+          <span class="desc">酒店</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <!-- 最新和最热 -->
+  <section class="container new-hot">
+    <div class="left">
+      <span class="best active">最新</span>
+      <span class="best">最热</span>
+      <span class="line"></span>
+    </div>
+    <div class="right">
+      <input type="text" class="form-control" placeholder="搜索">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-sousuo"></use>
+      </svg>
+    </div>
+  </section>
+  <!-- 具体内容 -->
+  <section class="container content">
+    <ul class="row item-wrap">
+      <li class="col-lg-3">
+        <a class="no-decoration" href="./fitment-detail.html" target="_blank">
+          <div class="item">
+            <img class="img" src="http://bpic.wotucdn.com/27/26/19/27261914-81a0d94d3df8674a28ade45a7eac14b6-2.jpg!/format/webp" alt="">
+            <div class="text">
+              <p class="title">清新现代两居室装修案例</p>
+              <div class="tag-wrap">
+                <span class="tag">标签</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="col-lg-3">
+        <a class="no-decoration" href="./fitment-detail.html" target="_blank">
+          <div class="item">
+            <img class="img" src="http://bpic.wotucdn.com/27/26/19/27261914-81a0d94d3df8674a28ade45a7eac14b6-2.jpg!/format/webp" alt="">
+            <div class="text">
+              <p class="title">清新现代两居室装修案例</p>
+              <div class="tag-wrap">
+                <span class="tag">标签</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="col-lg-3">
+        <a class="no-decoration" href="./fitment-detail.html" target="_blank">
+          <div class="item">
+            <img class="img" src="http://bpic.wotucdn.com/27/26/19/27261914-81a0d94d3df8674a28ade45a7eac14b6-2.jpg!/format/webp" alt="">
+            <div class="text">
+              <p class="title">清新现代两居室装修案例</p>
+              <div class="tag-wrap">
+                <span class="tag">标签</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="col-lg-3">
+        <a class="no-decoration" href="./fitment-detail.html" target="_blank">
+          <div class="item">
+            <img class="img" src="http://bpic.wotucdn.com/27/26/19/27261914-81a0d94d3df8674a28ade45a7eac14b6-2.jpg!/format/webp" alt="">
+            <div class="text">
+              <p class="title">清新现代两居室装修案例</p>
+              <div class="tag-wrap">
+                <span class="tag">标签</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="col-lg-3">
+        <a class="no-decoration" href="./fitment-detail.html" target="_blank">
+          <div class="item">
+            <img class="img" src="http://bpic.wotucdn.com/27/26/19/27261914-81a0d94d3df8674a28ade45a7eac14b6-2.jpg!/format/webp" alt="">
+            <div class="text">
+              <p class="title">清新现代两居室装修案例</p>
+              <div class="tag-wrap">
+                <span class="tag">标签</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="col-lg-3">
+        <a class="no-decoration" href="./fitment-detail.html" target="_blank">
+          <div class="item">
+            <img class="img" src="http://bpic.wotucdn.com/27/26/19/27261914-81a0d94d3df8674a28ade45a7eac14b6-2.jpg!/format/webp" alt="">
+            <div class="text">
+              <p class="title">清新现代两居室装修案例</p>
+              <div class="tag-wrap">
+                <span class="tag">标签</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <li class="col-lg-3">
+        <a class="no-decoration" href="./fitment-detail.html" target="_blank">
+          <div class="item">
+            <img class="img" src="http://bpic.wotucdn.com/27/26/19/27261914-81a0d94d3df8674a28ade45a7eac14b6-2.jpg!/format/webp" alt="">
+            <div class="text">
+              <p class="title">清新现代两居室装修案例</p>
+              <div class="tag-wrap">
+                <span class="tag">标签</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 分页 -->
+  <section class="container js_paging">
+    <nav aria-label="page" class="paging">
+      <ul class="pagination">
+        <li class="page-item">
+          <span class="page-link js_prve">上一页</span>
+        </li>
+        <li class="page-item active">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <span class="page-link js_next" href="#">下一页</span>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://licong96.github.io/js/swiper-4.2.2.min.js"></script>
+</body>
+</html>

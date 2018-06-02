@@ -1,0 +1,71 @@
+.footer {
+  margin-top: 120px;
+  padding: 78px 0;
+  background-color: #373D42;
+  .foot-logo {
+    float: left;
+    border-right: 1px solid #4b5055;
+    padding: 0 30px;
+    text-align: center;
+    color: rgba(255, 255, 255, .6);
+    .icp {
+      padding-top: 24px;
+      font-size: 12px;
+    }
+    .fgj {
+      font-size: 15px;
+      padding-top: 18px;
+    }
+  }
+  .foot-text {
+    float: left;
+    border-right: 1px solid #4b5055;
+    padding-left: 24px;
+    padding-right: 24px;
+    width: 583px;
+    .text-list {
+      float: left;
+      margin: 0 30px;
+      .title {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #fff;
+      }
+      .foot-link {
+        display: block;
+        font-size: 14px;
+        color: #fff;
+        opacity: 0.6;
+        filter: Alpha(opacity=60);
+        line-height: 26px;
+        &:hover {
+          color: #f08300;
+          opacity: 1;
+          filter: Alpha(opacity=100);
+        }
+      }
+    }
+  }
+  .foot-phone {
+    float: left;
+    padding-left: 50px;
+    text-align: center;
+    .phone {
+      font-size: 24px;
+      font-weight: normal;
+      color: #f08300;
+    }
+    .wechat {
+      display: inline-block;
+      margin-top: 10px;
+      border: 2px solid #fff;
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+      .img {
+        width: 100%;
+      }
+    }
+  }
+}

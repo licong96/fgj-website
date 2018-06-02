@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://licong96.github.io/css/swiper-4.2.2.min.css">
+  <link href="//vjs.zencdn.net/6.7/video-js.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <section class="container js_nav_crumbs"></section>
+  <!-- 楼盘信息 -->
+  <section class="container estate-info js_estate_info">
+    <%= require('html-loader!components/loader-default/index.html') %>
+  </section>
+  <!-- 二级导航 -->
+  <div class="sub-nav-wrap">
+    <nav class="navbar sub-nav js_sub_nav"></nav>
+    <!-- 图片 -->
+    <section class="container">
+      <nav class="navbar pic-nav js_pic_btn">
+      </nav>
+      <div class="swiper-wrap js_swiper_wrap">
+      </div>
+    </section>
+
+    <!-- 视频 -->
+    <section class="container video">
+      <div class="title-info">
+        <h3 class="t-title">视频展示</h3>
+      </div>
+      <p class="desc">聚仁国际公寓样板房视频</p>
+      <div class="video-wrap">
+        <embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=k0620anodtc&auto=0" allowFullScreen="true" quality="high" width="100%" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+        <!-- <video id="myPlayer" class="video-js" controls preload="auto" poster="//vjs.zencdn.net/v/oceans.png" data-setup='{}'>
+          <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+          <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>
+          <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source>
+          <p class="vjs-no-js">
+            您的浏览器老的可笑，不支持这段视频的播放，请换一个主流浏览器
+          </p>
+        </video> -->
+      </div>
+    </section>
+  </div>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://licong96.github.io/js/swiper-4.2.2.min.js"></script>
+  <script src="//vjs.zencdn.net/6.7/video.min.js"></script>
+</body>
+</html>

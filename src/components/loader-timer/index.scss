@@ -1,0 +1,55 @@
+@import "../../common/scss/mixin";
+
+.loader-timer-wrap {
+  left: 0;
+  z-index: 20;
+}
+.loader-timer {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: transparent;
+  box-sizing: content-box;
+  &:after,
+  &:before {
+    position: absolute;
+    content: '';
+    background-color: #fff;
+  }
+  &:after {
+    top: 11px;
+    left: 11px;
+    width: 10px;
+    height: 2px;
+    transform-origin: 1px 1px;
+    animation: timerhand 2s linear infinite;
+  }
+  &:before {
+    top: 11px;
+    left: 11px;
+    width: 8px;
+    height: 2px;
+    transform-origin: 1px 1px;
+    animation: timerhand 8s linear infinite;
+  }
+}
+.loader-shade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 19;
+  background-color: rgba(255, 255, 255, .6);
+}
+@keyframes timerhand {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

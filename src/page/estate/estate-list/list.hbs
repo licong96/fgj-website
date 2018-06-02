@@ -1,0 +1,39 @@
+{{#each list}}
+<a class="no-decoration" href="./estate-detail.html">
+  <li class="item">
+    <div class="img-wrap">
+      <img src="{{pic}}" alt="" class="img">
+    </div>
+    <div class="info">
+      <!-- 左边信息 -->
+      <div class="info-left">
+        <h4 class="title">{{estateName}}</h4>
+        <p class="site">{{estateSite}}</p>
+        <div class="intr">
+          <span class="hd">户型：</span>
+          <span class="desc">{{house}}</span>
+        </div>
+        <div class="intr">
+          <span class="hd">类型：</span>
+          <span class="desc">{{type}}</span>
+        </div>
+        <div class="intr">
+          <span class="hd">面积：</span>
+          <span class="desc">{{area}}</span>
+        </div>
+        <!-- 标签 -->
+        <div class="tag-wrap js_estate_tag">
+          {{#each tag}}
+            <span class="tag tag-{{@index}}">{{@this}}</span>
+          {{/each}}
+        </div>
+      </div>
+      <!-- 右边信息 -->
+      <div class="info-right">
+        <p class="price">12300元/㎡</p>
+        <p class="tel">400-890-0000转839389</p>
+      </div>
+    </div>
+  </li>
+</a>
+{{/each}}

@@ -1,0 +1,37 @@
+@import "../../common/scss/mixin";
+
+.nav-crumbs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-border-1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 16px;
+  .left {
+    color: #c1c1c1;
+    a.tit {
+      color: #787878;
+      text-decoration: none;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    .img-code {
+      width: 80px;
+      height: 80px;
+    }
+    .text {
+      padding-left: 10px;
+      font-size: 14px;
+      p {
+        margin-bottom: 0;
+        color: #666;
+      }
+    }
+  }
+}

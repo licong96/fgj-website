@@ -1,0 +1,139 @@
+@import "../../../common/scss/mixin.scss";
+
+// 筛选
+.screen {
+  .item-wrap {
+    border: 1px solid #f2f3f7;
+  }
+  .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: $color-gray-1;
+    border-bottom: 1px dashed #f2f3f7;
+    &:last-child {
+      border-bottom: none;
+    }
+    .title {
+      margin-bottom: 0;
+      width: 100px;
+      height: 100%;
+      font-size: 16px;
+      color: #333;
+      text-align: center;
+      line-height: 1.5;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 1px;
+        background-color: #fff;
+      }
+    }
+    .last:after {
+      display: none;
+    }
+    .list {
+      flex: 1;
+      padding: 8px 0;
+      background-color: #fff;
+      .desc {
+        display: inline-block;
+        padding: 5px 20px;
+        font-size: 16px;
+        color: #425571;
+        cursor: pointer;
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+// 最新和最热
+.new-hot {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  .left {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    .best {
+      display: inline-block;
+      width: 100px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #333;
+      text-align: center;
+      cursor: pointer;
+      &.active {
+        color: $color-primary;
+      }
+    }
+    .line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      height: 2px;
+      background-color: $color-primary;
+    }
+  }
+  .right {
+    position: relative;
+    .form-control {
+      width: 400px;
+    }
+    .icon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      font-size: 24px;
+      color: #666;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}
+// 具体内容
+.content {
+  .item {
+    margin-top: 30px;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 1px rgba(35, 39, 42, .1);
+    .img {
+      width: 100%;
+      vertical-align: top;
+    }
+    .text {
+      padding: 10px;
+      .title {
+        margin-bottom: 0;
+        color: #333;
+      }
+    }
+  }
+}
+
+// 分页
+.paging {
+  margin-top: 100px;
+  .pagination {
+    justify-content: center;
+    .page-item.active .page-link {
+      border-color: $color-primary;
+      color: #fff;
+      background-color: $color-primary;
+    }
+    .page-link {
+      color: $color-primary;
+    }
+  }
+}

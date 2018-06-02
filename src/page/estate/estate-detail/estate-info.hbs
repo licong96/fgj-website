@@ -1,0 +1,14 @@
+{{!-- 楼盘信息 --}}
+<div class="top">
+  <h1 class="title">{{_estatename}}-{{_districtname}}</h1>
+  <span class="price">{{_price}}元/㎡</span>
+</div>
+<p class="site">{{_address}}</p>
+<div class="tag-wrap">
+  {{#each tag}}
+    {{#if @this}}
+    <span class="tag tag-{{@index}}">{{@this}}</span>
+    {{/if}}
+  {{/each}}
+</div>
+<div class="img-info js_estate_photo"></div>

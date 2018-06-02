@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 封面图片 -->
+  <section class="top"></section>
+
+  <!-- 公司介绍 -->
+  <section class="container introduce">
+    <div class="con">
+      <h3 class="hot">公司介绍</h3>
+      <small class="small">Company Introduction</small>
+      <div class="text">
+        <p class="desc">江西房管家成立于2013年，前身为南昌正途营销策划有限公司。是一家专业致力于房地产营销策划销售，以及为房地产行业提供计算机软件研发、房地产信息服务为一体的高新科技企业和信息化服务供应商。房管家将“创新”视为推动商业地产产业链进化的主动力，涵盖海量商业地产大数据，用创新的思维推动房地产不断进化。</p>
+        <p class="desc">依托完善的企业文化，尖端的互联网技术，强大的经济实力，现发展成为本土最具实力的集地产策划营销、招商推广为一体互联网+房地产综合服务平台。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业文化 -->
+  <section class="culture">
+    <div class="container con">
+      <h3 class="hot">企业文化</h3>
+      <small class="small">Enterprise Culture</small>
+      <ul class="wrap">
+        <li class="list">
+          <img src="<%= require('common/image/about/user.jpg') %>" alt="" class="img">
+        </li>
+        <li class="list">
+          <h5 class="title">我们的愿景：</h5>
+          <p class="desc">做最有价值的商业投资 平台。</p>
+        </li>
+        <li class="list">
+          <img src="<%= require('common/image/about/user.jpg') %>" alt="" class="img">
+        </li>
+        <li class="list">
+          <h5 class="title">我们的使命：</h5>
+          <p class="desc">用创新不断推动商业地 产产业链净化，让投资 稳健、增值。 平台。</p>
+        </li>
+        <li class="list">
+          <img src="<%= require('common/image/about/user.jpg') %>" alt="" class="img">
+        </li>
+        <li class="list">
+          <h5 class="title">我们的价值观：</h5>
+          <p class="desc">创新促进发展，专业塑 造品牌，激情唤醒梦想， 责任成就价值。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 加入房管家 -->
+  <section class="join">
+    <div class="container con">
+      <h5 class="title">加入房管家，发现更多精彩！</h5>
+      <button class="btn btn-primary">联系我们</button>
+    </div>
+  </section>
+ 
+  <%= require('html-loader!components/footer/index.html') %>
+</body>
+
+</html>

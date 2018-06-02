@@ -1,0 +1,239 @@
+@import "./mixin";
+
+html,body {
+  // background-color: #f5f5f5;
+}
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  font-family: "微软雅黑", "Microsoft Yahei";
+}
+ol,
+ul {
+  padding: 0;
+  margin: 0;
+}
+dd {
+  margin-bottom: 0;
+}
+li {
+  list-style: none;
+}
+p {
+  margin: 0;
+}
+.clearfix:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+a {
+  color: $color-primary;
+  &:hover {
+    color: $color-dark;
+  }
+}
+a.no-decoration {
+  text-decoration: none;
+}
+
+// 图标
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+/* 公用样式 */
+.flex {
+  display: flex;
+}
+.flex-1 {
+  flex: 1;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.w {
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  width: 1080px;
+}
+.text-center {
+  text-align: center
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-1 {
+  opacity: 1;
+}
+.min-h-100 {
+  min-height: 100px;
+}
+.min-h-200 {
+  min-height: 200px;
+}
+.min-h-300 {
+  min-height: 300px;
+}
+.min-h-400 {
+  min-height: 400px;
+}
+// 按钮
+.btn-primary {
+  background-color: $color-primary;
+  border-color: $color-primary;
+  &:hover {
+    background-color: $color-dark;
+    border-color: $color-dark;
+  }
+}
+.btn-primary:not(:disabled):not(.disabled):active{
+  background-color: $color-dark;
+  border-color: $color-dark;
+}
+
+// tag标签
+.tag-wrap {
+  .tag {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    color: #0c83b4;
+    background-color: rgba(63, 188, 239, 0.5);
+    &.tag-0 {
+      color: #0c83b4;
+      background-color: rgba(63, 188, 239, 0.5);
+    }
+    &.tag-1 {
+      color: #00bb30;
+      background-color: rgba(120, 212, 144, 0.5);
+    }
+    &.tag-2 {
+      color: #b95701;
+      background-color: rgba(250, 199, 77, 0.5);
+    }
+    &.tag-3 {
+      color: #bc2500;
+      background-color: rgba(244, 107, 75, 0.5);
+    }
+    &.tag-4 {
+      color: #0c83b4;
+      background-color: rgba(63, 188, 239, 0.5);
+    }
+    &.tag-5 {
+      color: #b95701;
+      background-color: rgba(250, 199, 77, 0.5);
+    }
+  }
+}
+// 没有找到相关信息
+.empty-hint {
+  margin: 0 auto;
+  padding: 50px 0;
+  text-align: center;
+  .icon {
+    display: inline-block;
+    height: 200px;
+    font-size: 250px;
+    color: #999;
+  }
+  .empty-text {
+    font-size: 16px;
+    color: #999;
+  }
+}
+
+// 加载中
+.loader-timer-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .loader-timer-bg {
+    display: inline-block;
+    border-radius: 50%;
+    padding: 2px;
+    background-color: $color-primary;
+  }
+  .loader-timer {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: transparent;
+    box-sizing: content-box;
+    &:after,
+    &:before {
+      position: absolute;
+      content: '';
+      background-color: #fff;
+    }
+    &:after {
+      top: 11px;
+      left: 11px;
+      width: 10px;
+      height: 2px;
+      transform-origin: 1px 1px;
+      animation: timerhand 2s linear infinite;
+    }
+    &:before {
+      top: 11px;
+      left: 11px;
+      width: 8px;
+      height: 2px;
+      transform-origin: 1px 1px;
+      animation: timerhand 8s linear infinite;
+    }
+  }
+  .loader-text {
+    padding-left: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #999;
+  }
+}
+@keyframes timerhand {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// 三角形
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  // margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}

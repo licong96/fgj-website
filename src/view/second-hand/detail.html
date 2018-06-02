@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <link rel="stylesheet" href="https://licong96.github.io/css/swiper-4.2.2.min.css">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <section class="container js_nav_crumbs"></section>
+  <!-- 顶部信息 -->
+  <section class="container top">
+    <div class="info">
+      <h2 class="title">艾溪湖一号 2室一厅 200万</h2>
+      <p class="location">高新开发区 艾溪湖正中央</p>
+    </div>
+    <div class="operation">
+      <ul class="flex">
+        <li class="list">
+          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-shoucang"></use></svg>
+          收藏
+        </li>
+        <li class="list">
+          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenxiang"></use></svg>
+          分享
+        </li>
+        <li class="list">
+          <svg class="icon" aria-hidden="true"><use xlink:href="#icon-jisuanqi"></use></svg>
+          房贷计算器
+        </li>
+      </ul>
+      <button class="btn btn-primary btn-lg">免费发布</button>
+    </div>
+  </section>
+  <section class="container">
+    <div class="row">
+      <!-- 轮播图 -->
+      <div class="swiper-wrap col-md-8">
+        <div class="swiper-container gallery-top">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+          </div>
+          <!-- Add Arrows -->
+          <div class="swiper-button-next swiper-button-white swiper-btn-arrow"></div>
+          <div class="swiper-button-prev swiper-button-white swiper-btn-arrow"></div>
+          <!-- pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-container gallery-thumbs">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
+          </div>
+          <div class="swiper-button-next swiper-button-white next-small"></div>
+          <div class="swiper-button-prev swiper-button-white prev-small"></div>
+        </div>
+      </div>
+      <!-- 主要信息 -->
+      <div class="main-info col-md-4">
+        <div class="price">
+          参考总价：<span class="bold">200万</span>
+        </div>
+        <ul class="ul">
+          <li class="li">
+            <p class="title">户型</p>
+            <p class="desc">两室一厅</p>
+          </li>
+          <li class="li">
+            <p class="title">建筑面积</p>
+            <p class="desc">75㎡</p>
+          </li>
+          <li class="li">
+            <p class="title">单价</p>
+            <p class="desc">12000元/㎡</p>
+          </li>
+        </ul>
+        <ul class="ul">
+          <li class="li">
+            <p class="title">朝向</p>
+            <p class="desc">南</p>
+          </li>
+          <li class="li">
+            <p class="title">楼层</p>
+            <p class="desc">25</p>
+          </li>
+          <li class="li">
+            <p class="title">装修</p>
+            <p class="desc">精装修</p>
+          </li>
+        </ul>
+        <div class="location">
+          <p class="desc">
+            <span class="title">小区</span>
+            <span class="text">花家地西里（距1号线地铁大厦站约957米）</span>
+          </p>
+          <p class="desc">
+            <span class="title">区域</span>
+            <span class="text">南昌市高新区火炬六路555号</span>
+          </p>
+        </div>
+        <!-- 联系人 -->
+        <div class="linkman">
+           <img src="https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg" class="pic" alt="">
+           <div class="text">
+             <p class="name">黎先生</p>
+             <p class="char">个人</p>
+             <button class="btn btn-primary">点击查看电话号码</button>
+             <button class="btn">留言</button>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://licong96.github.io/js/swiper-4.2.2.min.js"></script>
+</body>
+
+</html>

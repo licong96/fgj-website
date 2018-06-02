@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://licong96.github.io/css/swiper-4.2.2.min.css">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  
+  <!-- 顶部图片轮播和类型 -->
+  <div class="top-swiper">
+    <!-- 轮播 -->
+    <section class="swiper-wrap js_swiper_wrap"></section>
+    <!-- 类型 -->
+    <div class="container position-relative">
+      <section class="type-wrap">
+        <div class="type">
+          <div class="t-left">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-fenggepitchon"></use>
+            </svg>
+            <p class="desc">装修风格</p>
+          </div>
+          <div class="t-right">
+            <a href="./fitment-list.html" class="item">全部</a>
+            <a href="./fitment-list.html" class="item">简约</a>
+            <a href="./fitment-list.html" class="item">工业</a>
+            <a href="./fitment-list.html" class="item">北欧</a>
+            <a href="./fitment-list.html" class="item">地中海</a>
+            <a href="./fitment-list.html" class="item">中式</a>
+            <a href="./fitment-list.html" class="item">现代</a>
+            <a href="./fitment-list.html" class="item">美式</a>
+            <a href="./fitment-list.html" class="item">田园</a>
+          </div>
+        </div>
+        <div class="type">
+          <div class="t-left">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-fangzi01-copy"></use>
+            </svg>
+            <p class="desc">房屋户型</p>
+          </div>
+          <div class="t-right">
+            <a href="./fitment-list.html" class="item">全部</a>
+            <a href="./fitment-list.html" class="item">一室</a>
+            <a href="./fitment-list.html" class="item">二室</a>
+            <a href="./fitment-list.html" class="item">三室</a>
+            <a href="./fitment-list.html" class="item">四室</a>
+            <a href="./fitment-list.html" class="item">五室以上</a>
+          </div>
+        </div>
+        <div class="type">
+          <div class="t-left">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-qian4"></use>
+            </svg>
+            <p class="desc">装修预算</p>
+          </div>
+          <div class="t-right">
+            <a href="./fitment-list.html" class="item">全部</a>
+            <a href="./fitment-list.html" class="item">5万以下</a>
+            <a href="./fitment-list.html" class="item">5-10万</a>
+            <a href="./fitment-list.html" class="item">10-15万</a>
+            <a href="./fitment-list.html" class="item">15-20万</a>
+            <a href="./fitment-list.html" class="item">20万以上</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- 效果图 -->
+  <div class="container picture">
+    <div class="title-info clearfix">
+      <h3 class="t-title">效果图</h3>
+      <a href="./fitment-list.html" class="more">查看更多
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-jiantou2"></use>
+        </svg>
+      </a>
+    </div>
+    <div class="con">
+      <div class="large item">
+        <img class="img" src="http://img.88tph.com/production/20161111/88tph-12269136-1.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center/repeat/true" alt="">
+        <div class="desc">
+          <p class="title">清新现代两居室装修案例</p>
+          <div class="text">
+            <span>户型：2房2厅1厨1卫1阳台</span>
+            <span>装修方案：自定义装修</span>
+          </div>
+        </div>
+      </div>
+      <div class="small">
+        <div class="item">
+          <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <p class="title">清新现代两居室装修案例</p>
+            <div class="text">
+              <span>户型：2房2厅1厨1卫1阳台</span>
+              <span>装修方案：自定义装修</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <p class="title">清新现代两居室装修案例</p>
+            <div class="text">
+              <span>户型：2房2厅1厨1卫1阳台</span>
+              <span>装修方案：自定义装修</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <p class="title">清新现代两居室装修案例</p>
+            <div class="text">
+              <span>户型：2房2厅1厨1卫1阳台</span>
+              <span>装修方案：自定义装修</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <p class="title">清新现代两居室装修案例</p>
+            <div class="text">
+              <span>户型：2房2厅1厨1卫1阳台</span>
+              <span>装修方案：自定义装修</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 装修公司 -->
+  <div class="company container">
+    <div class="title-info clearfix">
+      <h3 class="t-title">推荐装修公司</h3>
+      <a href="#" class="more">查看更多
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-jiantou2"></use>
+        </svg>
+      </a>
+    </div>
+    <section>
+      <ul class="list-wrap">
+        <li class="list">
+          <img class="img" src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" class="pic">
+            <div class="text">
+              <span>南昌市鼎轩装饰工程有限公司</span>
+            </div>
+          </div>
+        </li>
+        <li class="list">
+          <img class="img" src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" class="pic">
+            <div class="text">
+              <span>南昌市鼎轩装饰工程有限公司</span>
+            </div>
+          </div>
+        </li>
+        <li class="list">
+          <img class="img" src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" class="pic">
+            <div class="text">
+              <span>南昌市鼎轩装饰工程有限公司</span>
+            </div>
+          </div>
+        </li>
+        <li class="list">
+          <img class="img" src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" alt="">
+          <div class="desc">
+            <img src="http://img.88tph.com/production/20161111/88tph-12269136-2.jpg!/watermark/url/L3BhdGgvbG9nby5wbmc/align/center" class="pic">
+            <div class="text">
+              <span>南昌市鼎轩装饰工程有限公司</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://licong96.github.io/js/swiper-4.2.2.min.js"></script>
+</body>
+</html>

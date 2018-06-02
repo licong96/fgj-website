@@ -1,0 +1,26 @@
+
+<div class="img-left">
+  {{#with left}}
+    <img class="img" src="{{_photopath}}" alt="{{_phototype}}">
+    <div class="desc-wrap">
+      <p class="desc">{{_remark}}</p>
+    </div>
+  {{/with}}
+</div>
+<div class="img-right">
+  {{#each right}}
+    <span class="list">
+      <img class="img" src="{{_smallphotopath}}" alt="{{_phototype}}">
+      {{!-- 最后一张添加查看更多 --}}
+      {{#if @last}}
+      <a href="./estate-photo.html" class="all">
+        <span class="all-text">查看更多</span>
+      </a>
+      {{else}}
+      <div class="desc-wrap">
+        <p class="desc">{{_remark}}</p>
+      </div>
+      {{/if}}
+    </span>
+  {{/each}}
+</div>

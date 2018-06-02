@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+</head>
+<body>
+  <!-- 头部导航 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+  <!-- 导航屑 -->
+  <div class="container js_nav_crumbs"></div>
+  <!-- 二级导航 -->
+  <nav class="navbar sub-nav">
+    <ul class="container nav nav-pills js_nav_pills">
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#targetHome">资讯首页</a>
+      </li> -->
+    </ul>
+  </nav>
+  <!-- 内容 -->
+  <div class="container position-relative">
+    <div class="js_loader_time"></div>
+    <!-- 轮播 -->
+    <section class="swiper-container js_message_list">
+      <div class="swiper-wrapper js_swiper_wrap">
+        <!-- <div class="swiper-slide">
+          <img class="img" src="https://fs.fangdd.com/image/-eSnIo8RMIlqwa9vefIGzuF3xDo.jpg" alt="">
+          <p class="desc">一段文字描述</p>
+        </div> -->
+      </div>
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev swiper-button-white swiper-btn-arrow"></div>
+      <div class="swiper-button-next swiper-button-white swiper-btn-arrow"></div>
+    </section>
+    <!-- 最新和最热 -->
+    <section class="new-hot">
+      <div class="left js_sort">
+        <span class="best active" data-value="RegDate">最新</span>
+        <span class="best" data-value="Click">最热</span>
+        <span class="line"></span>
+      </div>
+      <div class="right">
+        <input type="text" class="form-control js_search_val" placeholder="搜索">
+        <span class="btn-search js_search_btn">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-sousuo"></use>
+          </svg>
+        </span>
+      </div>
+    </section>
+    <div class="mes-con">
+      <article class="left-con">
+        <!-- 列表 -->
+        <div class="js_data_list">
+          <%= require('html-loader!components/loader-default/index.html') %>
+        </div>
+      </article>
+      <!-- 右侧推荐 -->
+      <article class="right-recom">
+        <ul class="list-wrap" id="recom">
+          <li class="list">
+            <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+            <div class="l-border">一周热文</div>
+          </li>
+          <li class="list">
+            <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+            <div class="l-border">热门户型</div>
+          </li>
+          <li class="list">
+            <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+            <div class="l-border">热门文章</div>
+          </li>
+          <li class="list">
+            <img src="http://cdn.originoo.cn/thumbs/1035121/11221625/originoo_11221625.jpg" alt="" class="bg">
+            <div class="l-border">热门投资</div>
+          </li>
+        </ul>
+      </article>
+    </div>
+    
+    <!-- 分页 -->
+    <section class="container js_paging">
+      <nav aria-label="page" class="paging">
+        <ul class="pagination">
+          <li class="page-item">
+            <span class="page-link js_prve">上一页</span>
+          </li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item">
+            <span class="page-link js_next" href="#">下一页</span>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </div>
+
+  <%= require('html-loader!components/footer/index.html') %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+  <script src="https://licong96.github.io/js/URI.js"></script>
+</body>
+</html>
