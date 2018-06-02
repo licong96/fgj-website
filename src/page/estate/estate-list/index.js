@@ -208,10 +208,11 @@ var estateList = {
   // 渲染分页
   renderPaging(data) {
     let params = this.data.params,
-        _this  = this,
-        paging = new Paging();
+        _this  = this;
+        
+    this.Paging ? '' : this.Paging = new Paging();
 
-    paging.init({
+    this.Paging.init({
       box: $('.js_paging'),
       pagecount: data.pagecount,   // 总页数
       page: params.page,    // 当前页数

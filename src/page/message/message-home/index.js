@@ -9,9 +9,6 @@ import anchorScroll from 'common/js/anchor-scroll.js';
 import _fgj from 'util/fgj.js'; 
 import HeaderNav from 'components/header-nav/index.js';
 
-import {
-  MobileLogin
-} from 'api/user.js';
 import { 
   classifyGetListMore,
   GetListMoreMessage

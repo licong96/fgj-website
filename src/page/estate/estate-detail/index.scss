@@ -190,14 +190,21 @@ body {
 // 基本信息
 .basic-info {
   .basic-list {
-    .col-lg-4 {
+    .list_wrap {
+      flex: 1;
       border-bottom: 1px solid $color-border-1;
       padding-bottom: 28px;
       padding-left: 40px;
     }
     .list {
+      float: left;
+      padding-right: 30px;
       margin-top: 28px;
+      width: 50%;
       font-size: 16px;
+      &.list-full {
+        width: 100%;
+      }
       .hd {
         float: left;
         display: inline-block;

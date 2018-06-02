@@ -6,6 +6,13 @@ let templateIndex = require('./index.hbs');
 // 分页
 /**
  * @class Paging
+ * @param { Element } box 容器
+ * @param { Number } pagecount 总页数
+ * @param { Number } page 当前页数
+ * @param { Number } num 一页多少条
+ * @param { Number } previous 上一页
+ * @param { Number } next 下一页
+ * @param { Function } onSuccess 回调函数
  */
 export default class Paging {
   constructor() {
@@ -37,7 +44,6 @@ export default class Paging {
         isOne   = {},
         pageArr = [];
     
-    console.log(option)
     // 上一页
     pageArr.push({
       text: '上一页',
@@ -48,7 +54,7 @@ export default class Paging {
     // 中间数字
     for (let i = 1, length = pagecount; i <= length; i++) {
       // 左边隐藏
-      if (pagecount > 5 && i > 1 && i < page- 1 ) {
+      if (pagecount > 5 && i > 1 && i < page - 2 ) {
         if (!isOne.left) {
           isOne.left = true;
           pageArr.push({
@@ -59,7 +65,7 @@ export default class Paging {
         continue
       };
       // 右边隐藏
-      if (pagecount > 5 && i > page + 1 && i < pagecount) {
+      if (pagecount > 5 && i > page + 2 && i < pagecount) {
         if (!isOne.right) {
           isOne.right = true;
           pageArr.push({
@@ -82,8 +88,6 @@ export default class Paging {
       value: option.next,
       disabled: pagecount > page ? '' : ' disabled'
     });
-
-    console.log(pageArr)
 
     let html = _fgj.handlebars(templateIndex, {
       list: pageArr,
