@@ -246,3 +246,135 @@
     }
   }
 }
+// 评论
+.comment {
+  padding-bottom: 50px;
+}
+
+// 猜你喜欢
+.you-like {
+  margin-top: 30px;
+  .list-wrap {
+    padding: 30px 0;
+  }
+  .list {
+    border-radius: 6px;
+    .img {
+      border-bottom: 1px solid $color-border-1;
+      width: 100%;
+    }
+    .title {
+      padding-top: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+    .text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #666;
+    }
+    .price {
+      color: $color-red;
+    }
+  }
+}
+
+// 登陆
+.login {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  border: 1px solid #ddd;
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    padding: 10px;
+    font-size: 24px;
+    color: #666;
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    .tab {
+      position: relative;
+      flex: 0 0 1;
+      padding: 4px;
+      width: 50%;
+      font-size: 18px;
+      color: #787878;
+      text-align: center;
+      &.active {
+        color: $color-primary;
+        &:after {
+          transform: scale(1);
+        }
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        left: 10%;
+        bottom: 0;
+        z-index: 2;
+        width: 80%;
+        height: 2px;
+        background-color: $color-primary;
+        transition: all .3s;
+        transform: scale(0);
+      }
+    }
+  }
+  .body {
+    margin-top: 20px;
+    .iphone {
+      position: relative;
+      margin-top: 20px;
+      .icon {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        bottom: 0;
+        z-index: 2;
+        font-size: 24px;
+        color: #787878;
+      }
+      .form-control {
+        padding-left: 36px;
+      }
+    }
+    .code {
+      position: relative;
+      margin-top: 20px;
+      .icon {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        bottom: 0;
+        z-index: 2;
+        font-size: 24px;
+        color: #787878;
+      }
+      .form-control {
+        padding-left: 36px;
+      }
+      .get-code {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        border: 1px solid #ced4da;
+        padding: 0 4px;
+        height: 100%;
+        font-size: 14px;
+        color: #333;
+        line-height: 38px;
+        background-color: #fff;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@ import Comment from 'components/comment/index.js';
 
 let tempEmpty = require('components/empty/empty.hbs');
 let tempBasicInfo = require('./basic-info.hbs');
+let tempLikeList = require('./like-list.hbs');
 
 // 二手房详细
 let detail = {
@@ -19,7 +20,8 @@ let detail = {
     this.bindEvent();
   },
   onLoad() {
-    this.rederBasicInfo(); // 渲染基本信息
+    this.renderBasicInfo(); // 渲染基本信息
+    this.renderLikeList(); 
   },
   bindEvent() {
     this.initSwiper(); // 初始化轮播图
@@ -95,7 +97,7 @@ let detail = {
     )
   },
   // 渲染基本信息
-  rederBasicInfo() {
+  renderBasicInfo() {
     let html = _fgj.handlebars(tempBasicInfo, {
       data: {}
     });
@@ -139,6 +141,15 @@ let detail = {
         {}, {}, {}
       ]
     })
+  },
+  // 猜你喜欢
+  renderLikeList() {
+    let html = _fgj.handlebars(tempLikeList, {
+      list: [
+        {},{},{},{}
+      ]
+    });
+    $('.js_you_line').html(html);
   }
 };
 

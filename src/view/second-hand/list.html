@@ -20,25 +20,25 @@
   <!-- 筛选 -->
   <section class="container screen-wrap">
     <!-- 类型切换 -->
-    <div class="switch">
-      <span class="tab active">二手房买卖</span>
-      <span class="tab ">二手房租赁</span>
+    <div class="switch" id="navSwitch">
+      <span class="tab active" data-index="0">二手房买卖</span>
+      <span class="tab" data-index="1">二手房租赁</span>
     </div>
-    <!-- 筛选条件 -->
+    <!-- 筛选条件，有二手房买卖和二手房租赁 -->
     <div class="location js_screen"></div>
   </section>
   <!-- 排序 -->
-  <div class="container sort">
-    <span class="rank">默认排序</span>
-    <span class="rank active rotate">
+  <div class="container sort js_sort">
+    <span class="rank active" data-value="">默认排序</span>
+    <span class="rank" data-value="Price">
       价格
       <svg class="icon" aria-hidden="true"><use xlink:href="#icon-up"></use></svg>
     </span>
-    <span class="rank">
+    <span class="rank" data-value="Square">
       面积
       <svg class="icon" aria-hidden="true"><use xlink:href="#icon-up"></use></svg>
     </span>
-    <span class="rank">
+    <span class="rank" data-value="RegDate">
       发布时间
       <svg class="icon" aria-hidden="true"><use xlink:href="#icon-up"></use></svg>
     </span>
