@@ -212,7 +212,7 @@ export default class Screen {
     let html = '';
     for (let key in params) {
       // 当前页数page就不显示在选中的条件里了，并且值不能为空
-      if ( (key !== 'page' && key !== 'Trade') && !!params[key] ) {
+      if ( (key !== 'page' && key !== 'Trade' && key !== 'order') && !!params[key] ) {
         html += `<dd class="l-dd">
                   <div class="box js_pitch_box" data-key="${key}">
                     <span>${params[key]}</span>

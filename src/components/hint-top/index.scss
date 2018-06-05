@@ -1,0 +1,32 @@
+@import "../../common/scss/mixin";
+
+.hint-top {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  text-align: center;
+  &.show {
+    display: block;
+    animation: fadeInUp .5s;
+  }
+  .alert {
+    display: inline-block;
+    min-width: 420px;
+    box-shadow: 0 2px 16px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -200%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

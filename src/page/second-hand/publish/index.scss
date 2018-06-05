@@ -1,0 +1,25 @@
+@import "../../../common/scss/mixin.scss";
+
+// 上传图片
+.up-img {
+  display: flex;
+  flex-wrap: wrap;
+  .list {
+    overflow: hidden;
+    border-radius: 6px;
+    width: 200px;
+    height: 150px;
+    margin-right: 20px;
+    &.add {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed #ccc;
+      cursor: pointer;
+      .icon {
+        font-size: 40px;
+        color: #ccc;
+      }
+    }
+  }
+}

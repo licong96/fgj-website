@@ -6,28 +6,62 @@ import _fgj from 'util/fgj.js';
 import HeaderNav from 'components/header-nav/index.js';
 import NavCrumbs from 'components/nav-crumbs/index.js';
 import Comment from 'components/comment/index.js';
+import Login from 'components/login/index.js';
+import HintTop from 'components/hint-top/index.js';
+
+import { GetModelDetail, GetAboutProperty } from 'api/second-hand/detail.js';
 
 let tempEmpty = require('components/empty/empty.hbs');
 let tempBasicInfo = require('./basic-info.hbs');
+let tempMainInfo = require('./main-info.hbs');
 let tempLikeList = require('./like-list.hbs');
 
 // 二手房详细
 let detail = {
   el: {},
-  data: {},
+  data: {
+    PropertyID: _fgj.getUrlParam('PropertyID') || (window.location.href = './list.html'),
+    PropertyData: {}, // 主体数据
+  },
   init() {
     this.onLoad();
     this.bindEvent();
   },
   onLoad() {
-    this.renderBasicInfo(); // 渲染基本信息
-    this.renderLikeList(); 
+    this.GetModelDetail();    // 获取主体数据
+    // this.renderBasicInfo(); // 渲染基本信息渲染基本信息
+    this.GetAboutProperty();  // 获取相关房源 | 猜你喜欢
   },
   bindEvent() {
     this.initSwiper(); // 初始化轮播图
     this.initHeaderNav(); // 导航
     this.initNavCrumbs(); // 导航屑
     this.renderComment(); // 渲染评论
+    this.initLogin();   // 初始化登陆
+    this.onLookTel();   // 查看电话号码
+    this.initHintTop(); // 初始化提示功能
+  },
+  // 获取主体数据
+  GetModelDetail() {
+    GetModelDetail({
+      PropertyID: this.data.PropertyID
+    }, 
+    res => {
+      console.log(res)
+
+      let main = _fgj.handlebars(tempMainInfo, res.data);
+      $('.js_main_info').html(main);
+
+      let basic = _fgj.handlebars(tempBasicInfo, res.data);
+      $('.js_basic_info').html(basic);
+
+      
+      this.initMap(); // 初始化地图
+    }, 
+    err => {
+      $('.js_main_info').html(tempEmpty);
+      $('.js_basic_info').html(tempEmpty);
+    })
   },
   // 初始化头部导航
   initHeaderNav() {
@@ -103,7 +137,6 @@ let detail = {
     });
     $('.js_basic_info').html(html);
 
-    this.initMap(); // 初始化地图
   },
   // 初始化地图
   initMap() {
@@ -126,7 +159,6 @@ let detail = {
   // 渲染评论
   renderComment() {
     this.Comment || (this.Comment = new Comment());
-    console.log(this.Comment)
     this.Comment.init({
       box: $('.js_comment')
     });
@@ -142,15 +174,51 @@ let detail = {
       ]
     })
   },
-  // 猜你喜欢
-  renderLikeList() {
-    let html = _fgj.handlebars(tempLikeList, {
-      list: [
-        {},{},{},{}
-      ]
+  // 获取相关房源 | 猜你喜欢
+  GetAboutProperty() {
+    let data = this.data.PropertyData;
+
+    GetAboutProperty({
+      num: 4,
+      EstateID: data._estateid,
+      DistrictID: data._districtid,
+    }, 
+    res => {
+      console.log(res)
+      let html = _fgj.handlebars(tempLikeList, {
+        list: res.data
+      });
+      $('.js_you_line').html(html);
+    }, 
+    err => {
+      $('.js_you_line').html(tempEmpty);
     });
-    $('.js_you_line').html(html);
-  }
+  },
+  // 初始化登陆
+  initLogin() {
+    this.Login = new Login();
+    // this.Login.init();
+  },
+  // 查看电话号码
+  onLookTel() {
+    let _this = this;
+    
+    $('.js_look_tel').on('click', () => {
+      this.Login.init({
+        success: function () {
+          _this.HintTop.show({
+            type: 'success',
+            text: '登陆成功！'
+          })
+        }
+      });
+    });
+  },
+
+  // 初始化提示功能
+  initHintTop() {
+    this.HintTop ? '' : this.HintTop = new HintTop();
+  },
 };
 
 $(function () {

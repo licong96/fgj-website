@@ -30,15 +30,13 @@ export default class Search {
 
     option.box.find('.js_search_btn').on('click', function () {
       val = $.trim($input.val())
-      if (val) {
-        typeof option.confirm === 'function' && option.confirm(val);
-      }
+      typeof option.confirm === 'function' && option.confirm(val);
     });
 
     // 回车搜索
     $input.keydown(function(e) {
       val = $.trim($input.val())
-      if (e.keyCode === 13 && val) {
+      if (e.keyCode === 13) {
         typeof option.confirm === 'function' && option.confirm(val);
       }
     });

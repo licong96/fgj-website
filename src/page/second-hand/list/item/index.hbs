@@ -1,38 +1,54 @@
 <ul>
   {{#each list}}
-  <a class="no-decoration" href="./detail.html" target="_blank">
+  <a class="no-decoration" href="./detail.html?PropertyID={{_propertyid}}" target="_blank">
     <li class="list">
       <div class="img-wrap">
-        <img src="https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg" alt="" class="img">
+        <img src="{{_pagepic}}" alt="" class="img">
       </div>
       <div class="con-wrap">
-        <h3 class="title">艾溪湖一号 2室一厅 200万</h3>
+        <h3 class="title">
+          {{_estate._estatename}} {{_countf}}室{{_countt}}厅{{_countw}}
+          {{#if _price}}
+          <span>{{_price}}万</span>
+          {{/if}}
+        </h3>
         <p class="location">
           <svg class="icon" aria-hidden="true"><use xlink:href="#icon-weizhi"></use></svg>
-          <span class="desc">高新开发区 艾溪湖正中央</span>
+          <span class="desc">{{_address}}</span>
         </p>
         <div class="house-info">
           <svg class="icon" aria-hidden="true"><use xlink:href="#icon-fangzi01-copy"></use></svg>
-          <span class="desc">整租</span>|
-          <span class="desc">两房</span>|
-          <span class="desc">面积：70㎡</span>|
-          <span class="desc">朝东</span>|
-          <span class="desc">精装修</span>
+          {{#if _orientation}}
+          <span class="desc">{{_orientation}}</span>
+          {{/if}}
+          <span class="desc">{{_propertyusage}}</span>
+          <span class="desc">面积：{{_square}}㎡</span>
+          <span class="desc">{{_decoration}}</span>
         </div>
         <div class="tag-wrap">
-          <span class="tag tag-1">地铁口</span>
-          <span class="tag tag-2">随时看房</span>
+          {{#each tag}}
+          <span class="tag tag-{{@index}}">{{@this}}</span>
+          {{/each}}
         </div>
         <div class="user">
-          <span class="desc">黎先生</span>
-          <span class="desc">艾溪湖一号</span>
-          <span class="desc">2018-6-1 16:06</span>
+          <span class="desc">{{_custname}}</span>
+          <span class="desc">{{_estate._districtname}}</span>
+          <span class="desc">{{_moddate}}</span>
         </div>
       </div>
+      {{!-- 出售 --}}
+      {{#if _price}}
       <div class="price-wrap">
-          <p class="price">200万</p>
-          <p class="area">12000元/㎡</p>
+        <p class="price">{{_price}}万</p>
+        <p class="area">{{_priceunit}}元/㎡</p>
       </div>
+      {{/if}}
+      {{!-- 出租 --}}
+      {{#if _rentprice}}
+      <div class="price-wrap">
+        <p class="price">{{_rentprice}}元/月</p>
+      </div>
+      {{/if}}
     </li>
   </a>
   {{/each}}

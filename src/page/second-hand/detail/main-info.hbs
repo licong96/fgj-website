@@ -1,0 +1,61 @@
+{{!-- 主要信息 --}}
+{{#if _price}}
+<div class="price">
+  参考总价：<span class="bold">{{_price}}万</span>
+</div>
+{{/if}}
+{{#if _rentprice}}
+<div class="price">
+  租金：<span class="bold">{{_rentprice}}元/月</span>
+</div>
+{{/if}}
+<ul class="ul">
+  <li class="li">
+    <p class="title">户型</p>
+    <p class="desc">{{_countf}}室{{_countt}}厅{{_countw}}卫</p>
+  </li>
+  <li class="li">
+    <p class="title">建筑面积</p>
+    <p class="desc">{{_square}}㎡</p>
+  </li>
+  {{#if _priceunit}}
+  <li class="li">
+    <p class="title">单价</p>
+    <p class="desc">{{_priceunit}}元/㎡</p>
+  </li>
+  {{/if}}
+</ul>
+<ul class="ul">
+  <li class="li">
+    <p class="title">朝向</p>
+    <p class="desc">{{_orientation}}</p>
+  </li>
+  <li class="li">
+    <p class="title">楼层</p>
+    <p class="desc">{{_floor}}</p>
+  </li>
+  <li class="li">
+    <p class="title">装修</p>
+    <p class="desc">{{_decoration}}</p>
+  </li>
+</ul>
+<div class="location">
+  <p class="desc">
+    <span class="title">小区</span>
+    <span class="text">{{_estate._districtname}}</span>
+  </p>
+  <p class="desc">
+    <span class="title">区域</span>
+    <span class="text">{{_address}}</span>
+  </p>
+</div>
+<!-- 联系人 -->
+<div class="linkman">
+    <img src="https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg" class="pic" alt="">
+    <div class="text">
+      <p class="name">黎先生</p>
+      <p class="char">个人</p>
+      <button class="btn btn-primary js_look_tel">点击查看电话号码</button>
+      <button class="btn">留言</button>
+    </div>
+</div>

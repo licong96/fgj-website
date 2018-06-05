@@ -19,7 +19,7 @@ let tempEmpty = require('components/empty/empty.hbs');
 let list = {
   el: {
     moveTo    : new MoveTo(),
-    trigger   : document.getElementById('estateListScreen'),
+    trigger   : document.getElementById('handListScreen'),
   },
   data: {
     uri: new URI(window.location.href),    // 当前url地址
@@ -35,7 +35,6 @@ let list = {
   onLoad() {
     this.GetPageList();   // 获取列表数据
     this.initScreen();    // 初始化筛选
-    this.renderPaging();  // 根据数据渲染分页
   },
   bindEvent() {
     this.initHeaderNav();   // 导航
@@ -48,18 +47,28 @@ let list = {
     GetPageList(this.data.params,
     res => {
       console.log(res)
+      this.renderList(res.data);    // 根据数据渲染列表
+      this.renderPaging(res.pagecount);  // 根据数据渲染分页
     }, 
     err => {
-
+      $('.js_list').html(tempEmpty);
     });
+  },
+  // 根据数据渲染列表
+  renderList(data) {
+    let tag = [];
+
+    // 处理tag
+    for (let i = 0, leng = data.length; i < leng; i++) {
+      if (data[i]._tag) {
+        tag = data[i]._tag.split('|');
+        data[i].tag = tag;
+      }
+    };
 
     let list = new _list({
       box: $('.js_list'),
-      data: [
-        {},{},{},
-        {},{},{},
-        {},{},{},
-      ]
+      data: data
     });
   },
   // 二手房买卖和租赁的切换
@@ -185,18 +194,24 @@ let list = {
     this.Screen.screenAddMethods('SquareRang');
   },
   // 根据数据渲染分页
-  renderPaging() {
+  renderPaging(pagecount) {
+    let params  = this.data.params,
+        _this   = this;
     this.Paging ? '' : this.Paging = new Paging();
 
     this.Paging.init({
       box: $('.js_paging'),
-      pagecount: 10,   // 总页数
-      page: 1,    // 当前页数
-      previous: parseInt(1) - 1,  // 上一页的值
-      next: parseInt(1) + 1, // 下一页的值
+      pagecount: pagecount,   // 总页数
+      page: params.page,    // 当前页数
+      previous: parseInt(params.page) - 1,  // 上一页的值
+      next: parseInt(params.page) + 1, // 下一页的值
       num: 20,
       onSuccess: function (page) {
         console.log(page)
+        params.page = page;
+        _this.setUrlParams();  // 修改url地址参数
+        _this.GetPageList();  // 获取数据
+        _this.el.moveTo.move(_this.el.trigger); // 回到顶部
       }
     });
   },
@@ -224,22 +239,27 @@ let list = {
   },
   // 初始化搜索
   initSearch() {
+    let _this = this;
     let search = new _search({
       box: $('.js_search'),
       confirm: function (val) {
-        console.log(val)
+        _this.data.params.likestr = val;
+        _this.setUrlParams();  // 修改url地址参数
+        _this.GetPageList();  // 获取数据
       }
     });
   },
    // 排序
   initSort() {
-    let value = '',
-        order = '',
-        $this = null,
-        Price  = false,
+    let value   = '',
+        order   = '',
+        _this   = this,
+        $this   = null,
+        Price   = false,
         Square  = false,
-        RegDate  = false
+        RegDate = false;
 
+    // 这里的代码有待封装和优化
     $('.js_sort .rank').on('click', function() {
       $this = $(this);
       value = $this.data('value');
@@ -284,7 +304,10 @@ let list = {
         Square  = false
         RegDate  = false
       }
-      console.log(order)
+      
+      _this.data.params.order = order;
+      _this.setUrlParams();  // 修改url地址参数
+      _this.GetPageList();  // 获取数据
     });
   }
 };
