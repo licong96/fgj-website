@@ -98,7 +98,13 @@ a.no-decoration {
 .min-h-400 {
   min-height: 400px;
 }
-// 按钮
+// 重置bootstrap的样式
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: $color-primary;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 152, 0, 0.2);
+}
 .btn-primary {
   background-color: $color-primary;
   border-color: $color-primary;

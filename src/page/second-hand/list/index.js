@@ -175,7 +175,6 @@ let list = {
       }
     });
 
-
     // 初始化地铁找房
     this.Screen.onGetSubwayStation(() => {
       this.GetDictionary('SubwayStation');  // 获取地铁数据
@@ -207,7 +206,6 @@ let list = {
       next: parseInt(params.page) + 1, // 下一页的值
       num: 20,
       onSuccess: function (page) {
-        console.log(page)
         params.page = page;
         _this.setUrlParams();  // 修改url地址参数
         _this.GetPageList();  // 获取数据
@@ -218,7 +216,6 @@ let list = {
   // 解析url，去搜索
   parseURI() {
     this.data.params = $.extend({}, this.data.params, this.data.uri.query(true));   // 获取页面参数
-    console.log(this.data.params)
   },
   // 修改url地址参数
   setUrlParams() {

@@ -12,6 +12,7 @@ import HintTop from 'components/hint-top/index.js';
 import { GetModelDetail, GetAboutProperty } from 'api/second-hand/detail.js';
 
 let tempEmpty = require('components/empty/empty.hbs');
+let tempTopInfo = require('./top-info.hbs');
 let tempBasicInfo = require('./basic-info.hbs');
 let tempMainInfo = require('./main-info.hbs');
 let tempLikeList = require('./like-list.hbs');
@@ -37,8 +38,6 @@ let detail = {
     this.initHeaderNav(); // 导航
     this.initNavCrumbs(); // 导航屑
     this.renderComment(); // 渲染评论
-    this.initLogin();   // 初始化登陆
-    this.onLookTel();   // 查看电话号码
     this.initHintTop(); // 初始化提示功能
   },
   // 获取主体数据
@@ -49,6 +48,9 @@ let detail = {
     res => {
       console.log(res)
 
+      let top = _fgj.handlebars(tempTopInfo, res.data);
+      $('.js_top_info').html(top);
+
       let main = _fgj.handlebars(tempMainInfo, res.data);
       $('.js_main_info').html(main);
 
@@ -57,6 +59,7 @@ let detail = {
 
       
       this.initMap(); // 初始化地图
+      this.onLookTel();   // 查看电话号码
     }, 
     err => {
       $('.js_main_info').html(tempEmpty);
@@ -194,14 +197,10 @@ let detail = {
       $('.js_you_line').html(tempEmpty);
     });
   },
-  // 初始化登陆
-  initLogin() {
-    this.Login = new Login();
-    // this.Login.init();
-  },
   // 查看电话号码
   onLookTel() {
     let _this = this;
+    this.Login = new Login();
     
     $('.js_look_tel').on('click', () => {
       this.Login.init({

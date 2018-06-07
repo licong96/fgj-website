@@ -1,0 +1,47 @@
+@import "../../../../common/scss/mixin.scss";
+
+.up-img {
+  display: flex;
+  flex-wrap: wrap;
+  .list {
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+    width: 160px;
+    height: 120px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    &.add {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px dashed #ccc;
+      cursor: pointer;
+      .icon {
+        font-size: 40px;
+        color: #ccc;
+      }
+    }
+    .close {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      z-index: 10;
+      border-radius: 50%;
+      padding: 2px;
+      font-size: 22px;
+      color: #fff;
+      background-color: $color-red;
+    }
+    .file-img {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+}

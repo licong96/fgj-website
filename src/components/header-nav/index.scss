@@ -1,5 +1,8 @@
 @import "../../common/scss/mixin";
 
+.header-nav-wrap {
+  background-color: #fff;
+}
 .header-nav {
   display: flex;
   justify-content: space-between;

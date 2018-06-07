@@ -1,25 +1,33 @@
 @import "../../../common/scss/mixin.scss";
 
-// 上传图片
-.up-img {
-  display: flex;
-  flex-wrap: wrap;
-  .list {
-    overflow: hidden;
-    border-radius: 6px;
-    width: 200px;
-    height: 150px;
-    margin-right: 20px;
-    &.add {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px dashed #ccc;
-      cursor: pointer;
-      .icon {
-        font-size: 40px;
-        color: #ccc;
-      }
-    }
+body {
+  background-color: #f2f2f2;
+}
+.main {
+  margin-top: 60px;
+  border-top: 16px solid $color-primary;
+  border-radius: 4px;
+  padding: 60px 250px;
+  background-color: #fff;
+}
+.pd-l {
+  padding-left: 30px;
+}
+.custom-control-label {
+  cursor: pointer;
+}
+.form-group {
+  margin-top: 30px;
+}
+.submit {
+  margin-top: 60px;
+  text-align: center;
+  .btn {
+    width: 263px;
   }
+}
+.custom-checkbox {
+  margin-left: 15px;
+  margin-right: 5px;
+  user-select: none;
 }
