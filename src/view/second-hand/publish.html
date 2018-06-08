@@ -11,6 +11,7 @@
   <%= require('html-loader!components/header-nav/index.html') %>
   
   <section class="container main" id="main">
+    <input type="password" class="input-puppet" />
     <form>
       <section class="form-group row">
         <label class="col-sm-2 col-form-label">类型</label>
@@ -232,6 +233,19 @@
         </div>
       </div>
     </form>
+  </section>
+  
+  <!-- 图片裁切容器 -->
+  <section class="cropper-wrap js_cropper_wrap">
+    <div class="cropper-box">
+      <div class="flex-1 js_image_wrap">
+        <img src="" class="cropper-img" id="image" alt="">
+      </div>
+      <div class="operation">
+        <button class="btn btn-lg" id="cancelCropBtn">取消</button>
+        <button class="btn btn-primary btn-lg" id="confirmCropBtn">裁切</button>
+      </div>
+    </div>
   </section>
 
   <%= require('html-loader!components/footer/index.html') %>

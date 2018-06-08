@@ -98,6 +98,13 @@ a.no-decoration {
 .min-h-400 {
   min-height: 400px;
 }
+// 添加一个空的input来防止浏览器自动填充
+.input-puppet {
+  position: fixed;
+  top: -9999px;
+  z-index: -9;
+  opacity: 0;
+}
 // 重置bootstrap的样式
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
   background-color: $color-primary;

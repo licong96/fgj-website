@@ -58,11 +58,16 @@ let list = {
   renderList(data) {
     let tag = [];
 
-    // 处理tag
     for (let i = 0, leng = data.length; i < leng; i++) {
+      // 处理tag
       if (data[i]._tag) {
         tag = data[i]._tag.split('|');
+        
         data[i].tag = tag;
+      };
+      // 添加图片路径，测试用
+      if (data[i]._pagepic.indexOf('http://') === -1) {
+        data[i]._pagepic = _fgj.photoPath() + data[i]._pagepic;
       }
     };
 

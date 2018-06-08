@@ -60,7 +60,7 @@ var _fgj = {
   registerHelper: function (name, callback) {
   },
   // 成功提示
-  successTips: function (title, msg = '') {
+  successTips: function (title, msg = '', callback) {
     swal({
       title: title,
       text: msg,
@@ -68,6 +68,8 @@ var _fgj = {
       button: {
         text: '知道了'
       }
+    }).then(value => {
+      return callback && callback(value)
     })
   },
   // 失败提示
@@ -101,9 +103,16 @@ var _fgj = {
     if (type === 'require') {
       return !!value;
     }
-    // 手机号验证
+    // 只验证数字
+    if (type === 'number') {
+      return /^[0-9]*$/.test(value)
+    }
+    // 验证数字和小数点验证
+    if (type === 'number-dot') {
+      return /^[0-9]+\.{0,1}[0-9]{0,5}$/.test(value)
+    }
     if (type === 'phone') {
-      return /^1\d{10}$/.test(value);
+      return /^(13[0-9]|147|15[0-9]|18[0-9]|17[0-9]|19[0-9]|16[0-9])([0-9]{8})$/.test(value)
     }
     // 邮箱号验证
     if (type === 'email') {

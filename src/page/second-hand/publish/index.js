@@ -2,20 +2,31 @@ import 'common/js/commonStyle.js';
 import './index.scss';
 
 import * as Ladda from 'ladda';   // 按钮加载样式
-import 'ladda/css/ladda-themed.scss'
+import 'ladda/css/ladda-themed.scss';
+import Cropper from 'cropperjs';  // 图片裁切
+import './image-upload/cropper.css';
 import _fgj from 'util/fgj.js';
 import Login from 'components/login/index.js';
 import HintTop from 'components/hint-top/index.js';
 import ImageUpload from './image-upload/index.js';
 
 import { GetDistrict, GetDictionary, FileUpLoad } from 'api/public.js';
-import { AddPhoto, AddProperty } from 'api/second-hand/publish.js';
+import { AddPhoto, DelPhoto, AddProperty } from 'api/second-hand/publish.js';
 
 let tempIndex = require('./index.hbs');
 
-// 二手房详细
-let detail = {
+let publish = {
   el: {
+    CoverImage: null, // 封面图实例
+    HouseImage: null, // 户型图实例
+    IndoorImage: null, // 室内图实例
+    EstateImage: null, // 小区图实例
+    cropper: null,    // 图片裁切实例
+    cropImage: document.getElementById('image'),  // 裁切图
+    cropperWrap: $('.js_cropper_wrap'),
+    imageWrap: $('.js_image_wrap'),
+    confirmCropBtn: $('#confirmCropBtn'),
+    cancelCropBtn: $('#cancelCropBtn'),
   },
   data: {
     coverPhoto: [],   // 封面图，只需要一张
@@ -23,6 +34,7 @@ let detail = {
     IndoorPhoto: [],  // 室内图
     estatePhoto: [],  // 小区图
     params: {
+      TempID: Math.random().toString(36).substr(2),   // 临时ID
       Trade: '出售',
       CityID: 218,  // 城市ID，默认南昌
     }
@@ -32,19 +44,42 @@ let detail = {
     this.bindEvent();
   },
   onLoad() {
+    this.isLogin();   // 判断是否登陆
     this.renderMain();    // 渲染主体内容
     this.isPropertyLook();  // 判断是不是分销或经纪人，看房方式有钥匙
   },
   bindEvent() {
     this.onSwitcher();  // 出售和出租的切换
+    this.initCropper();   // 初始化图片裁切
     this.CoverImageUpload(); // 封面图上传
     this.HouseImageUpload(); // 户型图上传
     this.IndoorImageUpload(); // 室内图上传
     this.EstateImageUpload(); // 小区图上传
 
-    this.initLogin();   // 初始化登陆
     this.initHintTop(); // 初始化提示功能
+    this.onChangeSquare();   // 修改面积计算单价或总价
+    this.onChangePrice();   // 改变总价，计算单价
+    this.onChangePriceUnit();   // 改变单价，计算总价
+    
     this.onSubmit();    // 表单提交
+  },
+  // 判断是否登陆
+  isLogin() {
+    let _this = this;
+
+    if (!_fgj.getCookie('CUserID')) {
+      this.Login = new Login();
+      this.Login.init({
+        success: function () {
+          _this.HintTop.show({
+            type: 'success',
+            text: '登陆成功！'
+          })
+        },
+        cancel() {
+        }
+      });
+    }
   },
   // 渲染主体内容
   renderMain() {
@@ -60,7 +95,7 @@ let detail = {
     this.GetDictionary('PropertyDecoration', res => {
       this.renderOption('Decoration', res.data);
     });
-    // 获取装修数据
+    // 获取产权性质数据
     this.GetDictionary('PropertyOwn', res => {
       this.renderOption('PropertyNature', res.data);
     });
@@ -68,7 +103,11 @@ let detail = {
     this.GetDictionary('PropertyDirection', res => {
       this.renderOption('Orientation', res.data);
     });
-    // 获取地铁站
+    // 获取地铁的线路
+    this.GetDictionary('SubwayLine', res => {
+      this.renderOption('SubwayLine', res.data);
+    });
+    // 获取所有地铁站
     this.GetDictionary('SubwayStation', res => {
       this.renderOption('SubWayStation', res.data);
     });
@@ -174,23 +213,52 @@ let detail = {
       $('#' + DictionaryNo).html('暂时无信息')
     })
   },
-  // 初始化登陆
-  initLogin() {
-    this.Login = new Login();
-    // this.Login.init();
-  },
   // 初始化提示功能
   initHintTop() {
     this.HintTop ? '' : this.HintTop = new HintTop();
   },
+  // 初始化图片裁切
+  initCropper() {
+    this.el.cropper = new Cropper(this.el.cropImage, {
+      aspectRatio: 4 / 3,   // 比例
+    });
+  },
+  /**
+   * 图片裁切操作
+   * @param {String} image base或图片地址
+   * @param {String} type 哪个类型的图片上传
+   */
+  imageCropper(image, type) {
+    let el      = this.el,
+        _this   = this;
+    el.cropperWrap.show();
+
+    this.el.cropper.replace(image);    // 更换图片
+    // 确定裁切
+    el.confirmCropBtn.on('click', () => {
+      this.el.cropper.getCroppedCanvas().toBlob(function (blob) {
+        el.cropperWrap.hide();
+        el[type].FileUpLoad(blob);  // 根据类型执行它下面对应的方法
+      }, 'image/jpeg')
+      el.confirmCropBtn.unbind('click');    // 注意，每次调用都会再次绑定事件，这里要解绑事件
+    });
+    // 取消裁切
+    el.cancelCropBtn.on('click', () => {
+      el.cropperWrap.hide();
+      el.cancelCropBtn.unbind('click');
+    });
+  },
   // 封面图上传
   CoverImageUpload() {
-    let cover = new ImageUpload(),
+    let cover = this.el.CoverImage = new ImageUpload(),
         _this = this,
         load  = null;
 
     cover.init({
       box: $('#PhotoTypeCover'),
+      crop(base) {    // 图片裁切
+        _this.imageCropper(base, 'CoverImage');
+      },
       laddaStart() {
         load = Ladda.create($('#PhotoTypeCover .ladda-button')[0]);
         load.start();
@@ -206,10 +274,9 @@ let detail = {
         })
       },
       backPhoto(photo) {    // 返回图片数据
-        console.log('cover', photo)
         _this.data.coverPhoto = photo;
 
-        // 封面图只有一张
+        // 封面图只有一张，有了就去掉添加按钮
         if (_this.data.coverPhoto.length) {
           $('#PhotoTypeCover .add').hide();
         } else {
@@ -220,12 +287,15 @@ let detail = {
   },
   // 户型图上传
   HouseImageUpload() {
-    let house = new ImageUpload(),
+    let house = this.el.HouseImage = new ImageUpload(),
         _this = this,
         load  = null;
 
     house.init({
       box: $('#PhotoTypeHouse'),
+      crop(base) {    // 图片裁切
+        _this.imageCropper(base, 'HouseImage');
+      },
       laddaStart() {
         load = Ladda.create($('#PhotoTypeHouse .ladda-button')[0]);
         load.start();
@@ -241,19 +311,26 @@ let detail = {
         })
       },
       backPhoto(photo) {    // 返回图片数据
-        console.log('house', photo)
+        // console.log('house', photo)
         _this.data.housePhoto = photo;
+        _this.manipulateImagePack(_this.data.housePhoto, '户型图');   // 图片添加就上传，用临时ID进行关联
+      },
+      remove(index) {    // 删除图片
+        _this.removeImage(index, 'housePhoto');
       }
     });
   },
   // 室内图上传
   IndoorImageUpload() {
-    let Indoor = new ImageUpload(),
+    let Indoor = this.el.IndoorImage = new ImageUpload(),
         _this = this,
         load  = null;
 
     Indoor.init({
       box: $('#PhotoTypeIndoor'),
+      crop(base) {    // 图片裁切
+        _this.imageCropper(base, 'IndoorImage');
+      },
       laddaStart() {
         load = Ladda.create($('#PhotoTypeIndoor .ladda-button')[0]);
         load.start();
@@ -269,19 +346,26 @@ let detail = {
         })
       },
       backPhoto(photo) {    // 返回图片数据
-        console.log('Indoor', photo)
+        // console.log('Indoor', photo)
         _this.data.IndoorPhoto = photo;
+        _this.manipulateImagePack(_this.data.IndoorPhoto, '室内图');   // 图片添加就上传，用临时ID进行关联
+      },
+      remove(index) {    // 删除图片
+        _this.removeImage(index, 'IndoorPhoto');
       }
     });
   },
   // 小区图上传
   EstateImageUpload() {
-    let estate = new ImageUpload(),
+    let estate = this.el.EstateImage = new ImageUpload(),
         _this = this,
         load  = null;
 
     estate.init({
       box: $('#PhotoTypeEstate'),
+      crop(base) {    // 图片裁切
+        _this.imageCropper(base, 'EstateImage');
+      },
       laddaStart() {
         load = Ladda.create($('#PhotoTypeEstate .ladda-button')[0]);
         load.start();
@@ -297,10 +381,85 @@ let detail = {
         })
       },
       backPhoto(photo) {    // 返回图片数据
-        console.log('estate', photo)
+        // console.log('estate', photo)
         _this.data.estatePhoto = photo;
+        _this.manipulateImagePack(_this.data.estatePhoto, '小区图');   // 图片添加就上传，用临时ID进行关联
+      },
+      remove(index) {    // 删除图片
+        _this.removeImage(index, 'estatePhoto');
       }
     });
+  },
+  // 修改面积计算单价或总价
+  onChangeSquare() {
+    let Square        = $('#Square'),
+        Price         = $('#Price'),
+        PriceUnit     = $('#PriceUnit'),
+        SquareVal     = '',
+        PriceVal      = '',
+        PriceUnitVal  = '';
+
+    Square.on('input propertychange', function () {
+      SquareVal = Square.val();
+      PriceVal = Price.val();
+      PriceUnitVal = PriceUnit.val();
+
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceVal, 'number-dot')) {
+        PriceUnitVal = (PriceVal * 10000 / SquareVal).toFixed(2);
+        PriceUnit.val(PriceUnitVal);
+      } else {
+        PriceUnit.val('');
+      };
+
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceUnitVal, 'number-dot')) {
+        PriceVal = (PriceUnitVal * SquareVal / 10000).toFixed(2);
+        Price.val(PriceVal);
+      } else {
+        Price.val('');
+      };
+    })
+  },
+  // 改变总价，计算单价 
+  onChangePrice() {
+    let Square        = $('#Square'),
+        Price         = $('#Price'),
+        PriceUnit     = $('#PriceUnit'),
+        SquareVal     = '',
+        PriceVal      = '',
+        PriceUnitVal  = '';
+
+    Price.on('input propertychange', function () {
+      SquareVal = Square.val();
+      PriceVal = Price.val();
+
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceVal, 'number-dot')) {
+        PriceUnitVal = (PriceVal * 10000 / SquareVal).toFixed(2);
+        PriceUnit.val(PriceUnitVal);
+      } else {
+        PriceUnit.val('');
+      }
+    })
+  },
+  // 改变单价，计算总价
+  onChangePriceUnit() {
+    let Square        = $('#Square'),
+        Price         = $('#Price'),
+        PriceUnit     = $('#PriceUnit'),
+        SquareVal     = '',
+        PriceVal      = '',
+        PriceUnitVal  = '';
+
+    PriceUnit.on('input propertychange', function () {
+      SquareVal = Square.val();
+      PriceUnitVal = PriceUnit.val();
+
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceUnitVal, 'number-dot')) {
+        PriceVal = (PriceUnitVal * SquareVal / 10000).toFixed(2);
+        Price.val(PriceVal);
+      } else {
+        Price.val('');
+      }
+    })
   },
   // 表单提交
   onSubmit() {
@@ -309,11 +468,15 @@ let detail = {
         Tag     = '';
 
     $('#submit .btn').on('click', function () {
+      // 判断是否登陆
+      if (!_fgj.getCookie('CUserID')) {
+        _this.isLogin();
+        return
+      }
       // 都要传
       let com = {
         PropertyTitle   : $('#PropertyTitle').val(),
         DistrictID      : $('#DistrictID').val(),
-        Square          : $('#Square').val(),
         Square          : $('#Square').val(),
         CountF          : $('#CountF').val(),
         CountT          : $('#CountT').val(),
@@ -351,8 +514,15 @@ let detail = {
       // 获取Tag
       let PropertyTag = $('#PropertyTag').find(':checkbox:checked');
       PropertyTag.each(function () {
-        Tag += $(this).val() + '|'
+        Tag += $(this).val() + '|';
       });
+
+      // 判断是否上传了图片，如果没有要去掉临时的关联ID
+      let photo = _this.data;
+      if (!photo.housePhoto.length && !photo.IndoorPhoto.length && !photo.estatePhoto.length) {
+        console.log('delete')
+        delete _this.data.params.TempID
+      };
       
       // 判断是出售还是出租
       if (_this.data.params.Trade === '出售') {
@@ -364,28 +534,63 @@ let detail = {
       obj.Tag = Tag;    // 追加标签
       if (_this.data.coverPhoto[0]) {
         obj.PagePic = _this.data.coverPhoto[0].path.slice(1); // 追加封面图
-      }
+      };
+
+      let submit = Ladda.create(this);    // 上传中
+      submit.start();
 
       console.log(obj)
 
-      return
-
+      // 主体数据上传
       AddProperty(obj, res => {
-        console.log(res)
+        submit.stop();
+        _fgj.successTips('上传成功', '', function () {
+          window.location.reload();   // 清空数据太麻烦，干脆直接刷新，更省时间
+        });
       }, 
       err => {
-        console.log(err)
+        _fjg.errorTips(err.msg);
+      });
+    })
+  },
+  // 添加图片之后就直接上传图片，用临时ID进行关联
+  manipulateImagePack(arr, type) {
+    let obj = {},
+        PropertyID  = this.data.params.TempID;  // 临时ID
+
+    if (arr.length) {
+      obj.PropertyID = PropertyID;
+      obj.PhotoType = type;
+      obj.Path = arr[0].path.slice(1);
+      obj.SmallPath = arr[0].sm_path.slice(1);
+
+      // 添加图片
+      AddPhoto(obj, res => {
+        arr[0].PhotoID = res.PhotoID;   // 保存ID，删除的时候有用
+      }, 
+      err => {
+        _fgj.errorTips(err.msg);
       })
-      
-      let submit = Ladda.create(this);
-      submit.start();
-      setTimeout(() => {
-        submit.stop()
-      }, 2000)
+    };
+  },
+  // 删除图片
+  removeImage(index, type) {
+    let PhotoID = this.data[type][index].PhotoID
+    DelPhoto({
+      PhotoID
+    }, 
+    res => {
+      this.HintTop.show({
+        type: 'success',
+        text: '图片删除成功'
+      })
+    }, 
+    err => {
+      _fgj.errorTips(err.msg);
     })
   }
 };
 
 $(function () {
-  detail.init()
+  publish.init()
 });

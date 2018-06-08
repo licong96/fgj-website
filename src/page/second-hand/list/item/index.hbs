@@ -27,7 +27,9 @@
         </div>
         <div class="tag-wrap">
           {{#each tag}}
-          <span class="tag tag-{{@index}}">{{@this}}</span>
+            {{#if @this}}
+            <span class="tag tag-{{@index}}">{{@this}}</span>
+            {{/if}}
           {{/each}}
         </div>
         <div class="user">

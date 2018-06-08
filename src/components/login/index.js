@@ -8,6 +8,7 @@ let templateIndex = require('./index.hbs');
  * 登陆
  * @class Login
  * @param {Function} success 登陆成功之后的回调
+ * @param {Function} cancel 取消登陆
  */
 export default class Login {
   constructor() {
@@ -29,9 +30,14 @@ export default class Login {
 
   // 渲染
   render() {
+    let option = this.option;
     let html = _fgj.handlebars(templateIndex, {});
     
     _fgj.contentTips('', html, false, function (value) {
+      // 取消登陆
+      if (!value) {
+        typeof option.cancel === 'function' && option.cancel()
+      }
       console.log(value)
     });
 
