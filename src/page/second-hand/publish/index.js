@@ -9,6 +9,7 @@ import _fgj from 'util/fgj.js';
 import Login from 'components/login/index.js';
 import HintTop from 'components/hint-top/index.js';
 import ImageUpload from './image-upload/index.js';
+import BMap from './map/index.js';
 
 import { GetDistrict, GetDictionary, FileUpLoad } from 'api/public.js';
 import { AddPhoto, DelPhoto, AddProperty } from 'api/second-hand/publish.js';
@@ -49,6 +50,7 @@ let publish = {
     this.isPropertyLook();  // 判断是不是分销或经纪人，看房方式有钥匙
   },
   bindEvent() {
+    this.initHintTop(); // 初始化提示功能
     this.onSwitcher();  // 出售和出租的切换
     this.initCropper();   // 初始化图片裁切
     this.CoverImageUpload(); // 封面图上传
@@ -56,10 +58,15 @@ let publish = {
     this.IndoorImageUpload(); // 室内图上传
     this.EstateImageUpload(); // 小区图上传
 
-    this.initHintTop(); // 初始化提示功能
     this.onChangeSquare();   // 修改面积计算单价或总价
     this.onChangePrice();   // 改变总价，计算单价
     this.onChangePriceUnit();   // 改变单价，计算总价
+    this.onChangeRentPriceUnit(); // 房屋出租 - 修改租价，计算租单价
+    this.onChangeRentPrice(); // 房屋出租 - 修改租单价，计算租价
+    this.onChangeRentSquare() // 房屋出租 - 修改总价，计算租单价
+
+    this.uploadBoxTab();   // 图片切换
+    this.AddressSearch();   // 地址搜索
     
     this.onSubmit();    // 表单提交
   },
@@ -105,12 +112,13 @@ let publish = {
     });
     // 获取地铁的线路
     this.GetDictionary('SubwayLine', res => {
-      this.renderOption('SubwayLine', res.data);
+      this.renderOption('SubwayLine', res.data);  // 渲染容器
+      this.onChangeSubway(res.data);    // 线路和地铁站，数据联动
     });
     // 获取所有地铁站
-    this.GetDictionary('SubwayStation', res => {
-      this.renderOption('SubWayStation', res.data);
-    });
+    // this.GetDictionary('SubwayStation', res => {
+    //   this.renderOption('SubWayStation', res.data);
+    // });
     // 获取朝向数据
     this.GetDictionary('PropertyTag', res => {
       let data = res.data,
@@ -122,6 +130,39 @@ let publish = {
                   </div>`;
       };
       $('#PropertyTag').html(html);
+    });
+  },
+  // 线路和地铁站，数据联动
+  onChangeSubway(LineData) {
+    let lineVal = '',
+        lineID  = '',
+        _this   = this,
+        arr     = []
+
+    // 获取所有地铁站数据
+    this.GetDictionary('SubwayStation', res => {
+      $('#SubwayLine').on('change', function () {
+        arr = []; // 每次修改先清空
+        lineVal = $(this).val();
+        // 拿到当前选中的线路ID
+        for (let i = 0, length = LineData.length; i < length; i++) {
+          if (LineData[i]._dictionaryvalue === lineVal) {
+            lineID = LineData[i]._dictionaryid;
+            break;
+          }
+        };
+        // 用线路ID匹配地铁ID
+        if (res.data.length) {
+          res.data.forEach((item) => {
+            if (item._parentid === lineID) {
+              arr.push(item)
+            }
+          })
+        };
+        // renderOption函数用的是append，所以每次修改都要清空
+        $('#SubWayStation').html('').val('');
+        _this.renderOption('SubWayStation', arr);
+      });
     });
   },
   // 判断是不是分销或经纪人，看房方式有钥匙
@@ -149,11 +190,11 @@ let publish = {
         $lease.addClass('hide');
         $deal.removeClass('hide');
         // 还原一些数据
-        $('#RentPrice').val('')
-        $('#RentPriceUnit').val('')
-        $('#MtgPrice').val('')
-        $('#TransferPrice').val('')
-        $('input[name="typeHouse"]').val('')
+        $('#RentPrice').val('');
+        $('#RentPriceUnit').val('');
+        $('#MtgPrice').val('');
+        $('#TransferPrice').val('');
+        $('input[name="RentType"]').val('');
       }
       else {
         $lease.removeClass('hide');
@@ -461,11 +502,126 @@ let publish = {
       }
     })
   },
-  // 表单提交
+  // 房屋出租 - 修改总价，计算租单价
+  onChangeRentSquare() {
+    let Square        = $('#Square'),
+        Price         = $('#RentPrice'),
+        PriceUnit     = $('#RentPriceUnit'),
+        SquareVal     = '',
+        PriceVal      = '',
+        PriceUnitVal  = '';
+
+    Square.on('input propertychange', function () {
+      SquareVal = Square.val();
+      PriceVal = Price.val();
+      PriceUnitVal = PriceUnit.val();
+      
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceVal, 'number-dot')) {
+        PriceUnitVal = (PriceVal * SquareVal).toFixed(2);
+        PriceUnit.val(PriceUnitVal);
+        return;
+      } else {
+        PriceUnit.val('');
+      };
+  
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceUnitVal, 'number-dot')) {
+        PriceVal = (PriceUnitVal * SquareVal).toFixed(2);
+        Price.val(PriceVal);
+      } else {
+        Price.val('');
+      };
+    })
+  },
+  // 房屋出租 - 修改租价，计算租单价
+  onChangeRentPriceUnit() {
+    let Square        = $('#Square'),
+        Price         = $('#RentPrice'),
+        PriceUnit     = $('#RentPriceUnit'),
+        SquareVal     = '',
+        PriceVal      = '',
+        PriceUnitVal  = '';
+
+    Price.on('input propertychange', function () {
+      SquareVal = Square.val();
+      PriceVal = Price.val();
+
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceVal, 'number-dot')) {
+        PriceUnitVal = (PriceVal / SquareVal).toFixed(2);
+        PriceUnit.val(PriceUnitVal);
+      } else {
+        PriceUnit.val('');
+      }
+    })
+  },
+  // 房屋出租 - 修改租单价，计算租价
+  onChangeRentPrice() {
+    let Square        = $('#Square'),
+        Price         = $('#RentPrice'),
+        PriceUnit     = $('#RentPriceUnit'),
+        SquareVal     = '',
+        PriceVal      = '',
+        PriceUnitVal  = '';
+
+    PriceUnit.on('input propertychange', function () {
+      SquareVal = Square.val();
+      PriceUnitVal = PriceUnit.val();
+
+      if (_fgj.validate(SquareVal, 'number-dot') && _fgj.validate(PriceUnitVal, 'number-dot')) {
+        PriceVal = (PriceUnitVal * SquareVal).toFixed(2);
+        Price.val(PriceVal);
+      } else {
+        Price.val('');
+      }
+    })
+  },
+  // 图片切换
+  uploadBoxTab() {
+    let btn = $('.js_upload_tab .btn'),
+        box = $('.js_upload_box');
+
+    btn.each(function(index, item) {
+      $(item).on('click', function () {
+        btn.eq(index).addClass('btn-primary').siblings().removeClass('btn-primary');
+        btn.remove('btn-primary').eq(index).addClass('btn-primary');
+        box.addClass('hide').eq(index).removeClass('hide');
+      })
+    })
+  },
+  // 地址搜索
+  AddressSearch() {
+    let _this   = this,
+        time    = null,
+        input   = $('#Address'),
+        search  = $('.js_address_search');
+        
+    input.on('input propertychange', function () {
+      if (time) {
+        clearTimeout(time)
+      };
+      time = setTimeout(() => {
+        console.log($(this).val())
+        search.show();
+      }, 300);
+    });
+
+    input.on('focus', function () {
+      search.show();
+    });
+    input.on('blur', function () {
+      search.hide();
+    });
+
+    search.find('.a-list').on('click', function () {
+      console.log($(this).data('value'))
+      search.hide();
+    });
+  },
+  // 表单提交，下面的代码写的太糟糕了，但是也没空优化
   onSubmit() {
     let _this   = this,
         obj     = {},
-        Tag     = '';
+        Tag     = '',
+        verify  = null;
 
     $('#submit .btn').on('click', function () {
       // 判断是否登陆
@@ -508,7 +664,7 @@ let publish = {
         RentPriceUnit   : $('#RentPriceUnit').val(),  // 租单价 | 出租
         MtgPrice        : $('#MtgPrice').val(),  // 物业费 | 出租
         TransferPrice   : $('#TransferPrice').val(),  // 转让费 | 出租
-        typeHouse       : $('input[name="typeHouse"]').val(), // 租房类型 | 出租
+        RentType        : $('input[name="RentType"]').val(), // 租房类型 | 出租
       };
       
       // 获取Tag
@@ -520,7 +676,6 @@ let publish = {
       // 判断是否上传了图片，如果没有要去掉临时的关联ID
       let photo = _this.data;
       if (!photo.housePhoto.length && !photo.IndoorPhoto.length && !photo.estatePhoto.length) {
-        console.log('delete')
         delete _this.data.params.TempID
       };
       
@@ -536,15 +691,20 @@ let publish = {
         obj.PagePic = _this.data.coverPhoto[0].path.slice(1); // 追加封面图
       };
 
+      console.log(obj)
+      // 上传之前，验证数据
+      verify = _this.verifyData(obj);
+      if (!verify.result) {
+        _fgj.errorTips(verify.msg);
+        return
+      }
+
       let submit = Ladda.create(this);    // 上传中
       submit.start();
-
-      console.log(obj)
-
       // 主体数据上传
       AddProperty(obj, res => {
         submit.stop();
-        _fgj.successTips('上传成功', '', function () {
+        _fgj.successTips('发布成功', '', function () {
           window.location.reload();   // 清空数据太麻烦，干脆直接刷新，更省时间
         });
       }, 
@@ -567,6 +727,10 @@ let publish = {
       // 添加图片
       AddPhoto(obj, res => {
         arr[0].PhotoID = res.PhotoID;   // 保存ID，删除的时候有用
+        this.HintTop.show({
+          type: 'success',
+          text: '图片添加成功'
+        });
       }, 
       err => {
         _fgj.errorTips(err.msg);
@@ -580,15 +744,90 @@ let publish = {
       PhotoID
     }, 
     res => {
-      this.HintTop.show({
-        type: 'success',
-        text: '图片删除成功'
-      })
     }, 
     err => {
       _fgj.errorTips(err.msg);
     })
-  }
+  },
+  // 验证要上传的数据
+  verifyData(data) {
+    let res = {
+      result: false,
+      msg: '错误提示',
+      desc: '附加说明'
+    };
+    if (!data.PagePic) {
+      res.msg = '请上传封面图'
+      return res
+    };
+    if (!$.trim(data.PropertyTitle)) {
+      res.msg = '请输入房源标题'
+      return res
+    };
+    if (!$.trim(data.DistrictID)) {
+      res.msg = '请选择区域'
+      return res
+    };
+    if (!$.trim(data.Address)) {
+      res.msg = '请输入地址'
+      return res
+    };
+    if (!$.trim(data.CountF)) {
+      res.msg = '请选择几室'
+      return res
+    };
+    if (!$.trim(data.CountT)) {
+      res.msg = '请选择几厅'
+      return res
+    };
+    if (!$.trim(data.CountW)) {
+      res.msg = '请选择几卫'
+      return res
+    };
+    if (!$.trim(data.Square)) {
+      res.msg = '请输入面积'
+      return res
+    };
+    if (!$.trim(data.Price)) {
+      res.msg = '请输入总价'
+      return res
+    };
+    if (!$.trim(data.PriceUnit)) {
+      res.msg = '请输入单价'
+      return res
+    };
+    if (!$.trim(data.RentPrice)) {
+      res.msg = '请输入租价'
+      return res
+    };
+    if (!$.trim(data.RentPriceUnit)) {
+      res.msg = '请输入租单价'
+      return res
+    };
+    if (!$.trim(data.TransferPrice)) {
+      res.msg = '请输入转让费'
+      return res
+    };
+    if (!$.trim(data.Floor)) {
+      res.msg = '请选择所在楼层'
+      return res
+    };
+    if (!$.trim(data.FloorAll)) {
+      res.msg = '请输入总楼层'
+      return res
+    };
+    if (!$.trim(data.PropertyUsage)) {
+      res.msg = '请选择类型'
+      return res
+    };
+    if (!$.trim(data.PropertyType)) {
+      res.msg = '请输入物业类别'
+      return res
+    };
+
+    res.result = true;
+    return res;
+  },
 };
 
 $(function () {

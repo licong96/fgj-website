@@ -10,8 +10,8 @@
   <!-- 头部导航 -->
   <%= require('html-loader!components/header-nav/index.html') %>
   
+  <input type="password" class="input-puppet" />
   <section class="container main" id="main">
-    <input type="password" class="input-puppet" />
     <form>
       <section class="form-group row">
         <label class="col-sm-2 col-form-label">类型</label>
@@ -248,9 +248,11 @@
     </div>
   </section>
 
+  <!-- 地图容器 -->
+  <section class="map-wrap js_map_wrap"></section>
+
   <%= require('html-loader!components/footer/index.html') %>
-  <script src="https://licong96.github.io/js/URI.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=NxlUGKjED1ua1mUGLc1xRCLQ"></script>
 </body>
 
 </html>

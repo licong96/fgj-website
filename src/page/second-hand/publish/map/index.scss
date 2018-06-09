@@ -1,0 +1,21 @@
+
+// 地图搜索内容
+.map-server {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 99;
+  padding: 4px 15px;
+  width: 100%;
+  .map-box {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px;
+    box-shadow: 0 3px 10px 0px rgba(0, 0, 0, 0.4);
+    max-height: 400px;
+    background-color: #fff;
+  }
+  .map-box > div {
+    border: none !important;
+  }
+}

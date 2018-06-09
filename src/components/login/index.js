@@ -38,7 +38,7 @@ export default class Login {
       if (!value) {
         typeof option.cancel === 'function' && option.cancel()
       }
-      console.log(value)
+      // console.log(value)
     });
 
     // 渲染之后，再绑定事件
@@ -106,12 +106,12 @@ export default class Login {
     if ( !_fgj.validate(data.Tel, 'phone') ) {
       res.msg = '手机号有误'
       return res;
-    }
+    };
     // 验证密码
     if ( !_fgj.validate(data.PassWord, 'require') || data.PassWord.length < 6 ) {
       res.msg = '密码有误'
       return res;
-    }
+    };
 
     res.result = true;    // 验证成功后改为true
     return res;
