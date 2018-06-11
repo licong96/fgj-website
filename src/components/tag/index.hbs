@@ -1,4 +1,6 @@
 
 {{#each tag}}
+  {{#if @this}}
   <span class="tag tag-{{@index}}">{{@this}}</span>
+  {{/if}}
 {{/each}}

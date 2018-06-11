@@ -80,8 +80,7 @@ export default class Login {
       if (verify.result) {
         $alert.addClass('hide');
         // 发送请求
-        MobileLogin(obj, 
-        res => {
+        MobileLogin(obj, res => {
           // 登陆成功
           swal.close();
           typeof this.option.success === 'function' && this.option.success();

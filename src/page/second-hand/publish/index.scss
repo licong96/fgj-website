@@ -93,6 +93,7 @@ body {
 }
 // 图片裁切容器
 .cropper-wrap {
+  overflow: auto;
   display: none;
   position: fixed;
   top: 0;
@@ -107,10 +108,12 @@ body {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 70%;
-    height: 80%;
+    top: 50%;
+    left: 50%;
+    margin-top: -430px;
+    margin-left: -500px;
+    width: 1000px;
+    height: 860px;
     z-index: 2;
     border-radius: 6px;
     padding: 20px;

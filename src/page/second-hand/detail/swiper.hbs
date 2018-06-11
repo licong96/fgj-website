@@ -1,0 +1,21 @@
+<div class="swiper-container gallery-top">
+  <div class="swiper-wrapper">
+    {{#each list}}
+    <div class="swiper-slide" style="background-image:url({{path}})"></div>
+    {{/each}}
+  </div>
+  <!-- Add Arrows -->
+  <div class="swiper-button-next swiper-button-white swiper-btn-arrow"></div>
+  <div class="swiper-button-prev swiper-button-white swiper-btn-arrow"></div>
+  <!-- pagination -->
+  <div class="swiper-pagination"></div>
+</div>
+<div class="swiper-container gallery-thumbs">
+  <div class="swiper-wrapper">
+    {{#each list}}
+    <div class="swiper-slide" style="background-image:url({{smallpath}})"></div>
+    {{/each}}
+  </div>
+  <div class="swiper-button-next swiper-button-white next-small"></div>
+  <div class="swiper-button-prev swiper-button-white prev-small"></div>
+</div>

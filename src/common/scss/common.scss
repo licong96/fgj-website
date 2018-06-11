@@ -89,14 +89,9 @@ a.no-decoration {
 .min-h-100 {
   min-height: 100px;
 }
-.min-h-200 {
-  min-height: 200px;
-}
-.min-h-300 {
-  min-height: 300px;
-}
-.min-h-400 {
-  min-height: 400px;
+// 隐藏百度地图LOGO
+.anchorBL {
+  display:none;
 }
 // 添加一个空的input来防止浏览器自动填充
 .input-puppet {

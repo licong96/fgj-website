@@ -28,7 +28,9 @@
         <!-- 标签 -->
         <div class="tag-wrap">
           {{#each tag}}
+            {{#if @this}}
             <span class="tag tag-{{@index}}">{{@this}}</span>
+            {{/if}}
           {{/each}}
         </div>
       </div>

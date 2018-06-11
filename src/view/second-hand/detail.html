@@ -36,34 +36,7 @@
   <section class="container">
     <div class="row">
       <!-- 轮播图 -->
-      <div class="swiper-wrap col-md-8">
-        <div class="swiper-container gallery-top">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-          </div>
-          <!-- Add Arrows -->
-          <div class="swiper-button-next swiper-button-white swiper-btn-arrow"></div>
-          <div class="swiper-button-prev swiper-button-white swiper-btn-arrow"></div>
-          <!-- pagination -->
-          <div class="swiper-pagination"></div>
-        </div>
-        <div class="swiper-container gallery-thumbs">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-            <div class="swiper-slide" style="background-image:url(https://image.xiaozhustatic1.com/00,800,533/11,0,2,11159,1800,1200,65457215.jpg)"></div>
-          </div>
-          <div class="swiper-button-next swiper-button-white next-small"></div>
-          <div class="swiper-button-prev swiper-button-white prev-small"></div>
-        </div>
+      <div class="swiper-wrap col-md-8 js_swiper_wrap">
       </div>
       <!-- 主要信息 -->
       <div class="main-info col-md-4 js_main_info"></div>
@@ -78,16 +51,16 @@
     
   </section>
   <!-- 猜你喜欢 -->
-  <section class="container">
+  <section class="container js_like_wrap hide">
     <div class="title-info">
       <h3 class="t-title">猜你喜欢</h3>
     </div>
-    <div class="row you-like js_you_line"></div>
+    <div class="row you-like js_you_like"></div>
   </section>
 
   <%= require('html-loader!components/footer/index.html') %>
   <script src="https://licong96.github.io/js/swiper-4.2.2.min.js"></script>
-  <script src="http://api.map.baidu.com/api?v=3.0&ak=NxlUGKjED1ua1mUGLc1xRCLQ"></script>
+  <script src="http://api.map.baidu.com/api?v=2.0&ak=NxlUGKjED1ua1mUGLc1xRCLQ"></script>
 </body>
 
 </html>

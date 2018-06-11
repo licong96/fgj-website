@@ -192,6 +192,7 @@
 }
 // 选中的条件
 .pitch {
+  user-select: none;
   .clear {
     cursor: pointer;
   }

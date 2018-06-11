@@ -18,8 +18,9 @@ export default class Screen {
   init(option) {
     this.option = $.extend({}, option);
 
-    this.renderCom(1);   // 渲染主体结构
+    this.renderCom();   // 渲染主体结构
     this.bindEvent();   // 绑定事件
+    this.renderPitch();    // 渲染选中的筛选条件
   }
 
   // 绑定事件
@@ -28,7 +29,7 @@ export default class Screen {
   }
 
   // 渲染主体结构
-  renderCom(index) {
+  renderCom() {
     let option = this.option,
         html   = _fgj.handlebars(tempIndex, {});
 
@@ -76,7 +77,7 @@ export default class Screen {
   }
 
   // 其他筛选功能
-  else(data, el) {
+  elses(data, el) {
     let element = $('#' + el),
         option  = this.option,
         html    = '';
@@ -109,7 +110,6 @@ export default class Screen {
       params.page = 1;    // 页数还原成 1
       typeof option.callParams === 'function' && option.callParams(params); // 点击筛选后改变参数的回调
 
-      console.log(params)
       _this.renderPitch();    // 渲染选中的筛选条件
     })
   }
@@ -202,13 +202,12 @@ export default class Screen {
         pitch     = this.el.pitch,        // 父容器
         pitchCon  = this.el.pitchCon;    // 内容子容器
         
-
+console.log('params', params)
     // 如果没有选中的筛选条件，就隐藏容器
     if (Object.keys(params).length <= 2) {
       pitch.hide();
       return
     };
-
     let html = '';
     for (let key in params) {
       // 当前页数page就不显示在选中的条件里了，并且值不能为空
@@ -222,6 +221,7 @@ export default class Screen {
                   </div>`;
       }
     };
+    console.log('params', params)
     pitchCon.html(html);
     pitch.show();
     this.onRemovePitch();     // 绑定事件，删除选中的筛选条件

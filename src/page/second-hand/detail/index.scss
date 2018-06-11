@@ -122,7 +122,7 @@
         white-space: nowrap;
       }
       .desc {
-        font-size: 22px;
+        font-size: 20px;
         color: #333;
       }
     }
@@ -176,6 +176,7 @@
 // 基本信息
 .title-info {
   border-bottom: 1px solid $color-border-1;
+  user-select: none;
   .t-title {
     display: inline-block;
     margin: 0;
@@ -187,6 +188,7 @@
   .line-comment {
     padding-left: 100px;
     border-bottom: none;
+    cursor: pointer;
   }
 }
 // 基本信息

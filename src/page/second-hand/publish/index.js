@@ -11,10 +11,11 @@ import HintTop from 'components/hint-top/index.js';
 import ImageUpload from './image-upload/index.js';
 import BMap from './map/index.js';
 
-import { GetDistrict, GetDictionary, FileUpLoad } from 'api/public.js';
+import { GetDistrict, GetDictionary, FileUpLoad, matchingEstate } from 'api/public.js';
 import { AddPhoto, DelPhoto, AddProperty } from 'api/second-hand/publish.js';
 
 let tempIndex = require('./index.hbs');
+let tempEmpty = require('components/empty/empty.hbs');
 
 let publish = {
   el: {
@@ -217,7 +218,8 @@ let publish = {
           html = '<option value="" selected>请选择区域</option>';
 
       for (let i = 0, length = data.length; i < length; i++) {
-        html += `<option value="${data[i]._districtname}">${data[i]._districtname}</option>`
+        let _districtid = $.trim(data[i]._districtid);
+        html += `<option value="${_districtid}">${data[i]._districtname}</option>`
       };
       
       $('#DistrictID').html(html);
@@ -287,6 +289,7 @@ let publish = {
     el.cancelCropBtn.on('click', () => {
       el.cropperWrap.hide();
       el.cancelCropBtn.unbind('click');
+      el.confirmCropBtn.unbind('click');    // 注意，每次调用都会再次绑定事件，这里要解绑事件
     });
   },
   // 封面图上传
@@ -592,28 +595,59 @@ let publish = {
     let _this   = this,
         time    = null,
         input   = $('#Address'),
-        search  = $('.js_address_search');
+        search  = $('.js_address_search'),
+        Address = $('#Address'),
+        $this   = null,
+        html    = '',
+        dayData = '';   // 临时存储，用来验证是否选了地址
         
     input.on('input propertychange', function () {
       if (time) {
         clearTimeout(time)
       };
       time = setTimeout(() => {
-        console.log($(this).val())
+        matchingEstate({
+          likestr: $(this).val(),
+          num: 8
+        }, 
+        res => {
+          html = '';
+          for (let i = 0, length = res.data.length; i < length; i++) {
+            html += `<li class="a-list" data-id="${res.data[i]._estateid}" 
+                                        data-lat="${res.data[i]._lat}"
+                                        data-lng="${res.data[i]._lng}">${res.data[i]._estatename}</li>`;
+          };
+          search.html(html);
+        }, 
+        err => {
+          search.html(tempEmpty)
+        });
         search.show();
       }, 300);
+    });
+
+    $(document).on('click', '.js_address_search .a-list', function () {
+      $this = $(this);
+      _this.data.params = $.extend({}, _this.data.params, {
+        EstateID: $this.data('id'),
+        Lat: $this.data('lat'),
+        Lng: $this.data('lng')
+      });
+      Address.val($this.html());
+      dayData = $this.html();
     });
 
     input.on('focus', function () {
       search.show();
     });
     input.on('blur', function () {
-      search.hide();
-    });
-
-    search.find('.a-list').on('click', function () {
-      console.log($(this).data('value'))
-      search.hide();
+      setTimeout(() => {
+        // 只能选一个，不能手动输入
+        if (dayData !== Address.val()) {
+          Address.val('');
+        };
+        search.hide();
+      }, 200);
     });
   },
   // 表单提交，下面的代码写的太糟糕了，但是也没空优化
@@ -621,7 +655,8 @@ let publish = {
     let _this   = this,
         obj     = {},
         Tag     = '',
-        verify  = null;
+        verify  = null,
+        onOff   = false;
 
     $('#submit .btn').on('click', function () {
       // 判断是否登陆
@@ -698,17 +733,23 @@ let publish = {
         _fgj.errorTips(verify.msg);
         return
       }
-
+      // 禁止重复上传
+      if (onOff) {
+        return
+      };
+      onOff = true;
       let submit = Ladda.create(this);    // 上传中
       submit.start();
       // 主体数据上传
       AddProperty(obj, res => {
+        onOff = false;
         submit.stop();
         _fgj.successTips('发布成功', '', function () {
           window.location.reload();   // 清空数据太麻烦，干脆直接刷新，更省时间
         });
       }, 
       err => {
+        onOff = false;
         _fjg.errorTips(err.msg);
       });
     })
@@ -788,26 +829,31 @@ let publish = {
       res.msg = '请输入面积'
       return res
     };
-    if (!$.trim(data.Price)) {
-      res.msg = '请输入总价'
-      return res
-    };
-    if (!$.trim(data.PriceUnit)) {
-      res.msg = '请输入单价'
-      return res
-    };
-    if (!$.trim(data.RentPrice)) {
-      res.msg = '请输入租价'
-      return res
-    };
-    if (!$.trim(data.RentPriceUnit)) {
-      res.msg = '请输入租单价'
-      return res
-    };
-    if (!$.trim(data.TransferPrice)) {
-      res.msg = '请输入转让费'
-      return res
-    };
+    // 出租和出售的验证不一样
+    if (this.data.params.Trade === '出售') { 
+      if (!$.trim(data.Price)) {
+        res.msg = '请输入总价'
+        return res
+      };
+      if (!$.trim(data.PriceUnit)) {
+        res.msg = '请输入单价'
+        return res
+      };
+    } 
+    else {
+      if (!$.trim(data.RentPrice)) {
+        res.msg = '请输入租价'
+        return res
+      };
+      if (!$.trim(data.RentPriceUnit)) {
+        res.msg = '请输入租单价'
+        return res
+      };
+      if (!$.trim(data.TransferPrice)) {
+        res.msg = '请输入转让费'
+        return res
+      };
+    }
     if (!$.trim(data.Floor)) {
       res.msg = '请选择所在楼层'
       return res

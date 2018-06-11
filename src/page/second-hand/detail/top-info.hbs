@@ -1,3 +1,10 @@
 {{!-- 顶部信息 --}}
 <h2 class="title">{{_propertytitle}}</h2>
 <p class="location">{{_address}}</p>
+<div class="tag-wrap">
+  {{#each tag}}
+    {{#if @this}}
+    <span class="tag tag-{{@index}}">{{@this}}</span>
+    {{/if}}
+  {{/each}}
+</div>

@@ -33,6 +33,7 @@ let list = {
     this.bindEvent();
   },
   onLoad() {
+    this.getParams();   // 获取页面参数
     this.GetPageList();   // 获取列表数据
     this.initScreen();    // 初始化筛选
   },
@@ -41,6 +42,11 @@ let list = {
     this.initSearch();    // 搜索  
     this.initSort();    // 排序
     this.onSwitcher();    // 二手房买卖和租赁的切换
+  },
+  // 获取页面参数
+  getParams() {
+    let data = this.data;
+    data.params = $.extend({}, data.params, data.uri.query(true)); // 整合页面参数
   },
   // 获取列表数据
   GetPageList() {
@@ -95,7 +101,6 @@ let list = {
       params = _this.data.params;
       for (let key in params) {
         if (key && key !== 'page' && key !== 'Trade') {
-          console.log(key)
           $('#' + key).find('.l-li').eq(0).addClass('active').siblings().removeClass('active')
         }
       }
@@ -155,7 +160,7 @@ let list = {
     }, 
     res => {
       if (type === 'else') {  // 其他筛选是select所以不太一样，
-        this.Screen.else(res.data, DictionaryNo);
+        this.Screen.elses(res.data, DictionaryNo);
       } 
       else {
         this.Screen.screenFunction(res.data, DictionaryNo, '_dictionaryvalue');
@@ -201,6 +206,7 @@ let list = {
   renderPaging(pagecount) {
     let params  = this.data.params,
         _this   = this;
+
     this.Paging ? '' : this.Paging = new Paging();
 
     this.Paging.init({
@@ -214,7 +220,7 @@ let list = {
         params.page = page;
         _this.setUrlParams();  // 修改url地址参数
         _this.GetPageList();  // 获取数据
-        _this.el.moveTo.move(_this.el.trigger); // 回到顶部
+        _this.el.moveTo.move(_this.el.trigger); // 回到目标位置
       }
     });
   },
@@ -228,7 +234,6 @@ let list = {
         params = this.data.params,
         path = new URI(uri.pathname());
 
-    console.log('setUrlParams', params);
     path.query(params);
     history.pushState(null, document.title, path.toString());   // 修改url地址参数
   },

@@ -116,7 +116,9 @@ var estateList = {
   // 获取楼盘数据
   GetListMore() {
     GetListMore({
-      num: 4
+      num: 4,
+      IsTop: 1,
+      IsOnline: 1
     }, res => {
       // console.log(res)
       let data = res.data,

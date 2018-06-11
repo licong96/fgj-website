@@ -26,11 +26,21 @@ export default class Search {
   bindEvent() {
     let option = this.option,
         $input = option.box.find('.js_search_val'),
+        time   = null,
         val    = '';
 
     option.box.find('.js_search_btn').on('click', function () {
-      val = $.trim($input.val())
+      val = $.trim($input.val());
       typeof option.confirm === 'function' && option.confirm(val);
+    });
+    $input.on('input propertychange', function () {
+      val = $.trim($input.val())
+      if (time) {
+        clearTimeout(time)
+      }
+      time = setTimeout(() => {
+        typeof option.confirm === 'function' && option.confirm(val);
+      }, 500);
     });
 
     // 回车搜索
