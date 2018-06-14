@@ -1,0 +1,29 @@
+@import "../../../common/scss/mixin.scss";
+
+body {
+  background-color: #f2f2f2;
+}
+
+.main {
+  margin-top: 60px;
+}
+
+// 右内容
+.content {
+  margin-left: 20px;
+  padding-bottom: 40px;
+  min-height: 500px;
+  background-color: #fff;
+  .nav {
+    border-bottom: 2px solid $color-primary;
+    .btn {
+      margin-bottom: 0;
+      padding: .5em 1.4em;
+      font-size: 22px;
+      &.active {
+        color: #fff;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

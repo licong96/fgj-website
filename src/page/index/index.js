@@ -1,10 +1,10 @@
-import 'common/js/commonStyle.js';
+import 'common/js/common.js';
 import 'components/footer/index.js'
 import './index.scss';
 
 import _fgj from 'util/fgj.js';
 import HeaderNav from 'components/header-nav/index.js';
-import 'common/js/jquery.waypoints.js';
+import 'util/jquery.waypoints.js';
 
 import { GetListMore } from 'api/estate/estate-list.js';
 import { GetListMoreMessage } from 'api/message/message-home.js';
@@ -145,14 +145,16 @@ var home = {
       RegDate: 'DESC'
     },
     res => {
+      console.log(res.data)
       let data = res.data;
-      // console.log(data)
+      data.forEach(item => {
+        item.shortcontent = item._shortcontent.substring(0, 60) + '...';
+      });
       var html = _fgj.handlebars(tempHotMessage, {
         left: data[0],
         list: data.splice(1)
       });
       $('#hotMessage').html(html);
-      this.initSwiper();
     },
     err => {
       $('#hotMessage').html(tempEmpty);
@@ -163,7 +165,7 @@ var home = {
     var swiper = new Swiper('.swiper-container', {
       // spaceBetween: 30,
       // loop: true,
-      effect: 'cube',
+      effect: 'fade',
       // effect: 'fade',
       fadeEffect: {
         crossFade: true,
@@ -257,11 +259,3 @@ var home = {
 $(function () {
   home.init()
 });
-
-
-
-// import { InquiryTag } from 'service/api'
-
-// InquiryTag().then(res => {
-//   console.log(res)
-// })

@@ -1,0 +1,27 @@
+@import "../../common/scss/mixin";
+
+// 左导航
+.nav-tabs {
+  padding-right: 0;
+  background-color: #fff;
+  .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 1em .8em;
+    border-bottom: 1px solid $color-border-1;
+    font-size: 18px;
+    color: #333;
+    &.active {
+      border-left: 2px solid $color-primary;
+      border-bottom-color: $color-border-1;
+      color: $color-primary;
+    }
+    &:hover {
+      background-color: $color-hover;
+    }
+    .icon {
+      margin-right: 6px;
+      font-size: 22px;
+    }
+  }
+}

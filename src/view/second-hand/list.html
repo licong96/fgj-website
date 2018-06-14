@@ -11,21 +11,25 @@
   <%= require('html-loader!components/header-nav/index.html') %>
 
   <!-- 搜索和发布按钮 -->
-  <section class="container sea-end" id="handListScreen">
-    <div class="js_search"></div>
-    <div class="end-btn">
-      <button type="button" class="btn btn-primary btn-lg">免费发布</button>
+  <section class="container" id="handListScreen">
+    <div class="row sea-end">
+      <div class="js_search"></div>
+      <div class="end-btn">
+        <a href="./publish.html" class="btn btn-raised btn-primary btn-lg" target="_blank">免费发布</a>
+      </div>
     </div>
   </section>
   <!-- 筛选 -->
   <section class="container screen-wrap">
-    <!-- 类型切换 -->
-    <div class="switch" id="navSwitch">
-      <span class="tab active" data-index="0">二手房买卖</span>
-      <span class="tab" data-index="1">二手房租赁</span>
-    </div>
-    <!-- 筛选条件，有二手房买卖和二手房租赁 -->
-    <div class="location js_screen"></div>
+    <dov class="row">
+      <!-- 类型切换 -->
+      <div class="switch" id="navSwitch">
+        <span class="tab active" data-index="0">二手房买卖</span>
+        <span class="tab" data-index="1">二手房租赁</span>
+      </div>
+      <!-- 筛选条件，有二手房买卖和二手房租赁 -->
+      <div class="location js_screen"></div>
+    </dov>
   </section>
   <!-- 排序 -->
   <div class="container sort js_sort">
@@ -49,7 +53,7 @@
   <section class="container js_paging"></section>
 
   <%= require('html-loader!components/footer/index.html') %>
-  <script src="https://licong96.github.io/js/URI.js"></script>
+  <!-- <script src="https://licong96.github.io/js/URI.js"></script> -->
 </body>
 
 </html>

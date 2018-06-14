@@ -76,14 +76,19 @@ export default class Screen {
     });
   }
 
-  // 其他筛选功能
+  // 其他筛选功能，专用于下拉
   elses(data, el) {
     let element = $('#' + el),
-        option  = this.option,
+        params  = this.option.params,
         html    = '';
 
     for (let i = 0, length = data.length; i < length; i++) {
-      html += `<option value="${data[i]._dictionaryvalue}">${data[i]._dictionaryvalue}</option>`
+      if (data[i]._dictionaryvalue === params[el]) {
+        html += `<option value="${data[i]._dictionaryvalue}" selected>${data[i]._dictionaryvalue}</option>`
+      }
+      else {
+        html += `<option value="${data[i]._dictionaryvalue}">${data[i]._dictionaryvalue}</option>`
+      }
     };
     element.append(html);
     this.onChangeOption(el);    // 添加事件
@@ -168,7 +173,7 @@ export default class Screen {
 
       // 如果选中的是空，也就是`不限`，就去掉
       if (!!value) {
-        obj[el] = value
+        obj[el] = value;
         Object.assign(params, obj);
       } else {
         delete params[el];
@@ -195,14 +200,13 @@ export default class Screen {
   // 选中的筛选条件
   renderPitch(option) {
     if (option) {
-      this.option.params = option
+      this.option.params = option;
     };
 
     let params    = this.option.params,
         pitch     = this.el.pitch,        // 父容器
         pitchCon  = this.el.pitchCon;    // 内容子容器
         
-console.log('params', params)
     // 如果没有选中的筛选条件，就隐藏容器
     if (Object.keys(params).length <= 2) {
       pitch.hide();
@@ -221,7 +225,7 @@ console.log('params', params)
                   </div>`;
       }
     };
-    console.log('params', params)
+    
     pitchCon.html(html);
     pitch.show();
     this.onRemovePitch();     // 绑定事件，删除选中的筛选条件
@@ -254,7 +258,7 @@ console.log('params', params)
         searchVal.val('');
       }
       // 如果是清除其他下拉筛选，值设置为''
-      else if (key === 'PropertyDecoration' || key === 'PropertyOwn' || key === 'PropertyUsage') {
+      else if (key === 'PropertyDecoration' || key === 'PropertyOwn' || key === 'PropertyUsage' || key === 'PropertyTag' || key === 'PropertyDirection' || key === 'Floor') {
         $('#'+ key).val('')
       }
       // 清除class

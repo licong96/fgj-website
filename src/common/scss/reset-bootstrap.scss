@@ -1,0 +1,11 @@
+// 重置bootstrap样式
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-bottom: none;
+  border-radius: .25rem;
+  padding: .5rem .75rem;
+}
+.custom-control-label {
+  line-height: 1.5;
+}

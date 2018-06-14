@@ -9,9 +9,8 @@
   padding-top: 20px;
   border-bottom: 1px solid $color-border-1;
   .logo {
-    width: 100px;
     .logo-img {
-      max-width: 80%;
+      max-width: 100%;
     }
   }
   .nav {
@@ -63,5 +62,33 @@
   &.active {
     z-index: 100;
     transform: translateY(0);
+  }
+}
+
+// 用户信息
+.user-link {
+  margin-left: 40px;
+  .user-port {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+    border: 1px solid $color-border-1;
+    width: 54px;
+    height: 54px;
+    cursor: pointer;
+    &:hover {
+      .port {
+        transform: scale(1.2);
+      }
+    }
+    .port {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: all .3s;
+    }
   }
 }

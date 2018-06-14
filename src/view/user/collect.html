@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+<body>
+  <!-- 头部 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+
+  <section class="container main">
+    <div class="row">
+      <!-- 左导航 -->
+      <div class="nav nav-tabs flex-column col-md-3" id="user-nav"></div>
+      <!-- 右内容 -->
+      <div class="col-md-9">
+        <div class="content">
+          <ul class="nav" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="btn rounded-0 active" data-toggle="tab" href="#tag-1">楼盘</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn rounded-0" data-toggle="tab" href="#tag-2">二手房</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn rounded-0" data-toggle="tab" href="#tag-3">资讯</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn rounded-0" data-toggle="tab" href="#tag-4">装修</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <section class="tab-pane fade show active" id="tag-1">
+              <ul class="sunny-wrap js_tab_1"></ul>
+              <!-- 分页 -->
+              <section class="js_paging_1"></section>
+            </section>
+            <section class="tab-pane fade" id="tag-2">
+              <ul class="sunny-wrap js_tab_2"></ul>
+              <!-- 分页 -->
+              <section class="js_paging_2"></section>
+            </section>
+            <section class="tab-pane fade" id="tag-3">
+              <ul class="sunny-wrap js_tab_3"></ul>
+              <!-- 分页 -->
+              <section class="js_paging_3"></section>
+            </section>
+            <section class="tab-pane fade" id="tag-4">
+              <ul class="img-wrap row js_tag_4">
+                <li class="list col-md-3">
+                  <img class="img" src="http://img.vipfgj.com/upfile/20170321/48A8F26E9ACF4432A5DA6AFC6D2546B7.jpg" alt="">
+                </li>
+              </ul>
+              <!-- 分页 -->
+              <section class="js_paging_4"></section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <%= require('html-loader!components/footer/index.html') %>
+</body>
+
+</html>

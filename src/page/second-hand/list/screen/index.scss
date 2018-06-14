@@ -10,7 +10,6 @@
     margin-left: auto;
     .form-control {
       width: 350px;
-      background-color: $color-gray-1;
       transition: all .3s;
       &:focus {
         box-shadow: none;
@@ -189,31 +188,34 @@
       margin-bottom: 14px;
     }
   }
-}
-// 选中的条件
-.pitch {
-  user-select: none;
-  .clear {
-    cursor: pointer;
-  }
-  .l-dd {
-    display: flex;
-    .box {
-      display: flex;
-      align-items: center;
-      margin-left: 20px;
-      float: left;
-      border-radius: 2px;
-      border: 1px dotted $color-primary;
-      padding: 0 6px;
-      height: 30px;
-      font-size: 14px;
-      color: $color-primary;
-      text-align: center;
-      line-height: 30px;
+  // 选中的条件
+  .pitch {
+    &.l-dl {
+      margin-top: 12px;
+    }
+    user-select: none;
+    .clear {
       cursor: pointer;
-      &:hover {
-        border-style: solid;
+    }
+    .l-dd {
+      display: flex;
+      .box {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        float: left;
+        border-radius: 2px;
+        border: 1px dotted $color-primary;
+        padding: 0 6px;
+        height: 30px;
+        font-size: 14px;
+        color: $color-primary;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        &:hover {
+          border-style: solid;
+        }
       }
     }
   }

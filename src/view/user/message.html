@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+<body>
+  <!-- 头部 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+
+  <section class="container main">
+    <div class="row">
+      <!-- 左导航 -->
+      <div class="nav nav-tabs flex-column col-md-3" id="user-nav"></div>
+      <!-- 右内容 -->
+      <div class="col-md-9">
+        <div class="content">
+          <ul class="nav" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="btn rounded-0 active" id="tab-unread" data-toggle="tab" href="#unread" role="tab" aria-controls="unread" aria-selected="true">未读消息</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn rounded-0" id="tab-read" data-toggle="tab" href="#read" role="tab" aria-controls="read" aria-selected="false">已读消息</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <section class="tab-pane fade show active" id="unread" role="tabpanel" aria-labelledby="tab-unread">
+              <!-- 未读消息 -->
+              <ul class="be-wrap js_unread_box"></ul>
+              <!-- 分页 -->
+              <section class="js_unread_paging"></section>
+            </section>
+            <section class="tab-pane fade" id="read" role="tabpanel" aria-labelledby="tab-read">
+              <!-- 已读消息 -->
+              <ul class="be-wrap js_read_box"></ul>
+              <!-- 分页 -->
+              <section class="js_read_paging"></section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <%= require('html-loader!components/footer/index.html') %>
+</body>
+
+</html>

@@ -24,10 +24,8 @@
   <!-- 区域找房 -->
   <div class="more-box">
     <ul class="m-ul clearfix js_district_name" id="DistrictName">
-      {{!-- <%= require('html-loader!components/loader-default/index.html') %> --}}
     </ul>
     <ul class="m-ul clearfix hide" id="SubwayStation">
-      {{!-- <%= require('html-loader!components/loader-default/index.html') %> --}}
     </ul>
   </div>
   <!-- 总价 | 二手房买卖 -->
@@ -60,7 +58,7 @@
     </dd>
   </dl>
   <!-- 租金 | 二手房租赁 -->
-  <dl class="clearfix l-dl js_lease hide">
+  <dl class="clearfix l-dl js_lease hide" id="RentPriceRang">
     <dt class="l-dt">租金</dt>
     <dd class="l-dd">
       <ul class="clearfix">
@@ -94,25 +92,25 @@
     <dd class="l-dd">
       <ul class="clearfix">
         <li class="l-li active" data-value="">
-          <a class="m-a" href="#">不限</a>
+          <span class="m-a">不限</span>
         </li>
-        <li class="l-li" data-value="一居">
-          <a class="m-a" href="#">一居</a>
+        <li class="l-li" data-value="1">
+          <span class="m-a">一居</span>
         </li>
-        <li class="l-li" data-value="二居">
-          <a class="m-a" href="#">二居</a>
+        <li class="l-li" data-value="2">
+          <span class="m-a">二居</span>
         </li>
-        <li class="l-li" data-value="三居">
-          <a class="m-a" href="#">三居</a>
+        <li class="l-li" data-value="3">
+          <span class="m-a">三居</span>
         </li>
-        <li class="l-li" data-value="四居">
-          <a class="m-a" href="#">四居</a>
+        <li class="l-li" data-value="4">
+          <span class="m-a">四居</span>
         </li>
-        <li class="l-li" data-value="五居">
-          <a class="m-a" href="#">五居</a>
+        <li class="l-li" data-value="5">
+          <span class="m-a">五居</span>
         </li>
-        <li class="l-li" data-value="五居以上">
-          <a class="m-a" href="#">五居以上</a>
+        <li class="l-li" data-value="5-9">
+          <span class="m-a">五居以上</span>
         </li>
       </ul>
     </dd>
@@ -123,83 +121,70 @@
     <dd class="l-dd">
       <ul class="clearfix">
         <li class="l-li active" data-value="">
-          <a class="m-a" href="#">不限</a>
+          <span class="m-a">不限</span>
         </li>
         <li class="l-li" data-value="0-50">
-          <a class="m-a" href="#">50m²以下</a>
+          <span class="m-a">50m²以下</span>
         </li>
         <li class="l-li" data-value="50-70">
-          <a class="m-a" href="#">50-70m²</a>
+          <span class="m-a">50-70m²</span>
         </li>
         <li class="l-li" data-value="70-90">
-          <a class="m-a" href="#">70-90m²</a>
+          <span class="m-a">70-90m²</span>
         </li>
         <li class="l-li" data-value="90-110">
-          <a class="m-a" href="#">90-110m²</a>
+          <span class="m-a">90-110m²</span>
         </li>
         <li class="l-li" data-value="110-150">
-          <a class="m-a" href="#">110-150m²</a>
+          <span class="m-a">110-150m²</span>
         </li>
         <li class="l-li" data-value="150-200">
-          <a class="m-a" href="#">150-200m²</a>
+          <span class="m-a">150-200m²</span>
         </li>
         <li class="l-li" data-value="200-300">
-          <a class="m-a" href="#">200-300m²</a>
+          <span class="m-a">200-300m²</span>
         </li>
         <li class="l-li" data-value="300-999">
-          <a class="m-a" href="#">300m²以上</a>
+          <span class="m-a">300m²以上</span>
         </li>
       </ul>
     </dd>
   </dl>
   <!-- 方式 | 二手房租赁 -->
-  <dl class="clearfix l-dl js_lease hide">
+  <dl class="clearfix l-dl js_lease hide" id="RentType">
     <dt class="l-dt">方式</dt>
     <dd class="l-dd">
       <ul class="clearfix">
-        <li class="l-li active">
-          <a class="m-a" href="#">不限</a>
+        <li class="l-li active" data-value="">
+          <span class="m-a">不限</span>
         </li>
-        <li class="l-li">
-          <a class="m-a" href="#">整租</a>
+        <li class="l-li" data-value="整租">
+          <span class="m-a">整租</span>
         </li>
-        <li class="l-li">
-          <a class="m-a" href="#">合租</a>
+        <li class="l-li" data-value="合租">
+          <span class="m-a">合租</span>
         </li>
       </ul>
     </dd>
   </dl>
   <!-- 其他条件 | 二手房买卖 -->
-  <dl class="clearfix l-dl js_deal else">
+  <dl class="clearfix l-dl">
     <dt class="l-dt check-dt">其他</dt>
     <dd class="l-dd">
       <ul class="clearfix">
         <li class="l-li">
-          <select class="custom-select">
-            <option selected>特色标签</option>
+          <select class="custom-select" id="PropertyTag">
+            <option value="" selected>特色标签</option>
           </select>
         </li>
         <li class="l-li">
-          <select class="custom-select">
-            <option value="">请选择房龄</option>
-            <option value="0">不限</option>
+          <select class="custom-select" id="PropertyDirection">
+            <option value="">请选择朝向</option>
           </select>
         </li>
         <li class="l-li">
-          <select class="custom-select" id="PropertyDecoration">
-            <option value="">请选择装修</option>
-          </select>
-        </li>
-        <li class="l-li">
-          <select class="custom-select">
+          <select class="custom-select" id="Floor">
             <option value="">请选择楼层</option>
-            <option value="0">不限</option>
-          </select>
-        </li>
-        <li class="l-li">
-          <select class="custom-select">
-            <option value="">请选择电梯</option>
-            <option value="0">不限</option>
           </select>
         </li>
         <li class="l-li">
@@ -216,7 +201,7 @@
     </dd>
   </dl>
   <!-- 其他条件 | 二手房租赁 -->
-  <dl class="clearfix l-dl js_lease hide else">
+  {{!-- <dl class="clearfix l-dl js_lease hide else">
     <dt class="l-dt check-dt">其他</dt>
     <dd class="l-dd">
       <ul class="clearfix">
@@ -227,11 +212,6 @@
           </select>
         </li>
         <li class="l-li">
-          <select class="custom-select" id="PropertyDirection">
-            <option value="">请选择朝向</option>
-          </select>
-        </li>
-        <li class="l-li">
           <select class="custom-select">
             <option value="">请选择房源</option>
             <option value="0">不限</option>
@@ -239,7 +219,7 @@
         </li>
       </ul>
     </dd>
-  </dl>
+  </dl> --}}
   <!-- 当前选中的筛选条件 -->
   <div class="clearfix l-dl pitch js_pitch hide">
     <div class="l-dt">

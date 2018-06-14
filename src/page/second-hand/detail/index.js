@@ -1,4 +1,4 @@
-import 'common/js/commonStyle.js';
+import 'common/js/common.js';
 import './index.scss';
 
 import MoveTo from 'moveto';
@@ -53,7 +53,6 @@ let detail = {
       PropertyID: this.data.PropertyID
     }, 
     res => {
-      console.log(res)
       this.filterData(res.data);    // 处理数据
       
       this.data.PropertyData = res.data;
@@ -70,6 +69,7 @@ let detail = {
       this.initNavCrumbs(); // 初始化导航屑
       this.initMap(); // 初始化地图
       this.onLookTel();   // 查看电话号码
+      this.renderComment();   // 添加锚点链接
 
       this.GetAboutProperty();  // 获取相关房源 | 猜你喜欢
     }, 
@@ -132,7 +132,7 @@ let detail = {
       },
       {
         name:  data._trade ==='出售'? '二手房买卖' : '二手房租赁',
-        link: './list.html'
+        link: data._trade ==='出售'? './list.html' : './list.html?Trade=出租'
       },
       {
         name: data._propertytitle
@@ -212,7 +212,7 @@ let detail = {
     var traffic = new BMap.TrafficLayer();        // 创建交通流量图层实例      
     map.addTileLayer(traffic);                    // 将图层添加到地图上
   },
-  // 渲染评论
+  // 评论锚点链接
   renderComment() {
     let box = $('.js_comment');
 
@@ -220,22 +220,6 @@ let detail = {
     $('.line-comment').on('click', () => {
       this.el.moveTo.move(box[0]);
     });
-
-    this.Comment || (this.Comment = new Comment());
-    this.Comment.init({
-      box: box
-    });
-
-    this.renderCommentList();   // 渲染评论列表数据
-  },
-  // 渲染评论列表数据
-  renderCommentList() {
-    this.Comment.renderListMsg({
-      box: $('.js_comment_list'),
-      data: [
-        {}, {}, {}
-      ]
-    })
   },
   // 获取相关房源 | 猜你喜欢
   GetAboutProperty() {
@@ -269,18 +253,27 @@ let detail = {
   },
   // 查看电话号码
   onLookTel() {
-    let _this = this;
+    let _this = this,
+        data  = this.data.PropertyData,
+        $btn  = $('.js_look_tel');
+
     this.Login = new Login();
     
-    $('.js_look_tel').on('click', () => {
-      this.Login.init({
-        success: function () {
-          _this.HintTop.show({
-            type: 'success',
-            text: '登陆成功！'
-          })
-        }
-      });
+    $btn.on('click', () => {
+
+      if (!_fgj.getCookie('CUserID')) {
+        this.Login.init({
+          success: function () {
+            _this.HintTop.show({
+              type: 'success',
+              text: '登陆成功！'
+            });
+            data._user._tel ? $btn.html(data.data._user._tel) : $btn.html('暂无电话');
+          }
+        });
+      } else {
+        data._user._tel ? $btn.html(data.data._user._tel) : $btn.html('暂无电话');
+      }
     });
   },
   // 初始化提示功能

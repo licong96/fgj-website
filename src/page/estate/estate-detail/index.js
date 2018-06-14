@@ -1,9 +1,9 @@
-import 'common/js/commonStyle.js';
+import 'common/js/common.js';
 import 'components/footer/index.js'
 import './index.scss';
 
 import MenuSpy from 'menuspy';
-import anchorScroll from 'common/js/anchor-scroll.js';
+import anchorScroll from 'util/anchor-scroll.js';
 import stickybits from 'stickybits';
 import _fgj from 'util/fgj.js';
 import HeaderNav from 'components/header-nav/index.js';

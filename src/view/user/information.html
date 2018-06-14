@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+<body>
+  <!-- 头部 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+
+  <section class="container main">
+    <div class="row">
+      <!-- 左导航 -->
+      <div class="nav nav-tabs flex-column col-md-3" id="user-nav">
+      </div>
+      <!-- 右内容 -->
+      <div class="col-md-9">
+        <div class="content">
+          <div class="title">
+            <button type="button" class="btn rounded-0">基本资料</button>
+          </div>
+          <section class="info">
+            <ul class="js_up_user_info">
+              <li class="list">
+                <span class="spring">头像</span>
+                <span class="summer">
+                  <img class="port" src="http://thirdwx.qlogo.cn/mmopen/vi_32/q0f8K5brcwhhWUOhbPibYK5HmRSbh4OzqN6Ldpn5nb0BibHO6ib1xQ7pJiaoranYnWibnCYH9aCdicic8WxvibQcvicEe0A/132" alt="">
+                </span>
+              </li>
+              <li class="list">
+                <span class="spring">用户名</span>
+                <span class="summer">黎聪</span>
+              </li>
+              <li class="list">
+                <span class="spring">性别</span>
+                <span class="summer">男</span>
+              </li>
+              <li class="list">
+                <span class="spring">手机号</span>
+                <span class="summer">13699531996</span>
+              </li>
+              <li class="list">
+                <span class="spring">生日</span>
+                <span class="summer">12-04</span>
+              </li>
+              <li class="list">
+                <span class="spring">地址</span>
+                <span class="summer">江西南昌</span>
+              </li>
+              <button class="btn btn-lg btn-primary btn-outline-primary" type="button">修改资料</button>
+            </ul>
+            <ul class="js_up_password">
+              <li class="dropdown-divider"></li>
+              <li class="list">
+                <span class="spring">密码</span>
+                <span class="summer">**********</span>
+                <button class="btn btn-lg btn-primary btn-outline-primary" type="button">修改密码</button>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <%= require('html-loader!components/footer/index.html') %>
+</body>
+
+</html>

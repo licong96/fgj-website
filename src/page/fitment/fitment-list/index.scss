@@ -121,19 +121,3 @@
     }
   }
 }
-
-// 分页
-.paging {
-  margin-top: 100px;
-  .pagination {
-    justify-content: center;
-    .page-item.active .page-link {
-      border-color: $color-primary;
-      color: #fff;
-      background-color: $color-primary;
-    }
-    .page-link {
-      color: $color-primary;
-    }
-  }
-}

@@ -1,4 +1,8 @@
 import './index.scss';
+import _fgj from 'util/fgj.js'; 
+
+import HintTop from 'components/hint-top/index.js';
+import Login from 'components/login/index.js';
 
 // 导航
 /**
@@ -27,7 +31,15 @@ export default class HeaderNav {
     setTimeout(() => {
       this.line();    // 添加下划线运动
       this.option.oLine.css({'opacity': 1});
-    }, 20)
+    }, 30);
+    
+    this.initLogin();   // 初始化登陆
+
+    this.bindEvent();
+  }
+
+  bindEvent() {
+    this.onLogin();
   }
 
   // 给当前导航添加样式
@@ -100,4 +112,32 @@ export default class HeaderNav {
     });
   }
 
+  // 初始化登陆
+  initLogin() {
+    this.Login = new Login();
+    if (_fgj.getCookie('CUserID')) {
+      $('.js_login_state').hide();
+    }
+  }
+  // 点击登陆
+  onLogin() {
+    let _this = this;
+    
+    this.HintTop ? '' : this.HintTop = new HintTop();
+
+    $('.js_login_btn').on('click', () => {
+      if (!_fgj.getCookie('CUserID')) {
+        this.Login.init({
+          success: function () {
+            _this.HintTop.show({
+              type: 'success',
+              text: '登陆成功！'
+            });
+            $('.js_login_state').hide();
+          }
+        });
+      }
+    });
+  }
+  
 };

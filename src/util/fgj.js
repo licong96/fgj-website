@@ -168,6 +168,7 @@ var _fgj = {
   // 图片线上地址
   photoPath() {
     return 'http://t.vipfgj.com';
+    // return '';
   }
 };
 

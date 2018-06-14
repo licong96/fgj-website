@@ -1,4 +1,4 @@
-import 'common/js/commonStyle.js';
+import 'common/js/common.js';
 import 'components/footer/index.js'
 import './index.scss';
 

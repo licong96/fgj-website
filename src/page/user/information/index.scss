@@ -1,0 +1,57 @@
+@import "../../../common/scss/mixin.scss";
+
+body {
+  background-color: #f2f2f2;
+}
+
+.main {
+  margin-top: 60px;
+}
+
+// 右内容
+.content {
+  margin-left: 20px;
+  min-height: 500px;
+  background-color: #fff;
+  .title {
+    border-bottom: 2px solid $color-primary;
+    .btn {
+      margin-bottom: 0;
+      padding: .5em 1.4em;
+      font-size: 22px;
+      color: #fff;
+      background-color: $color-primary;
+    }
+  }
+  .info {
+    padding: 64px 54px;
+    .list {
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      .spring {
+        min-width: 100px;
+        font-size: 16px;
+        color: $color-text-1;
+      }
+      .summer {
+        padding-left: 100px;
+      }
+      .port {
+        border: 1px solid $color-border-1;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .btn {
+      display: block;
+      margin-left: auto;
+      &:hover, 
+      &:focus {
+        color: #fff;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

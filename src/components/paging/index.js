@@ -78,7 +78,7 @@ export default class Paging {
       pageArr.push({
         text: i,
         value: i,
-        active: i == page? ' disabled active' : '',    // 这里用了两个等于号，不检查数据类型
+        active: i == page? 'active disabled' : '',    // 这里用了两个等于号，不检查数据类型
       });
     };
 
@@ -86,7 +86,7 @@ export default class Paging {
     pageArr.push({
       text: '下一页',
       value: option.next,
-      disabled: pagecount > page ? '' : ' disabled'
+      disabled: pagecount > page ? '' : 'disabled'
     });
 
     let html = _fgj.handlebars(templateIndex, {

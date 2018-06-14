@@ -68,10 +68,6 @@
 // 楼盘切换按钮
 .swiper-btns {
   margin-top: 30px;
-  .btn-primary:not(:disabled):not(.disabled).active {
-    background-color: $color-dark;
-    border-color: $color-dark;
-  }
 }
 .screen-list-con {
   padding-top: 30px;
@@ -88,7 +84,6 @@
     margin-left: auto;
     .form-control {
       width: 350px;
-      background-color: $color-gray-1;
       transition: all .3s;
       &:focus {
         box-shadow: none;
@@ -353,21 +348,6 @@
       font-size: 18px;
       font-weight: bold;
       color: #222;
-    }
-  }
-}
-// 分页
-.paging {
-  margin-top: 100px;
-  .pagination {
-    justify-content: center;
-    .page-item.active .page-link {
-      border-color: $color-primary;
-      color: #fff;
-      background-color: $color-primary;
-    }
-    .page-link {
-      color: $color-primary;
     }
   }
 }

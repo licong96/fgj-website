@@ -1,6 +1,7 @@
-import 'common/js/commonStyle.js';
+import 'common/js/common.js';
 import './index.scss';
 
+import URI from 'urijs';
 import MoveTo from 'moveto';
 import _fgj from 'util/fgj.js'; 
 import HeaderNav from 'components/header-nav/index.js';
@@ -27,6 +28,15 @@ let list = {
       page: 1,
       Trade: '出售',    // 出售和出租，对应二手房买卖和二手房租赁
     },
+    FloorData: [  // 楼层数据
+      {
+        _dictionaryvalue: '低层'
+      }, {
+        _dictionaryvalue: '中层'
+      }, {
+        _dictionaryvalue: '高层'
+      },
+    ]
   },
   init() {
     this.onLoad();
@@ -86,12 +96,13 @@ let list = {
   onSwitcher() {
     let $deal  = $('.js_deal'),   // 买卖
         $lease = $('.js_lease'),  // 租赁
+        $tab   = $('#navSwitch .tab'),
         index  = 0,
         params = this.data.params,
         $this  = null,
         _this  = this;
 
-    $('#navSwitch .tab').on('click', function() {
+    $tab.on('click', function() {
       $this = $(this);
 
       $this.addClass('active').siblings().removeClass('active');
@@ -103,7 +114,7 @@ let list = {
         if (key && key !== 'page' && key !== 'Trade') {
           $('#' + key).find('.l-li').eq(0).addClass('active').siblings().removeClass('active')
         }
-      }
+      };
 
       // 买卖
       if (index === 0) {
@@ -134,6 +145,13 @@ let list = {
         _this.Screen.renderPitch(_this.data.params);
       };
     });
+
+    // 根据类型自动切换切换
+    if (params.Trade === '出租') {
+      $tab.removeClass('active').eq(1).addClass('active');
+      $lease.removeClass('hide');
+      $deal.addClass('hide');
+    }
   },
   // 获取区域数据
   GetDistrict() {
@@ -147,6 +165,41 @@ let list = {
     err => {
       $('.DistrictName').html('暂时无信息')
     })
+  },
+  // 初始化筛选功能
+  initScreen() {
+    let _this = this;
+    this.Screen ? '' : this.Screen = new Screen();
+    this.Screen.init({
+      box: $('.js_screen'),
+      params: this.data.params,
+      callParams(params) {    // 修改参数后的回调
+        _this.data.params = params;
+        _this.GetPageList()     // 重新获取数据
+        _this.setUrlParams()    // 修改url地址参数
+      }
+    });
+
+    // 初始化地铁找房
+    this.Screen.onGetSubwayStation(() => {
+      this.GetDictionary('SubwayStation');  // 获取地铁数据
+    });
+    this.GetDistrict();   // 获取区域数据
+
+    this.GetDictionary('PropertyTag', 'else');  // 获取标签数据
+    this.GetDictionary('PropertyDecoration', 'else');  // 获取装修数据
+    this.GetDictionary('PropertyOwn', 'else');  // 获取产权年限数据
+    this.GetDictionary('PropertyUsage', 'else');  // 获取类型数据
+    this.GetDictionary('PropertyDirection', 'else');  // 获取朝向数据
+
+    // 无需获取数据，直接添加方法
+    this.Screen.screenAddMethods('PriceRang');  // 总价
+    this.Screen.screenAddMethods('CountF');   // 居室 | 几房
+    this.Screen.screenAddMethods('SquareRang');  // 面积
+    this.Screen.screenAddMethods('RentPriceRang');  // 租价
+    this.Screen.screenAddMethods('RentType');   // 租房方式
+    
+    this.Screen.elses(this.data.FloorData, 'Floor'); // 选择楼层
   },
   /**
    * 根据DictionaryNo字段获取对应筛选数据
@@ -169,38 +222,6 @@ let list = {
     err => {
       $('#' + DictionaryNo).html('暂时无信息')
     })
-  },
-  // 初始化筛选功能
-  initScreen() {
-    let _this = this;
-    this.Screen ? '' : this.Screen = new Screen();
-
-    this.Screen.init({
-      box: $('.js_screen'),
-      params: this.data.params,
-      callParams(params) {    // 修改参数后的回调
-        _this.data.params = params;
-        _this.GetPageList()     // 重新获取数据
-        _this.setUrlParams()    // 修改url地址参数
-      }
-    });
-
-    // 初始化地铁找房
-    this.Screen.onGetSubwayStation(() => {
-      this.GetDictionary('SubwayStation');  // 获取地铁数据
-    });
-    this.GetDistrict();   // 获取区域数据
-    this.GetDictionary('PropertyTag', 'else');  // 获取标签数据
-    this.GetDictionary('PropertyDecoration', 'else');  // 获取装修数据
-    this.GetDictionary('PropertyOwn', 'else');  // 获取产权年限数据
-    this.GetDictionary('PropertyUsage', 'else');  // 获取类型数据
-
-    // 总价，添加方法
-    this.Screen.screenAddMethods('PriceRang');
-    // 居室 | 几房
-    this.Screen.screenAddMethods('CountF');
-    // 面积
-    this.Screen.screenAddMethods('SquareRang');
   },
   // 根据数据渲染分页
   renderPaging(pagecount) {
@@ -320,5 +341,5 @@ let list = {
 };
 
 $(function () {
-  list.init()
+  list.init();
 });

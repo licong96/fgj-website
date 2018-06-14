@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%= require('html-loader!components/header-meta/index.html') %>
+    <title>
+      <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+<body>
+  <!-- 头部 -->
+  <%= require('html-loader!components/header-nav/index.html') %>
+
+  <section class="container main">
+    <div class="row">
+      <!-- 左导航 -->
+      <div class="nav nav-tabs flex-column col-md-3" id="user-nav"></div>
+      <!-- 右内容 -->
+      <div class="col-md-9">
+        <div class="content">
+          <div class="title">
+            <button type="button" class="btn rounded-0 active">回复及评论</button>
+          </div>
+          <div class="info">
+            <!-- 未读消息 -->
+            <ul class="be-wrap js_box"></ul>
+            <!-- 分页 -->
+            <section class="js_paging"></section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <%= require('html-loader!components/footer/index.html') %>
+</body>
+
+</html>

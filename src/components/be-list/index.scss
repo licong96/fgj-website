@@ -1,0 +1,44 @@
+@import "../../common/scss/mixin";
+
+.be-wrap {
+  .link {
+    display: block;
+    padding: 0 30px;
+    text-decoration: none;
+    &:hover {
+      background-color: $color-hover;
+    }
+    &:active {
+      background-color: #f5f5f5;
+    }
+  }
+  .list {
+    display: flex;
+    align-items: center;
+    padding: 16px 10px;
+    border-bottom: 1px solid $color-border-1;
+    .img {
+      border: 1px solid $color-border-1;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+    }
+    .text {
+      padding-left: 14px;
+      .user {
+        font-size: 16px;
+        color: #333;
+        .time {
+          padding-left: 10px;
+          font-size: 14px;
+          color: $color-text-1;
+        }
+      }
+      .desc {
+        padding-top: 6px;
+        font-size: 14px;
+        color: $color-text-1;
+      }
+    }
+  }
+}

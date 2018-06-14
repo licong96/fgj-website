@@ -1,6 +1,6 @@
 import './index.scss';
 import _fgj from 'util/fgj.js'
-import { MobileLogin } from 'api/user.js';
+import { MobileLogin, SendLoginValidate, MobileValidateSignOrLogin } from 'api/user.js';
 
 let templateIndex = require('./index.hbs');
 
@@ -24,7 +24,8 @@ export default class Login {
   // 绑定事件
   bindEvent() {
     this.onTab();
-    this.account();  //账号密码登陆
+    this.quickLogin();  // 手机号快捷登陆
+    this.account();  // 账号密码登陆
     this.btnClose();   // 关闭按钮
   }
 
@@ -59,6 +60,78 @@ export default class Login {
         }
       })
     })
+  }
+
+  // 手机号快捷登陆
+  quickLogin() {
+    let $iphone   = $('.js_quick_iphone'),
+        $code     = $('.js_quick_code'),
+        $getCode  = $('.js_quick_get_code'),
+        $submit   = $('.js_quick_submit'),
+        $alert    = $('.js_login_body').eq(0).find('.alert'),
+        iphoneVal = '',
+        codeVal   = '',
+        num       = 60,
+        time      = null;
+
+    // 获取验证码
+    $getCode.on('click', () => {
+      iphoneVal = $iphone.val();
+
+      if (!_fgj.validate(iphoneVal, 'phone')) {
+        $alert.removeClass('hide').html('手机号有误');
+        return
+      }
+
+      SendLoginValidate({
+        Tel: iphoneVal
+      }, 
+      res => {
+        count(num);   // 倒计时
+      })
+    });
+
+    // 登陆
+    $submit.on('click', () => {
+      codeVal = $code.val();
+      iphoneVal = $iphone.val();
+
+      if (!_fgj.validate(iphoneVal, 'phone')) {
+        $alert.removeClass('hide').html('手机号有误');
+        return
+      }
+      if (!codeVal) {
+        $alert.removeClass('hide').html('请输入验证码');
+        return
+      };
+
+      MobileValidateSignOrLogin({
+        Tel: iphoneVal,
+        ValiNum: codeVal
+      }, 
+      res => {
+        swal.close();
+        typeof this.option.success === 'function' && this.option.success();
+      }, 
+      err => {
+        $alert.removeClass('hide').html(err.msg);
+      })
+    });
+
+    // 倒计时，60秒后再获取
+    function count(num) {
+      $getCode.attr('disabled', true).html(num + '秒后再获取');
+      time = setTimeout(() => {
+        if (num <= 0) {
+          clearTimeout(time)
+          $getCode.attr('disabled', false).html('获取验证码');
+        } 
+        else {
+          num--
+          count(num)
+        }
+      }, 1000);
+    }
   }
 
   // 账号密码登陆

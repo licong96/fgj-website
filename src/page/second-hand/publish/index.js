@@ -1,4 +1,4 @@
-import 'common/js/commonStyle.js';
+import 'common/js/common.js';
 import './index.scss';
 
 import * as Ladda from 'ladda';   // 按钮加载样式

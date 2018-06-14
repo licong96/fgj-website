@@ -1,7 +1,8 @@
 @import "./mixin";
+@import "./reset-bootstrap";
 
 html,body {
-  // background-color: #f5f5f5;
+  background-color: #fff;
 }
 html {
   box-sizing: border-box;
@@ -31,12 +32,6 @@ p {
   content: "";
   display: table;
   clear: both;
-}
-a {
-  color: $color-primary;
-  &:hover {
-    color: $color-dark;
-  }
 }
 a.no-decoration {
   text-decoration: none;
@@ -99,25 +94,6 @@ a.no-decoration {
   top: -9999px;
   z-index: -9;
   opacity: 0;
-}
-// 重置bootstrap的样式
-.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: $color-primary;
-}
-.custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 152, 0, 0.2);
-}
-.btn-primary {
-  background-color: $color-primary;
-  border-color: $color-primary;
-  &:hover {
-    background-color: $color-dark;
-    border-color: $color-dark;
-  }
-}
-.btn-primary:not(:disabled):not(.disabled):active{
-  background-color: $color-dark;
-  border-color: $color-dark;
 }
 
 // tag标签

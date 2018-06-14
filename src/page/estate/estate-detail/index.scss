@@ -29,6 +29,7 @@ body {
     &.active {
       border-radius  : 0;
       background-color: $color-dark;
+      color: #fff;
     }
     &.no-active {
       background: $color-primary;
