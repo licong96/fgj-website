@@ -9,7 +9,7 @@
 <body>
   <!-- 头部 -->
   <%= require('html-loader!components/header-nav/index.html') %>
-
+  <!-- <input type="password" class="input-puppet" placeholder="这个隐藏的input为的是去掉浏览器默认填充" /> -->
   <section class="container main">
     <div class="row">
       <!-- 左导航 -->
@@ -23,7 +23,7 @@
           </div>
           <section class="info">
             <ul class="js_up_user_info">
-              <li class="list">
+              <!-- <li class="list">
                 <span class="spring">头像</span>
                 <span class="summer">
                   <img class="port" src="http://thirdwx.qlogo.cn/mmopen/vi_32/q0f8K5brcwhhWUOhbPibYK5HmRSbh4OzqN6Ldpn5nb0BibHO6ib1xQ7pJiaoranYnWibnCYH9aCdicic8WxvibQcvicEe0A/132" alt="">
@@ -49,14 +49,14 @@
                 <span class="spring">地址</span>
                 <span class="summer">江西南昌</span>
               </li>
-              <button class="btn btn-lg btn-primary btn-outline-primary" type="button">修改资料</button>
+              <button class="btn btn-lg btn-primary btn-outline-primary" type="button">修改资料</button> -->
             </ul>
             <ul class="js_up_password">
               <li class="dropdown-divider"></li>
               <li class="list">
                 <span class="spring">密码</span>
                 <span class="summer">**********</span>
-                <button class="btn btn-lg btn-primary btn-outline-primary" type="button">修改密码</button>
+                <button class="btn btn-lg btn-primary btn-outline-primary" type="button" data-toggle="modal" data-target="#modalUpPassword">修改密码</button>
               </li>
             </ul>
           </section>
@@ -64,6 +64,11 @@
       </div>
     </div>
   </section>
+
+  <!-- 修改资料容器 -->
+  <section class="up-info-box js_up_info_box"></section>
+  <!-- 修改密码容器 -->
+  <section class="up-password-box js_up_password_box"></section>
 
   <!-- 底部 -->
   <%= require('html-loader!components/footer/index.html') %>

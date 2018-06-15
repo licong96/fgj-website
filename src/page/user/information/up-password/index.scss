@@ -1,0 +1,52 @@
+@import "../../../../common/scss/mixin.scss";
+
+.up-password-box {
+  user-select: none;
+  .modal-content {
+    margin-left: 50px;
+    // 默认宽度是500
+    max-width: 400px;
+    .modal-up-password {
+      padding: 20px 40px 24px;
+      .p-label {
+        top: 6px;
+        font-size: 16px;
+      }
+      .get-code {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 2;
+        margin-bottom: 1px;
+        min-width: 120px;
+        font-size: 14px;
+        color: #fff;
+        background-color: $color-primary;
+        white-space: nowrap;
+        cursor: pointer;
+        &:after {
+          content: "";
+          position: absolute;
+          top: 20%;
+          left: 0;
+          width: 1px;
+          height: 60%;
+          background-color: $color-primary;
+        }
+      }
+    }
+    .btn-cancel {
+      font-size: 16px;
+      background-color: #f2f2f2;
+    }
+    .btn-confrim {
+      margin-left: 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: $color-primary;
+      &:hover {
+        background-color: $color-primary;
+      }
+    }
+  }
+}

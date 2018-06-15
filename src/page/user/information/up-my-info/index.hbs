@@ -1,0 +1,32 @@
+<li class="list">
+  <span class="spring">头像</span>
+  <span class="summer">
+    <img class="port" src="{{_headpic}}"
+      alt="">
+  </span>
+</li>
+<li class="list">
+  <span class="spring">用户名</span>
+  <span class="summer">{{_username}}</span>
+</li>
+<li class="list">
+  <span class="spring">性别</span>
+  <span class="summer">{{_sex}}</span>
+</li>
+<li class="list">
+  <span class="spring">手机号</span>
+  <span class="summer">{{_tel}}</span>
+</li>
+<li class="list">
+  <span class="spring">生日</span>
+  <span class="summer">12-04</span>
+</li>
+<li class="list">
+  <span class="spring">地址</span>
+  {{#if _address}}
+  <span class="summer">{{_address}}</span>
+  {{else}}
+  <span class="summer">暂无地址</span>
+  {{/if}}
+</li>
+<button class="btn btn-lg btn-primary btn-outline-primary" type="button" data-toggle="modal" data-target="#modalUpInfo">修改资料</button>

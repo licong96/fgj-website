@@ -1,5 +1,8 @@
 import './index.scss';
 import _fgj from 'util/fgj.js'
+import * as Ladda from 'ladda';   // 按钮加载样式
+import 'ladda/css/ladda-themed.scss';
+
 import { MobileLogin, SendLoginValidate, MobileValidateSignOrLogin } from 'api/user.js';
 
 let templateIndex = require('./index.hbs');
@@ -72,7 +75,8 @@ export default class Login {
         iphoneVal = '',
         codeVal   = '',
         num       = 60,
-        time      = null;
+        time      = null,
+        load      = null;
 
     // 获取验证码
     $getCode.on('click', () => {
@@ -82,12 +86,19 @@ export default class Login {
         $alert.removeClass('hide').html('手机号有误');
         return
       }
-
+      
+      load = Ladda.create($getCode[0]);
+      load.start();
       SendLoginValidate({
         Tel: iphoneVal
       }, 
       res => {
+        load.remove();
         count(num);   // 倒计时
+      }, 
+      err => {
+        load.remove();
+        $alert.removeClass('hide').html(err.msg);
       })
     });
 
@@ -104,16 +115,20 @@ export default class Login {
         $alert.removeClass('hide').html('请输入验证码');
         return
       };
-
+      
+      load = Ladda.create($submit[0]);
+      load.start();
       MobileValidateSignOrLogin({
         Tel: iphoneVal,
         ValiNum: codeVal
       }, 
       res => {
+        load.remove();
         swal.close();
         typeof this.option.success === 'function' && this.option.success();
       }, 
       err => {
+        load.remove();
         $alert.removeClass('hide').html(err.msg);
       })
     });
@@ -140,7 +155,8 @@ export default class Login {
         $password = $('.js_account_password'),
         $submit   = $('.js_account_submit'),
         $alert    = $('.js_login_body').eq(1).find('.alert'),
-        obj       = {};
+        obj       = {},
+        load      = null;
   
     $submit.on('click', () => {
       // 验证数据输入是否正确
@@ -152,13 +168,16 @@ export default class Login {
       let verify = this.verify(obj);
       if (verify.result) {
         $alert.addClass('hide');
+        load = Ladda.create($submit[0]);
+        load.start();
         // 发送请求
         MobileLogin(obj, res => {
-          // 登陆成功
+          load.remove();
           swal.close();
           typeof this.option.success === 'function' && this.option.success();
         }, 
         err => {
+          load.remove();
           $alert.removeClass('hide').html(err.msg);
         });
       } 
