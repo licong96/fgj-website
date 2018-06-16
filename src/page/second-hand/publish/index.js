@@ -2,9 +2,8 @@ import 'common/js/common.js';
 import './index.scss';
 
 import * as Ladda from 'ladda';   // 按钮加载样式
-import 'ladda/css/ladda-themed.scss';
 import Cropper from 'cropperjs';  // 图片裁切
-import './image-upload/cropper.css';
+import 'common/css/cropper.css';
 import _fgj from 'util/fgj.js';
 import Login from 'components/login/index.js';
 import HintTop from 'components/hint-top/index.js';
@@ -699,8 +698,9 @@ let publish = {
         RentPriceUnit   : $('#RentPriceUnit').val(),  // 租单价 | 出租
         MtgPrice        : $('#MtgPrice').val(),  // 物业费 | 出租
         TransferPrice   : $('#TransferPrice').val(),  // 转让费 | 出租
-        RentType        : $('input[name="RentType"]').val(), // 租房类型 | 出租
+        RentType        : $('input[name="RentType"]:checked').val(), // 租房类型 | 出租
       };
+      console.log(lease)
       
       // 获取Tag
       let PropertyTag = $('#PropertyTag').find(':checkbox:checked');

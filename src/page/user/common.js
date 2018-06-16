@@ -1,6 +1,7 @@
 // 用户中心公用js
-
+import 'common/js/common.js';
 import _fgj from 'util/fgj.js';
+import HeaderNav from 'components/header-nav/index.js';
 import HintTop from 'components/hint-top/index.js';
 import Login from 'components/login/index.js';
 
@@ -13,10 +14,16 @@ let common = {
     this.bindEvent();
   },
   onLoad() {
+    this.initHeaderNav();
     this.isLogin();   // 判断是否已登陆
   },
   bindEvent() {
     
+  },
+  // 初始化头部导航
+  initHeaderNav() {
+    var nav = new HeaderNav();
+    nav.init();
   },
   // 判断是否已登陆
   isLogin() {

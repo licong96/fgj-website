@@ -1,32 +1,87 @@
-<div class="modal fade" id="modalUpInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">修改资料</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body modal-up-info">
-        <div class="alert alert-warning hide" role="alert">错误提示</div>
-        <div class="form-group">
-          <label class="p-label" for="passTel">手机号</label>
-          <input type="text" class="form-control" id="passTelInfo" value="" autocomplete="off" placeholder="请输入手机号" readonly>
-        </div>
-        <div class="form-group">
-          <label class="p-label" for="ValiNum">验证码</label>
-          <input type="text" class="form-control" id="ValiNumInfo" autocomplete="off" placeholder="请输入验证码">
-          <button class="btn get-code js_get_code ladda-button" data-style="zoom-in">获取验证码</button>
-        </div>
-        <div class="form-group">
-          <label class="p-label" for="PassWord">旧密码</label>
-          <input type="password" class="form-control" id="" autocomplete="off" placeholder="请输入旧密码">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-cancel" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-confrim js_btn_confrim ladda-button" data-style="zoom-in">确定</button>
-      </div>
+<li class="list">
+  <span class="spring">头像</span>
+  <span class="summer position-relative" id="headPic">
+    <img class="port" id="infoUpImg" src="{{_headpic}}" alt="">
+    <input class="file-img" id="fileupload" type="file" accept="image/*">
+  </span>
+</li>
+<li class="list">
+  <span class="spring">用户名</span>
+  <span class="summer">
+    <input type="text" class="form-control" id="UserName" value="{{_username}}" autocomplete="off" placeholder="请输入用户名">
+  </span>
+</li>
+<li class="list">
+  <span class="spring">性别</span>
+  <span class="summer d-flex">
+    <div class="custom-control custom-radio">
+      {{#if man}}
+      <input type="radio" id="sexMan" name="sex" value="男" class="custom-control-input" checked>
+      {{else}}
+      <input type="radio" id="sexMan" name="sex" value="男" class="custom-control-input">
+      {{/if}}
+      <label class="custom-control-label" for="sexMan">男</label>
     </div>
-  </div>
-</div>
+    <div class="custom-control custom-radio">
+      {{#if woman}}
+      <input type="radio" id="sexWoman" name="sex" value="女" class="custom-control-input" checked>
+      {{else}}
+      <input type="radio" id="sexWoman" name="sex" value="女" class="custom-control-input">
+      {{/if}}
+      <label class="custom-control-label" for="sexWoman">女</label>
+    </div>
+  </span>
+</li>
+<li class="list">
+  <span class="spring">手机号</span>
+  <span class="summer">{{_tel}}</span>
+</li>
+<li class="list">
+  <span class="spring">验证码</span>
+  <span class="summer position-relative">
+    <input type="text" class="form-control info-code" id="infoValiNum" autocomplete="off" placeholder="请输入验证码">
+    <button class="btn get-code js_get_code ladda-button" data-style="zoom-in">获取验证码</button>
+  </span>
+</li>
+<li class="list">
+  <span class="spring">生日</span>
+  <span class="summer d-flex">
+    <select class="custom-select" id="dataMonth">
+      <option value="" selected>几月</option>
+      <option value="1">1月</option>
+      <option value="2">2月</option>
+      <option value="3">3月</option>
+      <option value="4">4月</option>
+      <option value="5">5月</option>
+      <option value="6">6月</option>
+      <option value="7">7月</option>
+      <option value="8">8月</option>
+      <option value="9">9月</option>
+      <option value="10">10月</option>
+      <option value="11">11月</option>
+      <option value="12">12月</option>
+    </select>
+    <select class="custom-select" id="dataDay">
+      <option value="" selected>几日</option>
+      <option value="1">1日</option>
+      <option value="2">2日</option>
+      <option value="3">3日</option>
+      <option value="4">4日</option>
+      <option value="5">5日</option>
+      <option value="6">6日</option>
+      <option value="7">7日</option>
+      <option value="8">8日</option>
+      <option value="9">9日</option>
+      <option value="10">10日</option>
+      <option value="11">11日</option>
+      <option value="12">12日</option>
+    </select>
+  </span>
+</li>
+<li class="list">
+  <span class="spring">地址</span>
+  <span class="summer">
+    <textarea class="form-control up-address" id="Address" rows="3" placeholder="请输入地址"></textarea>
+  </span>
+</li>
+<div class="alert alert-warning hide" role="alert">错误提示</div>

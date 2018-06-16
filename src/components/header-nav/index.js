@@ -4,6 +4,10 @@ import _fgj from 'util/fgj.js';
 import HintTop from 'components/hint-top/index.js';
 import Login from 'components/login/index.js';
 
+import { GetMyInfo } from 'api/user.js';
+
+let tempUserInfo = require('./user-info.hbs');
+
 // 导航
 /**
  * @class HeaderNav
@@ -12,7 +16,7 @@ export default class HeaderNav {
   constructor() {
     // 默认参数
     this.defaultOption = {
-      // current: $('.js_header_nav .nav-a').eq(0)    // 当前导航元素
+      current: null,    // 当前导航元素
       fullNav: $('.js_head_nav_fixed'),
       aNav: $('.js_header_nav .nav-a'),
       oLine: $('.js_header_nav .line'),
@@ -21,30 +25,48 @@ export default class HeaderNav {
   }
 
   // 初始化
-  init(option) {
-    this.option = $.extend({}, this.defaultOption, option);
-    this.active();    // 给当前导航添加样式
+  init(options) {
+    let option = this.option = $.extend({}, this.defaultOption, options);
 
+    this.active();    // 给当前导航添加样式
     this.navFull();   // 监听页面高度，显示浮动导航
+    this.getElement();
+    this.bindEvent();
 
     // 添加到消息队列中
     setTimeout(() => {
-      this.line();    // 添加下划线运动
-      this.option.oLine.css({'opacity': 1});
+      if (option.current) {
+        this.line();    // 添加下划线运动
+        option.oLine.css({'opacity': 1});
+      } else {
+        option.oLine.hide();
+      }
     }, 30);
-    
-    this.initLogin();   // 初始化登陆
 
-    this.bindEvent();
+  }
+
+  getElement() {
+    this.el = {
+      navLoginBtn: $('#navLoginBtn'),
+      navUserLink: $('#navUserLink')
+    }
   }
 
   bindEvent() {
-    this.onLogin();
+    // 判断是否登陆
+    if (_fgj.getCookie('CUserID')) {
+      this.GetMyInfo();   // 如果已登录就去获取用户信息
+    } else {
+      this.onLogin();
+    }
   }
 
   // 给当前导航添加样式
   active() {
-    this.option.current.addClass('active');
+    let current = this.option.current;
+    if(current) {
+      current.addClass('active');
+    }
   }
 
   // 添加下划线运动
@@ -112,32 +134,47 @@ export default class HeaderNav {
     });
   }
 
-  // 初始化登陆
-  initLogin() {
-    this.Login = new Login();
-    if (_fgj.getCookie('CUserID')) {
-      $('.js_login_state').hide();
-    }
-  }
   // 点击登陆
   onLogin() {
-    let _this = this;
+    let _this = this,
+        el    = this.el;
     
+    this.Login = new Login();
     this.HintTop ? '' : this.HintTop = new HintTop();
 
+    el.navLoginBtn.show();
+    
     $('.js_login_btn').on('click', () => {
-      if (!_fgj.getCookie('CUserID')) {
-        this.Login.init({
-          success: function () {
-            _this.HintTop.show({
-              type: 'success',
-              text: '登陆成功！'
-            });
-            $('.js_login_state').hide();
-          }
-        });
-      }
+      this.Login.init({
+        success: function () {
+          _this.HintTop.show({
+            type: 'success',
+            text: '登陆成功！'
+          });
+          el.navLoginBtn.hide();
+          _this.GetMyInfo();
+        }
+      });
     });
+  }
+
+  // 获取用户信息
+  GetMyInfo() {
+    let el = this.el;
+
+    GetMyInfo(res => {
+      console.log(res)
+      this.renderUserInfo(res.data);
+    }, 
+    err => {
+      console.log(res)
+    })
+  }
+
+  // 渲染用户信息
+  renderUserInfo(data) {
+    let html = _fgj.handlebars(tempUserInfo, data);
+    this.el.navUserLink.html(html).show();
   }
   
 };

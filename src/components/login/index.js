@@ -1,7 +1,6 @@
 import './index.scss';
 import _fgj from 'util/fgj.js'
 import * as Ladda from 'ladda';   // 按钮加载样式
-import 'ladda/css/ladda-themed.scss';
 
 import { MobileLogin, SendLoginValidate, MobileValidateSignOrLogin } from 'api/user.js';
 

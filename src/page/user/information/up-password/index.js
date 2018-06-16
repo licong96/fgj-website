@@ -1,7 +1,6 @@
 import './index.scss';
 
 import * as Ladda from 'ladda';   // 按钮加载样式
-import 'ladda/css/ladda-themed.scss';
 import _fgj from 'util/fgj.js'; 
 import { SendLoginValidate } from 'api/user.js';
 import { UpPassword } from 'api/user/information.js';
@@ -11,14 +10,15 @@ let tempIndex = require('./index.hbs');
 // 修改密码
 let upPassword = {
   el: {},
-  data: {
-  },
-  init() {
+  data: {},
+  init(data) {
+    this.data = data;   // 要把用户数据传过来
     this.onLoad();
     this.bindEvent();
   },
   onLoad() {
     this.render();    // 渲染内容
+    this.postTel();   // 填充号码
   },
   bindEvent() {
     this.onUpPassword();    // 修改密码
@@ -44,8 +44,8 @@ let upPassword = {
     }
   },
   // 填充号码
-  postTel(tel) {
-    $('#passTel').val(tel);
+  postTel() {
+    $('#passTel').val(this.data._tel);
   },
   // 修改密码
   onUpPassword() {

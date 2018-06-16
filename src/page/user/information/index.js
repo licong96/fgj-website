@@ -11,6 +11,8 @@ import _common from '../common.js';  // 用户中心公用js
 import _upPassword from './up-password/index.js';
 import _upMyInfo from './up-my-info/index.js';
 
+let tempEmpty = require('components/empty/empty.hbs');
+
 // 个人资料
 let information = {
   el: {
@@ -23,20 +25,19 @@ let information = {
     this.onLoad();
     this.bindEvent();
   },
+  // 初始化公共信息
   initCommon() {
     let _this = this;
 
     _common.init({
       successGetInfo(data) {    // 登陆成功后返回用户信息
-        console.log(data)
-        _upPassword.postTel(data._tel);
-        _this.upMyInfo(data);
+        _upMyInfo.init(data);   // 修改用户信息
+        _upPassword.init(data);    // 修改密码
       },
-      errorGetInfo(err) {   // 获取用户信息失败
-        console.log(err)
+      errorGetInfo(err) {
+        $('.js_up_user_info').html(tempEmpty);
       }
     });
-    _upPassword.init();    // 修改密码功能
   },
   onLoad() {
     this.renderUserNav();   // 渲染用户侧边栏导航
@@ -49,10 +50,6 @@ let information = {
       name: 'information'
     });
   },
-  // 修改用户信息
-  upMyInfo(data) {
-    _upMyInfo.render($('.js_up_user_info'), data);
-  }
 };
 
 $(function () {

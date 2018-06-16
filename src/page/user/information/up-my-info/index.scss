@@ -1,1 +1,57 @@
 @import "../../../../common/scss/mixin.scss";
+
+.up-info-box {
+  user-select: none;
+  .port {
+    position: relative;
+    cursor: pointer;
+  }
+  .file-img {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .info-code {
+    width: 300px;
+  }
+  .get-code {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 1px;
+    min-width: 120px;
+    font-size: 14px;
+    color: #fff;
+    background-color: $color-primary;
+    white-space: nowrap;
+    cursor: pointer;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 20%;
+      left: 0;
+      width: 1px;
+      height: 60%;
+      background-color: $color-primary;
+    }
+  }
+  .custom-radio {
+    margin-right: 20px;
+    .custom-control-label {
+      cursor: pointer;
+    }
+  }
+  .custom-select {
+    margin-right: 20px;
+  }
+  .up-address {
+    width: 300px;
+    line-height: 1.5;
+  }
+}

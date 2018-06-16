@@ -22,41 +22,17 @@
             <button type="button" class="btn rounded-0">基本资料</button>
           </div>
           <section class="info">
-            <ul class="js_up_user_info">
-              <!-- <li class="list">
-                <span class="spring">头像</span>
-                <span class="summer">
-                  <img class="port" src="http://thirdwx.qlogo.cn/mmopen/vi_32/q0f8K5brcwhhWUOhbPibYK5HmRSbh4OzqN6Ldpn5nb0BibHO6ib1xQ7pJiaoranYnWibnCYH9aCdicic8WxvibQcvicEe0A/132" alt="">
-                </span>
-              </li>
-              <li class="list">
-                <span class="spring">用户名</span>
-                <span class="summer">黎聪</span>
-              </li>
-              <li class="list">
-                <span class="spring">性别</span>
-                <span class="summer">男</span>
-              </li>
-              <li class="list">
-                <span class="spring">手机号</span>
-                <span class="summer">13699531996</span>
-              </li>
-              <li class="list">
-                <span class="spring">生日</span>
-                <span class="summer">12-04</span>
-              </li>
-              <li class="list">
-                <span class="spring">地址</span>
-                <span class="summer">江西南昌</span>
-              </li>
-              <button class="btn btn-lg btn-primary btn-outline-primary" type="button">修改资料</button> -->
-            </ul>
+            <ul class="up-info-box js_up_user_info"></ul>
+            <div class="text-right info-btn">
+              <button class="btn btn-lg btn-primary btn-outline-primary" id="modifiedData" type="button">修改资料</button>
+              <button class="btn btn-lg btn-primary btn-outline-primary ladda-button hide" id="saveData" type="button" data-style="zoom-in">保存资料</button>
+            </div>
             <ul class="js_up_password">
               <li class="dropdown-divider"></li>
               <li class="list">
                 <span class="spring">密码</span>
-                <span class="summer">**********</span>
-                <button class="btn btn-lg btn-primary btn-outline-primary" type="button" data-toggle="modal" data-target="#modalUpPassword">修改密码</button>
+                <span class="summer">******</span>
+                <button class="btn btn-lg btn-primary btn-outline-primary ml-auto" type="button" data-toggle="modal" data-target="#modalUpPassword">修改密码</button>
               </li>
             </ul>
           </section>
@@ -65,11 +41,21 @@
     </div>
   </section>
 
-  <!-- 修改资料容器 -->
-  <section class="up-info-box js_up_info_box"></section>
   <!-- 修改密码容器 -->
   <section class="up-password-box js_up_password_box"></section>
 
+  <!-- 图片裁切容器 -->
+  <section class="cropper-wrap js_cropper_wrap">
+    <div class="cropper-box">
+      <div class="flex-1 js_image_wrap">
+        <img src="" class="cropper-img" id="image" alt="">
+      </div>
+      <div class="operation">
+        <button class="btn btn-lg" id="cancelCropBtn">取消</button>
+        <button class="btn btn-lg ladda-button" id="confirmCropBtn" data-style="zoom-in">裁切</button>
+      </div>
+    </div>
+  </section>
   <!-- 底部 -->
   <%= require('html-loader!components/footer/index.html') %>
 </body>
