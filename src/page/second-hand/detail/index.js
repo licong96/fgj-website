@@ -264,10 +264,7 @@ let detail = {
       if (!_fgj.getCookie('CUserID')) {
         this.Login.init({
           success: function () {
-            _this.HintTop.show({
-              type: 'success',
-              text: '登陆成功！'
-            });
+            _this.HintTop.success('登陆成功！');
             data._user._tel ? $btn.html(data.data._user._tel) : $btn.html('暂无电话');
           }
         });
@@ -317,10 +314,7 @@ let detail = {
             _this.Login.init({
               success: function () {
                 // console.log(content, CommentGroup, ToUserID)
-                _this.HintTop.show({
-                  type: 'success',
-                  text: '登陆成功！'
-                });
+                _this.HintTop.success('登陆成功！');
               }
             });
           } else {

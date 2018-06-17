@@ -221,3 +221,14 @@ a.no-decoration {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
 }
+
+// ladda 加载中
+.btn.ladda-button {
+  color: #fff;
+  background-color: $color-primary;
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #e88b00; 
+  }
+}

@@ -1,21 +1,18 @@
 import 'common/js/common.js';
 import './index.scss';
 
-import _fgj from 'util/fgj.js'; 
-import UserNav from 'components/user-nav/index';
+import _fgj from 'util/fgj.js';
+import UserNav from 'components/user-nav/index.js';
 import _common from '../common.js';  // 用户中心公用js
-import _upPassword from './up-password/index.js';
-import _upMyInfo from './up-my-info/index.js';
 
-import { UpUserInfo } from 'api/user/information.js';
+import { GetModelDetail } from 'api/user/manage-house.js';
 
-let tempEmpty = require('components/empty/empty.hbs');
-
-// 个人资料
-let information = {
+// 房源管理
+let manage = {
   el: {
   },
   data: {
+    PropertyID: _fgj.getUrlParam('PropertyID') || (window.location.href = './manage.html')
   },
   init() {
     this.initCommon();  // 初始化公共信息
@@ -27,12 +24,10 @@ let information = {
     let _this = this;
 
     _common.init({
-      successGetInfo(data) {    // 登陆成功后返回用户信息
-        _upMyInfo.init(data);   // 修改用户信息
-        _upPassword.init(data);    // 修改密码
+      successGetInfo(data) {
+        console.log(data)
       },
       errorGetInfo(err) {
-        $('.js_up_user_info').html(tempEmpty);
       }
     });
   },
@@ -40,16 +35,31 @@ let information = {
     this.renderUserNav();   // 渲染用户侧边栏导航
   },
   bindEvent() {
+    // $('.btn').on('click', function (e) {
+    //   e.preventDefault();
+    // })
+  },
+  // 获取详细页数据
+  GetModelDetail() {
+    GetModelDetail({
+      PropertyID: this.data.PropertyID
+    }, 
+    res => {
+      console.log(res)
+    }, 
+    err => {
+
+    })
   },
   // 渲染用户侧边栏导航
   renderUserNav() {
     let nav = new UserNav({
-      name: 'information'
+      name: 'manage'
     });
   },
 };
 
 $(function () {
-  information.init();
+  manage.init();
   $('body').bootstrapMaterialDesign();
 });

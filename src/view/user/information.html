@@ -22,12 +22,15 @@
             <button type="button" class="btn rounded-0">基本资料</button>
           </div>
           <section class="info">
-            <ul class="up-info-box js_up_user_info"></ul>
+            <ul class="up-info-box js_up_user_info">
+              <%= require('html-loader!components/loader-default/index.html') %>
+            </ul>
             <div class="text-right info-btn">
-              <button class="btn btn-lg btn-primary btn-outline-primary" id="modifiedData" type="button">修改资料</button>
+              <button class="btn btn-lg btn-primary btn-outline-primary hide" id="modifiedData" type="button">修改资料</button>
+              <button class="btn btn-lg btn-outline-primary hide" id="closeSaveData" type="button">取消修改</button>
               <button class="btn btn-lg btn-primary btn-outline-primary ladda-button hide" id="saveData" type="button" data-style="zoom-in">保存资料</button>
             </div>
-            <ul class="js_up_password">
+            <ul class="js_up_password hide">
               <li class="dropdown-divider"></li>
               <li class="list">
                 <span class="spring">密码</span>

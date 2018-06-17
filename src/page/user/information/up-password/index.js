@@ -26,8 +26,11 @@ let upPassword = {
   },
   // 渲染内容
   render() {
+    let $passWrap = $('.js_up_password');
     let html = _fgj.handlebars(tempIndex, {});
     $('.js_up_password_box').html(html);
+
+    $passWrap.show();
 
     this.getElement();  // 获取页面元素
   },

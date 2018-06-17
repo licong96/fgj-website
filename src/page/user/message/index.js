@@ -6,6 +6,7 @@ import HeaderNav from 'components/header-nav/index.js';
 import UserNav from 'components/user-nav/index.js';
 import BeList from 'components/be-list/index.js';
 import Paging from 'components/paging/index.js';
+import _common from '../common.js';  // 用户中心公用js
 
 // 我的消息
 let message = {
@@ -14,8 +15,21 @@ let message = {
   data: {
   },
   init() {
+    this.initCommon();
     this.onLoad();
     this.bindEvent();
+  },
+  // 初始化公共信息
+  initCommon() {
+    let _this = this;
+
+    _common.init({
+      successGetInfo(data) {
+        console.log(data)
+      },
+      errorGetInfo(err) {
+      }
+    });
   },
   onLoad() {
     this.renderUserNav();   // 渲染用户侧边栏导航

@@ -3,10 +3,12 @@ import './index.scss';
 import * as Ladda from 'ladda';   // 按钮加载样式
 import Cropper from 'cropperjs';  // 图片裁切
 import 'common/css/cropper.css';
+import HeaderNav from 'components/header-nav/index.js';
 import _fgj from 'util/fgj.js'; 
 import { SendLoginValidate } from 'api/user.js';
 import { UpUserInfo, GetMyInfo } from 'api/user/information.js';
 import { FileUpLoad } from 'api/public.js';
+
 
 let tempIndex = require('./index.hbs');
 let tempUpInfo = require('./up-info.hbs');
@@ -23,6 +25,7 @@ let upPassword = {
     box: $('.js_up_user_info'),
     setBtn: $('#modifiedData'),
     saveBtn: $('#saveData'),
+    closeSaveData: $('#closeSaveData'),
   },
   data: {},
   init(data) {
@@ -55,7 +58,13 @@ let upPassword = {
   },
   // 渲染显示的内容
   renderBase() {
-    let html = _fgj.handlebars(tempIndex, this.data);
+    let data = this.data;
+
+    // 拼接图片，测试用
+    if (data._headpic.indexOf('/upfile') !== -1 && data._headpic.indexOf('http://t.vipfgj.com') === -1) {
+      data._headpic = _fgj.photoPath() + data._headpic;
+    };
+    let html = _fgj.handlebars(tempIndex, data);
     this.el.box.html(html);
   },
   // 渲染修改资料的内容
@@ -63,17 +72,20 @@ let upPassword = {
     let html = '',
         el   = this.el;
 
+    el.setBtn.show();
     el.setBtn.on('click', () => {
       html = _fgj.handlebars(tempUpInfo, this.data);
       el.box.html(html);
       el.setBtn.hide();
       el.saveBtn.show();
+      el.closeSaveData.show();
 
       this.getElement();  // 获取渲染出来的页面元素
       this.dataFill();  // 填充数据
       this.getCode();   // 获取验证码
       this.onUpInfo();    // 修改资料
       this.upHeadPic();   // 上传头像
+      this.closeSaveData(); // 取消修改
     });
   },
   // 填充数据
@@ -108,14 +120,29 @@ let upPassword = {
     let el = this.el;
     
     GetMyInfo(res => {
-      console.log(res)
       this.data = res.data;
       el.setBtn.show();
       el.saveBtn.hide();
+      el.closeSaveData.hide();
       this.renderBase();
+
+      // 同步更新导航数据
+      this.headerNav ? '' : this.headerNav = new HeaderNav();
+      this.headerNav.renderUserInfo(res.data);
     }, err => {
       _fgj.errorTips(err);
     })
+  },
+  // 取消修改
+  closeSaveData() {
+    let el = this.el;
+
+    el.closeSaveData.on('click', () => {
+      this.renderBase();
+      el.setBtn.show();
+      el.saveBtn.hide();
+      el.closeSaveData.hide();
+    });
   },
   // 修改资料
   onUpInfo() {
@@ -136,7 +163,6 @@ let upPassword = {
         dataDay   : el.dataDay.val(),
         Address   : el.Address.val(),
       };
-      console.log(obj)
       
       // 验证
       let verify = this.verify(obj);

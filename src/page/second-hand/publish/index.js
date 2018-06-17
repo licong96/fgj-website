@@ -78,10 +78,7 @@ let publish = {
       this.Login = new Login();
       this.Login.init({
         success: function () {
-          _this.HintTop.show({
-            type: 'success',
-            text: '登陆成功！'
-          })
+          _this.HintTop.success('登陆成功！')
         },
         cancel() {
         }
@@ -92,6 +89,7 @@ let publish = {
   renderMain() {
     let html = _fgj.handlebars(tempIndex, {});
     $('#main').html(html);
+    $('body').bootstrapMaterialDesign();  // 初始化bootstrap
 
     this.GetDistrict();   // 获取区域数据
     // 获取类型数据
@@ -311,10 +309,7 @@ let publish = {
         load.remove();
       },
       HintTop() {
-        _this.HintTop.show({
-          type: 'danger',
-          text: '图片上传失败'
-        })
+        _this.HintTop.error('图片上传失败')
       },
       backPhoto(photo) {    // 返回图片数据
         _this.data.coverPhoto = photo;
@@ -348,10 +343,7 @@ let publish = {
         load.remove();
       },
       HintTop() {
-        _this.HintTop.show({
-          type: 'danger',
-          text: '图片上传失败'
-        })
+        _this.HintTop.error('图片上传失败')
       },
       backPhoto(photo) {    // 返回图片数据
         // console.log('house', photo)
@@ -383,10 +375,7 @@ let publish = {
         load.remove();
       },
       HintTop() {
-        _this.HintTop.show({
-          type: 'danger',
-          text: '图片上传失败'
-        })
+        _this.HintTop.error('图片上传失败')
       },
       backPhoto(photo) {    // 返回图片数据
         // console.log('Indoor', photo)
@@ -418,10 +407,7 @@ let publish = {
         load.remove();
       },
       HintTop() {
-        _this.HintTop.show({
-          type: 'danger',
-          text: '图片上传失败'
-        })
+        _this.HintTop.error('图片上传失败')
       },
       backPhoto(photo) {    // 返回图片数据
         // console.log('estate', photo)
@@ -768,10 +754,7 @@ let publish = {
       // 添加图片
       AddPhoto(obj, res => {
         arr[0].PhotoID = res.PhotoID;   // 保存ID，删除的时候有用
-        this.HintTop.show({
-          type: 'success',
-          text: '图片添加成功'
-        });
+        this.HintTop.success('图片添加成功');
       }, 
       err => {
         _fgj.errorTips(err.msg);

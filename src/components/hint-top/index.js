@@ -6,49 +6,69 @@ let templateIndex = require('./index.hbs');
 /**
  * 头部弹出提示
  * @class HintTop
- * 对外暴露show方法，插入type和text
+ * 对外暴露方法，插入type和text
  */
 export default class HintTop {
   constructor() {
-    this.option = {
-      type: 'primary',
-      text: '提示信息'
-    };
-    this.render();
-    this.el = {
-      $hint: $('.js_hint_top '),
-      $alert: $('.js_hint_top .alert')
+    this.defaultOption = {
+      type: 'success',
+      text: '提示文字',
+      className: parseInt(Math.random() * 1000)
     }
   }
 
-  // 绑定事件
-  bindEvent() {
-  }
-
   // 渲染
-  render() {
-    let html = _fgj.handlebars(templateIndex, {
-      type: this.option.type,
-      text: this.option.text
-    });
+  render(data) {
+    let option = this.option = $.extend({}, this.defaultOption, data);
+
+    let html = _fgj.handlebars(templateIndex, option);
     $('body').append(html);
+
+    this.getElement();
   }
 
-  // 显示
-  show(options) {
-    this.option = $.extend({}, this.option, options);
+  // 获取元素
+  getElement() {
+    let $hint = $('.js_hint_top_' + this.option.className);
 
-    this.el.$hint.addClass('show')
-    this.el.$alert[0].className = 'alert alert-' + options.type
-    this.el.$alert.html(options.text);
-
-    setTimeout(() => {
-      this.hide();
-    }, 3000);
+    this.el = {
+      $hint: $hint,
+      $alert: $hint.find('.alerts')
+    };
   }
+
   // 隐藏
   hide() {
     this.el.$hint.removeClass('show')
+  }
+
+  // 快捷方法，成功状态
+  success(text) {
+    this.fnShow('success', text)
+  }
+  error(text) {
+    this.fnShow('error', text)
+  }
+  info(text) {
+    this.fnShow('info', text)
+  }
+  warning(text) {
+    this.fnShow('warning', text)
+  }
+
+  fnShow(type, text) {
+    // 每次都创建一个提示
+    this.render({
+      type,
+      text,
+      className: parseInt(Math.random() * 1000)
+    });
+    
+    let $hint = this.el.$hint;
+    $hint.addClass('show');
+    setTimeout(() => {
+      $hint.remove();    // 完了之后删除后
+    }, 3000);
   }
 
 };

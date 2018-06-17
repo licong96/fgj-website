@@ -140,19 +140,16 @@ export default class HeaderNav {
         el    = this.el;
     
     this.Login = new Login();
-    this.HintTop ? '' : this.HintTop = new HintTop();
-
-    el.navLoginBtn.show();
+    this.HintTop = new HintTop();
     
+    el.navLoginBtn.show();
+
     $('.js_login_btn').on('click', () => {
       this.Login.init({
         success: function () {
-          _this.HintTop.show({
-            type: 'success',
-            text: '登陆成功！'
-          });
           el.navLoginBtn.hide();
           _this.GetMyInfo();
+          _this.HintTop.success('登陆成功！')
         }
       });
     });
@@ -160,19 +157,19 @@ export default class HeaderNav {
 
   // 获取用户信息
   GetMyInfo() {
-    let el = this.el;
-
     GetMyInfo(res => {
-      console.log(res)
       this.renderUserInfo(res.data);
     }, 
     err => {
-      console.log(res)
+      _fgj.errorTips(err);
     })
   }
 
   // 渲染用户信息
   renderUserInfo(data) {
+    if (data._headpic.indexOf('/upfile') !== -1) {
+      data._headpic = _fgj.photoPath() + data._headpic;
+    };
     let html = _fgj.handlebars(tempUserInfo, data);
     this.el.navUserLink.html(html).show();
   }

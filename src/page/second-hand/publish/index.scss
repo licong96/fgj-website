@@ -8,7 +8,17 @@ body {
   border-top: 16px solid $color-primary;
   border-radius: 4px;
   padding: 60px 250px;
+  min-height: 500px;
   background-color: #fff;
+  .bmd-form-group {
+    padding-top: 0;
+  }
+  .bmd-label-static {
+    position: relative;
+    top: 0;
+    font-size: 16px;
+    color: #333;
+  }
 }
 .pd-l {
   padding-left: 30px;

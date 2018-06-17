@@ -37,10 +37,7 @@ let common = {
       if (!_fgj.getCookie('CUserID')) {
         _this.Login.init({
           success() {
-            _this.HintTop.show({
-              type: 'success',
-              text: '登陆成功！'
-            });
+            _this.HintTop.success('登陆成功！');
             _this.GetMyInfo();
           },
           cancel() {

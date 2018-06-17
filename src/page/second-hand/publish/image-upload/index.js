@@ -69,10 +69,7 @@ export default class imageUpload {
     },
     err => {
        // 图片上传失败
-      typeof option.HintTop === 'function' && option.HintTop({
-        type: 'danger',
-        text: '图片上传失败'
-      });
+      typeof option.HintTop === 'function' && option.HintTop('图片上传失败');
     })
   }
   // 图片上传成功后处理数据
