@@ -26,6 +26,7 @@ let reply = {
       todo: 'News_Comment',
       page: 1
     },
+    isDesign: false
   },
   init() {
     this.initCommon();
@@ -63,6 +64,14 @@ let reply = {
       console.log(res)
       this.renderList(index, res);    // 渲染列表
       this.renderPaging(index, res);  // 渲染未读分页
+
+      // 这只是一个点击效果，不必纠结
+      if (!this.data.isDesign) {
+        this.data.isDesign = true;
+        setTimeout(() => {
+          $('body').bootstrapMaterialDesign();
+        }, 300);
+      }
     }, 
     err => {
       $('#box').html(tempEmpty);
@@ -100,7 +109,7 @@ let reply = {
     this.pag1 ? '' : this.pag1 = new Paging();
 
     this.pag1.init({
-      box: $('.js_paging_1'),
+      box: $('.js_paging_' + index),
       pagecount: res.pagecount,   // 总页数
       page: params.page,    // 当前页数
       previous: parseInt(params.page) - 1,  // 上一页的值
@@ -108,7 +117,7 @@ let reply = {
       num: 20,
       onSuccess: function (page) {
         params.page = page;
-        _this.GetMyPageList();  // 获取数据
+        _this.GetMyPageList(index);  // 获取数据
       }
     });
   }
@@ -116,5 +125,4 @@ let reply = {
 
 $(function () {
   reply.init();
-  $('body').bootstrapMaterialDesign();
 });
