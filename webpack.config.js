@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const devServers = require('./devServer.js'); // 代理配置 https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx
+const devServer = require('./devServer.js'); // 代理配置 https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx
 
 // 判断当前是否处于开发状态下
 const __DEV__ = process.env.NODE_ENV;
@@ -141,7 +141,7 @@ module.exports = {
     new HtmlWebpackPlugin(HtmlPlugin('编辑房源', 'user/manage-house', 'user-manage-house')),
   ],
   devtool: devTool,   // 根据当前环境来设置模式
-  devServer: devServers,   // 服务器代理配置
+  devServer: devServer,   // 服务器代理配置
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000,
