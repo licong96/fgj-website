@@ -6,11 +6,19 @@
   </label>
   <div class="col-sm-10 row pd-l">
     <div class="custom-control custom-radio col-sm-3">
+      {{#if sell}}
       <input type="radio" id="Trade1" name="Trade" value="出售" class="custom-control-input" checked>
+      {{else}}
+      <input type="radio" id="Trade1" name="Trade" value="出售" class="custom-control-input">
+      {{/if}}
       <label class="custom-control-label" for="Trade1">二手房出售</label>
     </div>
     <div class="custom-control custom-radio col-sm-3">
-      <input type="radio" id="Trade2" name="Trade" value="出租" class="custom-control-input">
+      {{#if ount}}
+      <input type="radio" id="Trade2" name="Trade" value="出租" class="custom-control-input" checked>
+      {{else}}
+      <input type="radio" id="Trade2" name="Trade" value="出租" class="custom-control-input"> 
+      {{/if}}
       <label class="custom-control-label" for="Trade2">房屋出租</label>
     </div>
   </div>
@@ -31,7 +39,7 @@
     房源标题
   </label>
   <div class="col-sm-10">
-    <input type="text" class="form-control" id="PropertyTitle" placeholder="请输入标题" autocomplete="off" />
+    <input type="text" class="form-control" id="PropertyTitle" value="{{_propertytitle}}" placeholder="请输入标题" autocomplete="off" />
   </div>
 </section>
 <section class="form-group row">
@@ -51,7 +59,7 @@
     地址
   </label>
   <div class="col-sm-10">
-    <input type="text" class="form-control" id="Address" placeholder="请搜索地址" autocomplete="off" />
+    <input type="text" class="form-control" id="Address" value="{{_address}}" placeholder="请搜索地址" autocomplete="off" />
     {{!-- 显示地图搜索内容 --}}
     <div class="address-search">
       <ul class="a-box js_address_search">
@@ -133,7 +141,7 @@
   </label>
   <div class="col-sm-10 row">
     <div class="col-sm-4">
-      <input type="text" id="Square" class="form-control input-unit" placeholder="请输入面积" autocomplete="off">
+      <input type="text" id="Square" class="form-control input-unit" value="{{_square}}" placeholder="请输入面积" autocomplete="off">
       <span class="unit">㎡</span>
     </div>
   </div>
@@ -146,11 +154,11 @@
   </label>
   <div class="col-sm-10 row">
     <div class="col-sm-4">
-      <input type="text" id="Price" class="form-control input-unit" placeholder="请输入总价" autocomplete="off">
+      <input type="text" id="Price" class="form-control input-unit" value="{{_price}}" placeholder="请输入总价" autocomplete="off">
       <span class="unit">万</span>
     </div>
     <div class="col-sm-4">
-      <input type="text" id="PriceUnit" class="form-control input-unit" placeholder="请输入单价" autocomplete="off">
+      <input type="text" id="PriceUnit" class="form-control input-unit" value="{{_priceunit}}" placeholder="请输入单价" autocomplete="off">
       <span class="unit">元/㎡</span>
     </div>
   </div>
@@ -163,11 +171,11 @@
   </label>
   <div class="col-sm-10 row">
     <div class="col-sm-4">
-      <input type="text" id="RentPrice" class="form-control input-unit" placeholder="请输入租价" autocomplete="off">
+      <input type="text" id="RentPrice" class="form-control input-unit" value="{{_rentprice}}" placeholder="请输入租价" autocomplete="off">
       <span class="unit">元/月</span>
     </div>
     <div class="col-sm-4">
-      <input type="text" id="RentPriceUnit" class="form-control input-unit" placeholder="请输入租单价" autocomplete="off">
+      <input type="text" id="RentPriceUnit" class="form-control input-unit" value="{{_rentpriceunit}}" placeholder="请输入租单价" autocomplete="off">
       <span class="unit">元/㎡</span>
     </div>
   </div>
@@ -180,7 +188,7 @@
   </label>
   <div class="col-sm-10 row">
     <div class="col-sm-4">
-      <input type="text" id="MtgPrice" class="form-control" placeholder="物业费（元/月）">
+      <input type="text" id="MtgPrice" class="form-control" value="{{_mtgprice}}" placeholder="物业费（元/月）">
     </div>
   </div>
 </section>
@@ -192,7 +200,7 @@
   </label>
   <div class="col-sm-10 row">
     <div class="col-sm-4">
-      <input type="text" id="TransferPrice" class="form-control input-unit" value="0" placeholder="转让费（元/月）">
+      <input type="text" id="TransferPrice" class="form-control input-unit" value="{{_transferprice}}" placeholder="转让费（元/月）">
       <span class="unit">元</span>
     </div>
   </div>
@@ -212,7 +220,7 @@
       </select>
     </div>
     <div class="col-sm-4">
-      <input type="text" id="FloorAll" class="form-control" placeholder="请输入总楼层">
+      <input type="text" id="FloorAll" class="form-control" value="{{_floorall}}" placeholder="请输入总楼层">
     </div>
   </div>
 </section>
@@ -236,7 +244,7 @@
   </label>
   <div class="col-sm-10 row">
     <div class="col-sm-4">
-      <input type="text" id="PropertyType" class="form-control" placeholder="请输入物业类别">
+      <input type="text" id="PropertyType" class="form-control" value="{{_propertytype}}" placeholder="请输入物业类别">
     </div>
   </div>
 </section>
@@ -305,11 +313,6 @@
   <label class="col-sm-2 col-form-label">地铁站</label>
   <div class="col-sm-10 row">
     <div class="col-sm-4">
-      <select class="custom-select" id="SubwayLine">
-        <option value="" selected>请选择几号线</option>
-      </select>
-    </div>
-    <div class="col-sm-4">
       <select class="custom-select" id="SubWayStation">
         <option value="" selected>请选择哪一站</option>
       </select>
@@ -356,6 +359,6 @@
 
 <div class="form-group row">
   <div class="col-sm-10 submit" id="submit">
-    <button type="submit" class="btn btn-lg ladda-button" data-style="zoom-in">立即发布</button>
+    <button type="submit" class="btn btn-lg ladda-button" data-style="zoom-in">保存修改</button>
   </div>
 </div>

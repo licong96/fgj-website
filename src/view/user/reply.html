@@ -13,18 +13,34 @@
   <section class="container main">
     <div class="row">
       <!-- 左导航 -->
-      <div class="nav nav-tabs flex-column col-md-3" id="user-nav"></div>
+      <div class="nav nav-tabs flex-column col-md-3" id="user-nav">
+        <%= require('html-loader!components/loader-default/index.html') %>
+      </div>
       <!-- 右内容 -->
       <div class="col-md-9">
-        <div class="content">
-          <div class="title">
-            <button type="button" class="btn rounded-0 active">回复及评论</button>
-          </div>
-          <div class="info">
-            <!-- 未读消息 -->
-            <ul class="be-wrap js_box"></ul>
-            <!-- 分页 -->
-            <section class="js_paging"></section>
+        <div class="content be-wrap">
+          <ul class="nav" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="btn rounded-0 active" data-toggle="tab" href="#tag-1">二手房回复</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn rounded-0" data-toggle="tab" href="#tag-2">资讯回复</a>
+            </li>
+          </ul>
+          
+          <div class="tab-content" id="myTabContent">
+            <section class="tab-pane fade show active" id="tag-1">
+              <ul class="sunny-wrap js_tab_1">
+                <%= require('html-loader!components/loader-default/index.html') %>
+              </ul>
+              <!-- 分页 -->
+              <section class="js_paging_1"></section>
+            </section>
+            <section class="tab-pane fade" id="tag-2">
+              <ul class="sunny-wrap js_tab_2"></ul>
+              <!-- 分页 -->
+              <section class="js_paging_2"></section>
+            </section>
           </div>
         </div>
       </div>

@@ -13,7 +13,9 @@
   <section class="container main">
     <div class="row">
       <!-- 左导航 -->
-      <div class="nav nav-tabs flex-column col-md-3" id="user-nav"></div>
+      <div class="nav nav-tabs flex-column col-md-3" id="user-nav">
+        <%= require('html-loader!components/loader-default/index.html') %>
+      </div>
       <!-- 右内容 -->
       <div class="col-md-9">
         <div class="content">
@@ -24,7 +26,9 @@
             </button>
           </div>
           <div class="info">
-            <ul class="sunny-wrap" id="listBox"></ul>
+            <ul class="sunny-wrap" id="listBox">
+              <%= require('html-loader!components/loader-default/index.html') %>
+            </ul>
             <!-- 分页 -->
             <section class="js_paging"></section>
           </div>

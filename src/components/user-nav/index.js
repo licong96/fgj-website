@@ -28,7 +28,7 @@ export default class UserNav {
           icon: 'icon-btnMsg'
         }, {
           name: 'reply',
-          text: '回复及评论',
+          text: '我的回复',
           href: './reply.html',
           icon: 'icon-huifu'
         }, {

@@ -4,7 +4,7 @@ import _fgj from 'util/fgj.js';
 let tempIndex = require('./index.hbs');
 
 /**
- * 百度地图 - [-$_$-] 地址那里没用到，开发完之后，改方案了
+ * 百度地图 - [-$_$-] 地址那里没用到，开发完之后，改方案了，暂时没用到
  * @class Map
  * @param { Element } box 容器
  */
