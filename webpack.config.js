@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const devServers = require('./devServer.js');
+const devServers = require('./devServer.js'); // 代理配置 https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx
 
 // 判断当前是否处于开发状态下
 const __DEV__ = process.env.NODE_ENV;
@@ -51,8 +51,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: path.resolve(__dirname, 'node_modules'),  // 排除这个文件夹
-        include: path.resolve(__dirname, 'src'),   // 指定这个文件夹
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       buildScss(),    // 开发环境不用postcss-loader，为了提升更新速度

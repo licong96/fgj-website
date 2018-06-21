@@ -1,4 +1,5 @@
 // 用户中心公用js
+import './common.scss';
 import 'common/js/common.js';
 import _fgj from 'util/fgj.js';
 import HeaderNav from 'components/header-nav/index.js';
