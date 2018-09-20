@@ -13,20 +13,35 @@
   <section class="container main">
     <div class="row">
       <!-- 左导航 -->
-      <div class="nav nav-tabs flex-column col-md-3" id="user-nav"></div>
+      <div class="nav nav-tabs flex-column col-md-3" id="user-nav">
+        <%= require('html-loader!components/loader-default/index.html') %>
+      </div>
       <!-- 右内容 -->
       <div class="col-md-9">
         <div class="content">
           <div class="title">
             <button type="button" class="btn rounded-0 active">编辑房源</button>
           </div>
-          <div class="info" id="listBox">
-            
+          <div class="info" id="content">
+            <%= require('html-loader!components/loader-default/index.html') %>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+    <!-- 图片裁切容器 -->
+    <section class="cropper-wrap js_cropper_wrap">
+      <div class="cropper-box">
+        <div class="flex-1 js_image_wrap">
+          <img src="" class="cropper-img" id="image" alt="">
+        </div>
+        <div class="operation">
+          <button class="btn btn-lg active" id="cancelCropBtn">取消</button>
+          <button class="btn btn-lg ladda-button" id="confirmCropBtn">裁切</button>
+        </div>
+      </div>
+    </section>
 
   <!-- 底部 -->
   <%= require('html-loader!components/footer/index.html') %>

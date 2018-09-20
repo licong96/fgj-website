@@ -1,0 +1,12 @@
+{{#each list}}
+<li class="list">
+  <i class="close js_remove_img" data-index="{{@index}}">
+    <svg class="icon" aria-hidden="true"><use xlink:href="#icon-guanbi"></use></svg>
+  </i>
+  <img class="img-thumbnail" src="{{src}}" alt="">
+</li>
+{{/each}}
+<li class="list add ladda-button" data-style="zoom-in">
+  <svg class="icon" aria-hidden="true"><use xlink:href="#icon-jia"></use></svg>
+  <input class="file-img fileupload" type="file" accept="image/*">
+</li>

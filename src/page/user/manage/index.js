@@ -56,8 +56,7 @@ let manage = {
   // 获取列表数据
   GetPageList() {
     GetPageList({
-      page: this.data.page,
-      Trade: '出租'
+      page: this.data.page
     }, 
     res => {
       console.log(res.data)

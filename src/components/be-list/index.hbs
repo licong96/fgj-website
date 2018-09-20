@@ -1,14 +1,14 @@
 {{#each list}}
-  <a class="link" href="#">
+  <a class="link" href="{{link}}" target="_blank">
     <li class="list">
-      <img class="img" src="http://thirdwx.qlogo.cn/mmopen/vi_32/q0f8K5brcwhhWUOhbPibYK5HmRSbh4OzqN6Ldpn5nb0BibHO6ib1xQ7pJiaoranYnWibnCYH9aCdicic8WxvibQcvicEe0A/132"
+      <img class="img" src="{{_touser._headpic}}"
         alt="">
       <div class="text">
         <p class="user">
-          黎聪
-          <span class="time">3小时前</span>
+          {{_touser._username}}
+          <span class="time">{{_regdate}}</span>
         </p>
-        <p class="desc">一段文字描述</p>
+        <p class="desc">{{_content}}</p>
       </div>
     </li>
   </a>

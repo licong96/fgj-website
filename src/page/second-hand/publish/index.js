@@ -8,7 +8,6 @@ import _fgj from 'util/fgj.js';
 import Login from 'components/login/index.js';
 import HintTop from 'components/hint-top/index.js';
 import ImageUpload from './image-upload/index.js';
-import BMap from './map/index.js';
 
 import { GetDistrict, GetDictionary, FileUpLoad, matchingEstate } from 'api/public.js';
 import { AddPhoto, DelPhoto, AddProperty } from 'api/second-hand/publish.js';
@@ -175,14 +174,12 @@ let publish = {
   onSwitcher() {
     let $deal  = $('.js_deal'),   // 出售
         $lease = $('.js_lease'),  // 出租
-        params = this.data.params,
         val    = '',
         _this  = this;
 
     $('input[name="Trade"]').on('change', function () {
       val = $(this).val();
-
-      params.Trade = val;
+      _this.data.params.Trade = val;
 
       if (val === '出售') {
         $lease.addClass('hide');
@@ -270,13 +267,18 @@ let publish = {
    */
   imageCropper(image, type) {
     let el      = this.el,
-        _this   = this;
+        _this   = this,
+        load    = null;
+
     el.cropperWrap.show();
 
     this.el.cropper.replace(image);    // 更换图片
     // 确定裁切
     el.confirmCropBtn.on('click', () => {
+      load = Ladda.create(el.confirmCropBtn[0]);
+      load.start();
       this.el.cropper.getCroppedCanvas().toBlob(function (blob) {
+        load.remove();
         el.cropperWrap.hide();
         el[type].FileUpLoad(blob);  // 根据类型执行它下面对应的方法
       }, 'image/jpeg')
@@ -686,7 +688,6 @@ let publish = {
         TransferPrice   : $('#TransferPrice').val(),  // 转让费 | 出租
         RentType        : $('input[name="RentType"]:checked').val(), // 租房类型 | 出租
       };
-      console.log(lease)
       
       // 获取Tag
       let PropertyTag = $('#PropertyTag').find(':checkbox:checked');

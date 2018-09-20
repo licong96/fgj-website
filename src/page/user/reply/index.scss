@@ -8,13 +8,17 @@ body {
   margin-top: 60px;
 }
 
+.loader-timer-wrap {
+  margin-top: 50px;
+}
+
 // 右内容
 .content {
   margin-left: 20px;
   padding-bottom: 40px;
   min-height: 500px;
   background-color: #fff;
-  .title {
+  .nav {
     border-bottom: 2px solid $color-primary;
     .btn {
       margin-bottom: 0;
@@ -23,6 +27,59 @@ body {
       &.active {
         color: #fff;
         background-color: $color-primary;
+      }
+    }
+  }
+  .sunny-wrap {
+    .windy {
+      display: block;
+      padding: 0 30px;
+      text-decoration: none;
+      &:hover {
+        background-color: $color-hover;
+      }
+      &:active {
+        background-color: #f5f5f5;
+      }
+    }
+    .list {
+      padding: 16px 10px;
+      border-bottom: 1px solid $color-border-1;
+      .w-title {
+        font-size: 16px;
+        color: #333;
+      }
+      .rainy {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: $color-text-1;
+        .cloudy {
+          padding-right: 10px;
+        }
+        .cloudy + .cloudy {
+          position: relative;
+          padding-left: 10px;
+          &:after {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: 0;
+            width: 2px;
+            height: 80%;
+            background-color: $color-border-2;
+          }
+        }
+      }
+    }
+  }
+  // 装修
+  .img-wrap {
+    padding: 30px;
+    .list {
+      margin-bottom: 15px;
+      .img {
+        width: 100%;
       }
     }
   }

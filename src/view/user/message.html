@@ -34,7 +34,9 @@
             </section>
             <section class="tab-pane fade" id="read" role="tabpanel" aria-labelledby="tab-read">
               <!-- 已读消息 -->
-              <ul class="be-wrap js_read_box"></ul>
+              <ul class="be-wrap js_read_box">
+                <%= require('html-loader!components/loader-default/index.html') %>
+              </ul>
               <!-- 分页 -->
               <section class="js_read_paging"></section>
             </section>
