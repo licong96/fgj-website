@@ -6,8 +6,8 @@
   "author": "licong96 <licong19961204@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "set NODE_ENV=production && webpack && webpack-dev-server --progress --inline --open",
-    "build": "webpack --config webpack.config.js"
+    "dev": "webpack && webpack-dev-server --progress --inline --open",
+    "build": "rm -rf ./dist && webpack --config ./webpack.build.config.js --progress --colors"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
